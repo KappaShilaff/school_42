@@ -16,17 +16,17 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
-HEADER_DIR = includes/
+HEADERS_DIR = includes/
 
-HEADER_LIST = libft.h
+HEADERS_LIST = libft.h
 
-HEADERS = $(addprefix $(HEADER_DIR), $(HEADER_LIST))
+HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 
 SRCS_DIR = srcs/
 
 OBJ_DIR = obj/
 
-INCLUDES = -I(HEADERS_DIR)
+INCLUDES = -I$(HEADERS_DIR)
 
 SRCS_LIST = ft_memalloc.c\
 			ft_putnbr.c\
@@ -112,7 +112,7 @@ $(NAME): $(OBJ_DIR) $(OBJ)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ) : $(SRCS) $(HEADERS)
+$(OBJ): $(SRCS) $(HEADERS)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
