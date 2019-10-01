@@ -95,6 +95,10 @@ SRCS_LIST = ft_memalloc.c\
 			ft_lsttale.c\
 			ft_lstfree.c
 
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJ_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
@@ -108,17 +112,23 @@ all: $(NAME)
 $(NAME): $(OBJ_DIR) $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
+	echo "\n$(GREEN)obj files were created.$(RESET)"
+	echo "\n$(GREEN)$(NAME) was created.$(RESET)"
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+	echo "$(GREEN)Directory \"$(OBJ_DIR)\" was created.$(RESET)"
 
-$(OBJ): $(SRCS) $(HEADERS)
+$(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HEADERS)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ_DIR)
+	echo "$(RED)$(OBJ_DIR) was deleted.$(RESET)"
+	echo "$(RED)obj files were deleted.$(RESET)"
 
 fclean: clean 
-	rm -rf $(NAME)
+	rm -rf $(NAME)	
+	echo "$(RED)$(NAME) was deleted.$(RESET)"
 
 re: fclean all
