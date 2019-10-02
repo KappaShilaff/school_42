@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	ft_fix_insert_rb(t_rb_node **root, t_rb_node *t)
+static void	ft_fix_insert_rb(t_rb_node **root, t_rb_node *t)
 {
 	if (*root == t)
 	{
