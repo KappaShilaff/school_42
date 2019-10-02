@@ -99,8 +99,8 @@ SRCS_LIST = ft_memalloc.c\
 			ft_insert_rb.c\
 			ft_create_node_rb.c
 
-GREEN = \033[0;32m
-RED = \033[0;31m
+GREEN = \033[01;38;5;119m
+RED = \033[01;38;5;009m
 RESET = \033[0m
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
@@ -111,28 +111,30 @@ OBJ = $(addprefix $(OBJ_DIR), $(OBJ_LIST))
 
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all:  $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@echo ""
 	ranlib $(NAME)
-	echo "\n$(GREEN)obj files were created.$(RESET)"
-	echo "\n$(GREEN)$(NAME) was created.$(RESET)"
+	@echo "obj files were created."
+	@echo "$(NAME) was created.$(RESET)"
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-	echo "$(GREEN)Directory \"$(OBJ_DIR)\" was created.$(RESET)"
+	@echo "$(GREEN)"
+	@mkdir -p $(OBJ_DIR)
+	@echo "Directory \"$(OBJ_DIR:/=)\" was created.\n"
 
 $(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HEADERS)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ_DIR)
-	echo "$(RED)$(OBJ_DIR) was deleted.$(RESET)"
-	echo "$(RED)obj files were deleted.$(RESET)"
+	@rm -rf $(OBJ_DIR)
+	@echo "\n$(RED)$(OBJ_DIR:/=) was deleted.$(RESET)"
+	@echo "$(RED)obj files were deleted.$(RESET)"
 
 fclean: clean 
-	rm -rf $(NAME)	
-	echo "$(RED)$(NAME) was deleted.$(RESET)"
+	@rm -rf $(NAME)	
+	@echo "$(RED)$(NAME) was deleted.$(RESET)"
 
 re: fclean all
