@@ -93,7 +93,10 @@ SRCS_LIST = ft_memalloc.c\
 			ft_abs.c\
 			ft_lsthead.c\
 			ft_lsttale.c\
-			ft_lstfree.c
+			ft_lstfree.c\
+			ft_left_rotate_rb.c\
+			ft_right_rotate_rb.c\
+			ft_insert_rb.c
 
 GREEN = \033[0;32m
 RED = \033[0;31m

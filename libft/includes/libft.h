@@ -29,7 +29,7 @@ typedef struct			s_rb_node
 	struct s_rb_node	*left;
 	struct s_rb_node	*right;
 	struct s_rb_node	*parent;
-}						t_rb_node
+}						t_rb_node;
 
 typedef struct		s_list
 {
@@ -104,5 +104,8 @@ int					ft_isblank(int c);
 void				ft_lsthead(t_list **lst, t_list *new);
 void				ft_lsttale(t_list **lst, t_list *new);
 void				ft_lstfree(void *content, size_t content_size);
+void				ft_insert_rb(t_rb_node **root, t_rb_node *t);
+void				*ft_left_rotate_rb(t_rb_node *t);
+void				*ft_right_rotate_rb(t_rb_node *t);
 
 #endif
