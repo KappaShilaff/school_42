@@ -16,6 +16,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+enum	e_rb_color
+{
+	RB_BLACK,
+	RB_RED
+};
+
+typedef struct			s_rb_node
+{
+	void				*data;
+	enum e_rb_color		color;
+	struct	s_rb_node	*left;
+	struct	s_rb_node	*right;
+	struct	s_rb_node	*parent;
+}						t_rb_node
+
 typedef struct		s_list
 {
 	void			*content;
