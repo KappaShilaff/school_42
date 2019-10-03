@@ -39,5 +39,5 @@ void	ft_insert_node(t_node *root, t_node *t)
 		temp->r = t;
 	else
 		temp->l = t;
-	ft_insert_case1(root);
+	ft_insert_case1(temp);
 }

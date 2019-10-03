@@ -13,14 +13,20 @@ t_node	*ft_root(t_node *t)
 	return (temp);
 }
 
-void	btree_apply_prefix(t_node *root, char *str)
+void	btree_apply_prefix(t_node *root)
 {
-	if (root)
-	{
-		printf("%s %i\n", str, (int)root->d);
-		btree_apply_prefix(root->r, "right\0");
-		btree_apply_prefix(root->l, "left\0");
-	}
+		if (root)
+		{
+			printf("\n");
+			if (root)
+				printf("root %i ", (int)root->d); 
+			if (root->l)
+				printf("left %i ", (int)root->l->d); 
+			if (root->r)
+				printf("right %i ", (int)root->r->d); 
+		btree_apply_prefix(root->r);
+		btree_apply_prefix(root->l);
+		}
 }
 
 int		main(void)
@@ -68,6 +74,7 @@ int		main(void)
 	ft_insert_node(ft_root(lol8), lol20);
 	ft_insert_node(ft_root(lol1), lol21);
 
-	btree_apply_prefix(ft_root(lol4), "root\0");
+	btree_apply_prefix(ft_root(lol4));
+	printf("\n");
 	return (0);
 }
