@@ -1,43 +1,50 @@
 #include "librb.h"
 #include <stdio.h>
 
-static t_node  *ft_root(t_node *t)
+static void	ft_nil_fl(t_node *t)
 {
-	t_node  *temp;
-
-	temp = t;
-	while (temp->p)
-	{
-		temp = temp->p;
-	}
-	printf("root is %i\n", (int)temp->d);
-	return (temp);
+	if (!t->r)
+		t->r = ft_nil();
+	if (!t->l)
+		t->l = ft_nil();
 }
 
-void	ft_insert_node(t_node *root, t_node *t)
+static t_node  *ft_root(t_node *t)
 {
-	t_node	*temp;
+	t_node  *root;
 
-	if (!root)
-		return ;
-	temp = root;
-	while (temp != NULL)
+	root = t;
+	while (root->p)
 	{
-		if (t->d > temp->d)
-		{
-			t->p = temp;
-			temp = temp->r;
-		}
-		else
-		{ 
-			t->p = temp;
-			temp = temp->l;
-		}
+		root = root->p;
 	}
-	temp = t->p;
-	if (t->d > temp->d)
-		temp->r = t;
-	else
-		temp->l = t;
-	ft_insert_case1(temp);
+	printf("ROOT IS %i\n", (int)root->d);
+	return (root);
+}
+
+t_node	*ft_insert_node(t_node *root, t_node *t)
+{
+	if (root)
+	{
+		while (root != NULL)
+		{
+			if (t->d > root->d)
+			{
+				t->p = root;
+				root = root->r;
+			}
+			else
+			{ 
+				t->p = root;
+				root = root->l;
+			}
+		}
+		root = t->p;
+		if (t->d > root->d)
+			root->r = t;
+		else
+			root->l = t;
+		ft_insert_case1(t);
+	}
+	return (ft_root(root));
 }

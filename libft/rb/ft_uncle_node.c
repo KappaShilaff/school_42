@@ -5,7 +5,7 @@ t_node	*ft_uncle_node(t_node *t)
 	t_node	*g;
 
 	g = ft_grandp_node(t);
-	if (g == NULL)
+	if (!g)
 		return (NULL);
 	if (t->p == g->l)
 		return (g->r);
