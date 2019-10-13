@@ -5,9 +5,8 @@ void	ft_insert_case5(t_node *t)
 {
 	t_node	*g;
 
-	if (t && t->p && t->p->p);
+	g = ft_grandp_node(t);
 	{
-		g = ft_grandp_node(t);
 		t->p->c = BLACK;
 		g->c = RED;
 		if ((t == t->p->l) && (t->p == g->l))
@@ -22,26 +21,16 @@ void	ft_insert_case5(t_node *t)
 void	ft_insert_case4(t_node *t)
 {
 	t_node	*g;
-	t_node	*saved_p;
-	t_node	*saved_l;
-	t_node	*saved_r;
 
-	if(g = ft_grandp_node(t))
+	if (g = ft_grandp_node(t))
 	{
 		if ((t == t->p->r) && (t->p == g->l))
 		{
-			saved_p = g->l;
-			saved_l = t->l;
-			g->l = t;
-			saved_p->r = saved_l;
+			ft_rotate_left(t->p);
 			t = t->l;
 		} else if ((t == t->p->l) && (t->p == g->r))
 		{
-			saved_p = g->r;
-			saved_r = t->r;
-			g->r = t;
-			t->r = saved_p;
-			saved_p->l = saved_r;
+			ft_rotate_right(t->p);
 			t = t->r;
 		}
 	ft_insert_case5(t);
@@ -53,16 +42,17 @@ void	ft_insert_case3(t_node *t)
 	t_node	*u;
 	t_node	*g;
 
-		if ((u != NULL) && (u->c == RED))
-		{
-			t->p->c = BLACK;
-			u->c = BLACK;
-			g = ft_grandp_node(t);
-			g->c = RED;
-			ft_insert_case1(g);
-		} else {
+	u = ft_uncle_node(t);
+	if ((u != NULL) && (u->c == RED))
+	{
+		t->p->c = BLACK;
+		u->c = BLACK;
+		g = ft_grandp_node(t);
+		g->c = RED;
+		ft_insert_case1(g);
+	} else {
 		ft_insert_case4(t);
-		}
+	}
 }
 
 void	ft_insert_case2(t_node *t)

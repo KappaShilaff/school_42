@@ -19,7 +19,7 @@ void	btree_apply_prefix(t_node *root)
 		{
 			printf("\n");
 			if (root)
-				printf("root %i ", (int)root->d); 
+				printf("root %i color %d ", (int)root->d, root->c); 
 			if (root->l)
 				printf("left %i ", (int)root->l->d); 
 			if (root->r)
@@ -55,8 +55,8 @@ int		main(void)
 	t_node *lol0 = ft_create_node((void *)1);
 	
 
-	lol0 = ft_insert_node(lol3, lol2);
-	lol0 = ft_insert_node(lol0, lol1);
+	lol0 = ft_insert_node(lol1, lol2);
+	lol0 = ft_insert_node(lol0, lol3);
 	lol0 = ft_insert_node(lol0, lol4);
 	lol0 = ft_insert_node(lol0, lol5);
 	lol0 = ft_insert_node(lol0, lol6);

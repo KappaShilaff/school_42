@@ -19,7 +19,8 @@
 enum	rb_color
 {
 	BLACK,
-	RED
+	RED,
+	NONE
 };
 
 typedef struct			s_node
