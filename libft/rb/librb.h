@@ -19,8 +19,7 @@
 enum	rb_color
 {
 	BLACK,
-	RED,
-	NONE
+	RED
 };
 
 typedef struct			s_node
@@ -43,6 +42,5 @@ void					ft_insert_case2(t_node *t);
 void					ft_insert_case3(t_node *t);
 void					ft_insert_case4(t_node *t);
 void					ft_insert_case5(t_node *t);
-t_node					*ft_nil();
 
 #endif

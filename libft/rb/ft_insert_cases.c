@@ -1,5 +1,4 @@
 #include "librb.h"
-#include <stdio.h>
 
 void	ft_insert_case5(t_node *t)
 {

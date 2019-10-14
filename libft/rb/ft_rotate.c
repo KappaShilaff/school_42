@@ -27,7 +27,7 @@ void	ft_rotate_right(t_node *t)
 {
 	t_node *pivot = t->l;
 
-	if (!t->l)
+	if (!(t->l))
 		return ;
 	pivot = t->l;
 	pivot->p = t->p; 

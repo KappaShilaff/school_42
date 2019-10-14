@@ -1,13 +1,4 @@
 #include "librb.h"
-#include <stdio.h>
-
-static void	ft_nil_fl(t_node *t)
-{
-	if (!t->r)
-		t->r = ft_nil();
-	if (!t->l)
-		t->l = ft_nil();
-}
 
 static t_node  *ft_root(t_node *t)
 {
@@ -15,10 +6,7 @@ static t_node  *ft_root(t_node *t)
 
 	root = t;
 	while (root->p)
-	{
 		root = root->p;
-	}
-	printf("ROOT IS %i\n", (int)root->d);
 	return (root);
 }
 
