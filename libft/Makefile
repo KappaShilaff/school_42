@@ -18,7 +18,7 @@ NAME = libft.a
 
 HEADERS_DIR = includes/
 
-HEADERS_LIST = libft.h
+HEADERS_LIST = libft.h librb.h
 
 HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_LIST))
 
@@ -94,10 +94,12 @@ SRCS_LIST = ft_memalloc.c\
 			ft_lsthead.c\
 			ft_lsttale.c\
 			ft_lstfree.c\
-			ft_left_rotate_rb.c\
-			ft_right_rotate_rb.c\
-			ft_insert_rb.c\
-			ft_create_node_rb.c
+			ft_create_node.c\
+			ft_insert_cases.c\
+			ft_rotate.c\
+			ft_grandp_node.c\
+			ft_insert_node.c\
+			ft_uncle_node.c 
 
 GREEN = \033[01;38;5;119m
 RED = \033[01;38;5;009m
