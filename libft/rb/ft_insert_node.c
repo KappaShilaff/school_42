@@ -10,13 +10,13 @@ static t_node  *ft_root(t_node *t)
 	return (root);
 }
 
-t_node	*ft_insert_node(t_node *root, t_node *t)
+t_node	*ft_insert_node(t_node *root, t_node *t, int (*f)(void *, void *))
 {
 	if (root)
 	{
 		while (root != NULL)
 		{
-			if (t->d > root->d)
+			if ((*f)(t->d, root->d) > 0)
 			{
 				t->p = root;
 				root = root->r;
@@ -28,7 +28,7 @@ t_node	*ft_insert_node(t_node *root, t_node *t)
 			}
 		}
 		root = t->p;
-		if (t->d > root->d)
+		if ((*f)(t->d, root->d) > 0)
 			root->r = t;
 		else
 			root->l = t;

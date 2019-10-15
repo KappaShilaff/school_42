@@ -1,6 +1,14 @@
 #include "librb.h"
 #include <stdio.h>
 
+int		ft_cmp(void *a, void *b)
+{
+	if (a > b)
+		return (1);
+	else
+		return (-1);
+}
+
 static t_node	*ft_root(t_node *t)
 {
 	t_node	*temp;
@@ -55,26 +63,26 @@ int		main(void)
 	t_node *lol0 = ft_create_node((void *)1);
 	
 
-	lol0 = ft_insert_node(lol1, lol2);
-	lol0 = ft_insert_node(lol0, lol3);
-	lol0 = ft_insert_node(lol0, lol4);
-	lol0 = ft_insert_node(lol0, lol5);
-	lol0 = ft_insert_node(lol0, lol6);
-	lol0 = ft_insert_node(lol0, lol7);
-	lol0 = ft_insert_node(lol0, lol8);
-	lol0 = ft_insert_node(lol0, lol9);
-	lol0 = ft_insert_node(lol0, lol10);
-	lol0 = ft_insert_node(lol0, lol11);
-	lol0 = ft_insert_node(lol0, lol12);
-	lol0 = ft_insert_node(lol0, lol13);
-	lol0 = ft_insert_node(lol0, lol14);
-	lol0 = ft_insert_node(lol0, lol15);
-	lol0 = ft_insert_node(lol0, lol16);
-	lol0 = ft_insert_node(lol0, lol17);
-	lol0 = ft_insert_node(lol0, lol18);
-	lol0 = ft_insert_node(lol0, lol19);
-	lol0 = ft_insert_node(lol0, lol20);
-	lol0 = ft_insert_node(lol0, lol21);
+	lol0 = ft_insert_node(lol1, lol2, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol3, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol4, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol5, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol6, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol7, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol8, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol9, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol10, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol11, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol12, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol13, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol14, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol15, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol16, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol17, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol18, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol19, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol20, *ft_cmp);
+	lol0 = ft_insert_node(lol0, lol21, *ft_cmp);
 
 	btree_apply_prefix(lol0);
 	printf("\n");

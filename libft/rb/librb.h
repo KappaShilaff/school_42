@@ -32,7 +32,7 @@ typedef struct			s_node
 }						t_node;
 
 t_node					*ft_create_node(void *data);
-t_node					*ft_insert_node(t_node *root, t_node *t);
+t_node					*ft_insert_node(t_node *root, t_node *t, int (*f)(void *, void *));
 t_node					*ft_grandp_node(t_node *t);
 t_node					*ft_uncle_node(t_node *t);
 void					ft_rotate_left(t_node *t);
