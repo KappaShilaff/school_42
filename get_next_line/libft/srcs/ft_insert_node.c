@@ -34,5 +34,7 @@ t_node	*ft_insert_node(t_node *root, t_node *t, int (*f)(void *, void *))
 			root->l = t;
 		ft_insert_case1(t);
 	}
+	else
+		return (t);
 	return (ft_root(root));
 }
