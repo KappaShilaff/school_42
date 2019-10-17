@@ -108,5 +108,7 @@ void				ft_insert_rb(t_rb_node **root, t_rb_node *t);
 void				*ft_left_rotate_rb(t_rb_node *t);
 void				*ft_right_rotate_rb(t_rb_node *t);
 t_rb_node			*ft_create_node_rb(void *data);
+size_t				ft_findchr(char *str, char s);
+char				*ft_chmalloc_zend(size_t i);
 
 #endif
