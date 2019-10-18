@@ -52,12 +52,9 @@ char	*ft_str(t_node *t, int fd)
 	
 	if (((t_cont *)(t->d))->str == NULL)
 	{
-		str = ft_chmalloc_zend(BUFF_SIZE + 1);
+		str = ft_chmalloc_zend(BUFF_SIZE);
 		if (!(len[1] = (read(fd, str, BUFF_SIZE))))
-		{
-			free(str);
-			return (NULL);
-		}
+            return (NULL);
 		str[len[1]] = '\0';
 	}
 	else
@@ -67,21 +64,23 @@ char	*ft_str(t_node *t, int fd)
 	{
 		if (!(len[1] = (read(fd, tmpjoin, BUFF_SIZE))))
 		{
-			str -= (((t_cont *)(t->d))->end);
-			free(str);
+			str = ft_strdup(str);
 			free(tmpjoin);
-			return (NULL);
+			free(((t_cont *)(t->d))->str - (((t_cont *)(t->d))->end));
+			((t_cont *)(t->d))->str = NULL;
+			return (str);
 		}
+		tmpjoin[len[1]] = '\0';
 		lol = str;
 		str = ft_strjoin(lol, tmpjoin);
-		free(lol -= (((t_cont *)(t->d))->end));
+		free(lol - (((t_cont *)(t->d))->end));
 		((t_cont *)(t->d))->end = 0;
 	}
 	len[0] = ft_findchr(str, '\n');
 	tmp = ft_chmalloc_zend(len[0]);
 	ft_strncpy(tmp, str, len[0]++);
 	((t_cont *)(t->d))->end += len[0];
-	((t_cont *)(t->d))->str = (str += len[0]);
+	((t_cont *)(t->d))->str = (str + len[0]);
 	free(tmpjoin);
 	return (tmp);
 }
@@ -91,7 +90,7 @@ int		get_next_line(const int fd, char **line)
 	static t_node	*head;
 	t_node			*curr;
 
-	if (fd == -1)
+	if (read(fd, 0, 0) == -1)
 		return (-1);
 	if (!(curr = ft_find_node(head, fd)))
 		curr = ft_create_node(ft_create_cont(fd, NULL));

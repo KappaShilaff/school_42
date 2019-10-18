@@ -1,11 +1,10 @@
 all:
-	clear
-	gcc -fsanitize=address  -g get_next_line.c get_next_line.h main.c -I./libft/includes -L./libft -lft
-	./a.out Makefile
+	gcc -fsanitize=address  -g get_next_line.c get_next_line.h main.c -I./libft/includes -L./libft -lft -o mda
+	gcc  get_next_line.c get_next_line.h main.c -I./libft/includes -L./libft -lft
 clean:
 	rm get_next_line.h.gch
 	rm a.out
 lol:
-	gcc -g get_next_line.c get_next_line.h main.c -I./libft/includes -L./libft -lft
+	./a.out Makefile
 fclean: clean
-re: fclean all
+re: fclean lol
