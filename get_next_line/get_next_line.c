@@ -4,29 +4,25 @@
 int		ft_join(t_cont *t, int fd)
 {
 	size_t	len;
-	size_t	tmp;
 	char	*lol;
 	char	*tmpjoin;
 
-	t->tmp = 0;
 	tmpjoin = ft_chmalloc_zend(BUFF_SIZE);
 	while (!(ft_findchr(t->str, '\n')))
     {   
         if (!(len = (read(fd, tmpjoin, BUFF_SIZE))))
         {   
             free(tmpjoin);
-            return (1);
+            return (-1);
         }   
         tmpjoin[len] = '\0';
         lol = t->str;
-		t->str - tmp;
         t->str = ft_strjoin(lol, tmpjoin);
-		t->str + tmp;
         free(lol - (t->end));
-		tmp = len;
         t->end = 0;
     }
 	free(tmpjoin);
+	return (1);
 } 
 
 char	*ft_str(t_cont *t, int fd)
@@ -41,7 +37,7 @@ char	*ft_str(t_cont *t, int fd)
             return (NULL);
 		(t->str)[len[1]] = '\0';
 	}
-	if (ft_join(t, fd) == 1)
+	if (ft_join(t, fd) == -1)
 	{
 		tmp = ft_strdup(t->str);
 		free(t->str - t->end);
