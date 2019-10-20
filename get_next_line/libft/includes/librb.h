@@ -31,6 +31,14 @@ typedef struct			s_node
 	struct s_node		*p;
 }						t_node;
 
+typedef struct  s_cont
+{
+    int     fd; 
+    char    *str;
+    size_t  end;
+	size_t	tmp;
+}               t_cont;
+
 t_node					*ft_create_node(void *data);
 t_node					*ft_insert_node(t_node *root, t_node *t, int (*f)(void *, void *));
 t_node					*ft_grandp_node(t_node *t);
@@ -42,5 +50,8 @@ void					ft_insert_case2(t_node *t);
 void					ft_insert_case3(t_node *t);
 void					ft_insert_case4(t_node *t);
 void					ft_insert_case5(t_node *t);
+t_node              *ft_find_node_fd(t_node *list, int fd);
+t_cont              *ft_create_cont_fd(int fd, char *str);
+int                 ft_cmp_fd(t_cont a, t_cont b); 
 
 #endif

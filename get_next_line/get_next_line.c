@@ -1,87 +1,58 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-t_node	*ft_find_node(t_node *list, int fd)
+int		ft_join(t_cont *t, int fd)
 {
-	t_node	*tmp;
-	t_cont	*cont;
-
-	if (!list)
-		return (NULL);
-	tmp = list;
-	cont = tmp->d;
-	while (cont->fd != fd && tmp)
-	{
-		if (cont->fd > fd)
-			tmp = tmp->l;
-		else
-			tmp = tmp->r;
-		if (tmp)
-			cont = tmp->d;
-	}
-	return (tmp);
-}
-
-t_cont	*ft_create_cont(int fd, char *str)
-{
-	t_cont	*t;
-
-	if (!(t = malloc(sizeof(t_node))))
-		return(NULL);
-	t->fd = fd;
-	t->str = str;
-	t->end = 0;
-	return (t);
-}
-
-int		ft_cmp(t_cont a, t_cont b)
-{
-	if (a.fd > b.fd)
-		return (1);
-	else
-		return (-1);
-}
-
-char	*ft_str(t_node *t, int fd)
-{
-	char	*str;
+	size_t	len;
+	size_t	tmp;
 	char	*lol;
-	char	*tmp;
 	char	*tmpjoin;
+
+	t->tmp = 0;
+	tmpjoin = ft_chmalloc_zend(BUFF_SIZE);
+	while (!(ft_findchr(t->str, '\n')))
+    {   
+        if (!(len = (read(fd, tmpjoin, BUFF_SIZE))))
+        {   
+            free(tmpjoin);
+            return (1);
+        }   
+        tmpjoin[len] = '\0';
+        lol = t->str;
+		t->str - tmp;
+        t->str = ft_strjoin(lol, tmpjoin);
+		t->str + tmp;
+        free(lol - (t->end));
+		tmp = len;
+        t->end = 0;
+    }
+	free(tmpjoin);
+} 
+
+char	*ft_str(t_cont *t, int fd)
+{
+	char	*tmp;
 	size_t	len[2];
 	
-	if (((t_cont *)(t->d))->str == NULL)
+	if ((t->str == NULL))
 	{
-		str = ft_chmalloc_zend(BUFF_SIZE);
-		if (!(len[1] = (read(fd, str, BUFF_SIZE))))
+		t->str = ft_chmalloc_zend(BUFF_SIZE);
+		if (!(len[1] = (read(fd, t->str, BUFF_SIZE))))
             return (NULL);
-		str[len[1]] = '\0';
+		(t->str)[len[1]] = '\0';
 	}
-	else
-		str = ((t_cont *)(t->d))->str;
-	tmpjoin = ft_chmalloc_zend(BUFF_SIZE);
-	while (!(ft_strchr(str, '\n')))
+	if (ft_join(t, fd) == 1)
 	{
-		if (!(len[1] = (read(fd, tmpjoin, BUFF_SIZE))))
-		{
-			str = ft_strdup(str);
-			free(tmpjoin);
-			free(((t_cont *)(t->d))->str - (((t_cont *)(t->d))->end));
-			((t_cont *)(t->d))->str = NULL;
-			return (str);
-		}
-		tmpjoin[len[1]] = '\0';
-		lol = str;
-		str = ft_strjoin(lol, tmpjoin);
-		free(lol - (((t_cont *)(t->d))->end));
-		((t_cont *)(t->d))->end = 0;
+		tmp = ft_strdup(t->str);
+		free(t->str - t->end);
+		t->str = NULL;
+		return (tmp);
 	}
-	len[0] = ft_findchr(str, '\n');
+	len[0] = ft_findchr(t->str, '\n');
 	tmp = ft_chmalloc_zend(len[0]);
-	ft_strncpy(tmp, str, len[0]++);
-	((t_cont *)(t->d))->end += len[0];
-	((t_cont *)(t->d))->str = (str + len[0]);
-	free(tmpjoin);
+	ft_strncpy(tmp, t->str, len[0]++);
+	t->end += len[0];
+	t->str += len[0];
 	return (tmp);
 }
 
@@ -92,11 +63,11 @@ int		get_next_line(const int fd, char **line)
 
 	if (read(fd, 0, 0) == -1)
 		return (-1);
-	if (!(curr = ft_find_node(head, fd)))
-		curr = ft_create_node(ft_create_cont(fd, NULL));
+	if (!(curr = ft_find_node_fd(head, fd)))
+		curr = ft_create_node(ft_create_cont_fd(fd, NULL));
 	if (!head)
-		head = ft_insert_node(head, curr, (void *)ft_cmp);
-	if ((*line = ft_str(curr, fd)) != NULL)
+		head = ft_insert_node(head, curr, (void *)ft_cmp_fd);
+	if ((*line = ft_str(((t_cont *)(curr->d)), fd)) != NULL)
 		return (1);
 	return (0);
 }

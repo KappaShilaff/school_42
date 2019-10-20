@@ -101,7 +101,10 @@ SRCS_LIST = ft_memalloc.c\
 			ft_insert_node.c\
 			ft_uncle_node.c\
 			ft_findchr.c\
-			ft_chmalloc_zend.c
+			ft_chmalloc_zend.c\
+			ft_find_node_fd.c\
+			ft_create_cont_fd.c\
+			ft_cmp_fd.c
 
 GREEN = \033[01;38;5;119m
 RED = \033[01;38;5;009m

@@ -11,14 +11,6 @@
 # include "libft.h"
 # include "librb.h"
 
-typedef struct	s_cont
-{
-	int		fd;
-	char	*str;
-	size_t	end;
-}				t_cont;
-
 int		get_next_line(const int fd, char **line);
-t_cont	*ft_create_cont(int fd, char *str);
 
 #endif
