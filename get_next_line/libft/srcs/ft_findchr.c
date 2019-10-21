@@ -1,14 +1,13 @@
 #include "libft.h"
 
-size_t	ft_findchr(char *str, char s)
+long int	ft_findchr(const char *str, int s)
 {
-	size_t	i;
+	long int	i;
 
 	i = 0;
-	while (str[i] != s && str[i] != '\0')
-		i++;
-	if (str[i] == '\0')
-		return (0);
-	else
+	while (*str != (char)s && *str++ != '\0')
+			i++;
+	if (*(str) == (char)s)
 		return (i);
+	return (-1);
 }

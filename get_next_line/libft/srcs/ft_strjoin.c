@@ -19,13 +19,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(strnew = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+	if (!(strnew = ft_chmalloc_zend(ft_strlen(s1) + ft_strlen(s2))))
 		return (NULL);
 	temp = strnew;
 	while (*s1)
 		*temp++ = (char)*s1++;
 	while (*s2)
 		*temp++ = (char)*s2++;
-	*temp = '\0';
 	return (strnew);
 }

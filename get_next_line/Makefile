@@ -7,4 +7,4 @@ clean:
 lol:
 	./a.out Makefile
 fclean: clean
-re: fclean lol
+re: fclean all

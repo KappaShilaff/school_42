@@ -3,52 +3,75 @@
 
 int		ft_join(t_cont *t, int fd)
 {
-	size_t	len;
-	char	*lol;
-	char	*tmpjoin;
+	char		*join;
+	char		*strrm;
+	long int	temp;
+	long int	temp2;
+	long int	temp1;
+	long int	temp3;
+	int			lol123;
 
-	tmpjoin = ft_chmalloc_zend(BUFF_SIZE);
-	while (!(ft_findchr(t->str, '\n')))
-    {   
-        if (!(len = (read(fd, tmpjoin, BUFF_SIZE))))
-        {   
-            free(tmpjoin);
-            return (-1);
-        }   
-        tmpjoin[len] = '\0';
-        lol = t->str;
-        t->str = ft_strjoin(lol, tmpjoin);
-        free(lol - (t->end));
-        t->end = 0;
-    }
-	free(tmpjoin);
-	return (1);
+	temp1 = 0;
+	temp2 = ft_strlen(t->str);
+	t->end = temp2;
+	t->tmp = 0;
+	if ((temp = ft_findchr(t->str, '\n')) >= 0)
+	{
+		t->end = temp;
+		return (1);
+	}
+	join = ft_chmalloc_zend(BUFF_SIZE);
+	while (1)
+	{
+		strrm = t->str;
+		if (!(temp = read(fd, join, BUFF_SIZE)))
+		{
+			t->end += temp1 + temp2;
+			free(join);
+			return (-1);
+		}
+		join[temp] = '\0';
+		if ((temp3 = ft_findchr(join, '\n')) >= 0)
+		{
+			t->end = temp3 + temp1 + temp2;
+			t->str = ft_strjoin(t->str, join);
+			t->str[t->end - temp3 + temp] = '\0';
+			free(strrm);
+			free(join);
+			return (1);
+		}
+		t->str = ft_strjoin(t->str, join);
+		free(strrm);
+		temp1 += temp;
+	}
 } 
 
 char	*ft_str(t_cont *t, int fd)
 {
 	char	*tmp;
-	size_t	len[2];
+	char	*tmprm;
 	
 	if ((t->str == NULL))
 	{
 		t->str = ft_chmalloc_zend(BUFF_SIZE);
-		if (!(len[1] = (read(fd, t->str, BUFF_SIZE))))
+		if (!(t->end = (read(fd, t->str, BUFF_SIZE))))
             return (NULL);
-		(t->str)[len[1]] = '\0';
+		(t->str)[t->end] = '\0';
 	}
 	if (ft_join(t, fd) == -1)
 	{
 		tmp = ft_strdup(t->str);
-		free(t->str - t->end);
+		free(t->str);
 		t->str = NULL;
 		return (tmp);
 	}
-	len[0] = ft_findchr(t->str, '\n');
-	tmp = ft_chmalloc_zend(len[0]);
-	ft_strncpy(tmp, t->str, len[0]++);
-	t->end += len[0];
-	t->str += len[0];
+	tmp = ft_chmalloc_zend(t->end);
+	//printf("\n%d\n", t->end);
+	ft_strncpy(tmp, t->str, t->end++);
+	tmprm = t->str;
+	t->str = ft_strdup(t->str += t->end);
+	//printf("\n STR : %s\n", t->str);
+	free(tmprm);
 	return (tmp);
 }
 
