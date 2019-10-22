@@ -35,6 +35,7 @@ typedef struct  s_cont
 {
     int     fd; 
     char    *str;
+	char	*join;
     size_t  end;
 	size_t	tmp;
 }               t_cont;
