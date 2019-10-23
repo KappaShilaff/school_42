@@ -1,42 +1,57 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
+int		ft_buff(t_cont *t, char **strbuff, size_t i1, size_t buff)
+{
+	size_t	i2;
+
+		if (!(i2 = read(t->fd, *strbuff, BUFF_SIZE)))
+		{
+			if (i1 == buff)
+			{
+				free(*strbuff);
+				return (-3);
+			}
+			t->join = *strbuff - t->i_len;
+			t->end = t->i_len;
+			return (-2);
+		}
+		t->len += i2;
+		*strbuff[i2] = '\0';
+		while (**strbuff != '\0')
+		{
+			if (**strbuff++ == '\n')
+			{
+				t->join = *strbuff - t->i_len - 1;
+				return (-1);
+			}
+			t->i_len++;
+		}
+		return (1);
+}
+
+
+
 int		ft_buff_join(size_t buff, t_cont *t, int fd, char *join)
 {
 	char	*strbuff;
-	size_t	i[3];
+	size_t	i1[2];
 
-	i[0] = 0;
-	i[1] = buff;
+	t->i_len = 0;
+	i1[0] = buff;
 	t->join = NULL;
 	strbuff = ft_chmalloc_zend(buff);
 	while (buff != 0)
 	{
-		if (!(i[2] = read(fd, strbuff, BUFF_SIZE)))
-		{
-			if (i[1] == buff)
-			{
-				free(strbuff);
-				return (-3);
-			}
-			t->join = strbuff - i[0];
-			t->end = i[0];
+		if ((i1[1] = ft_buff(t, &strbuff, i1[0], buff)) == -2)
 			return (-2);
-		}
-		t->len += i[2];
-		strbuff[i[2]] = '\0';
-		while (*strbuff != '\0')
-		{
-			if (*strbuff++ == '\n')
-			{
-				t->join = strbuff - i[0] - 1;
-				return ((int)i[0] + 1);
-			}
-			i[0]++;
-		}
+		if (i1[1] == -3)
+			return (-3);
+		if (i1[1] == -1)
+			return (t->i_len + 1);
 		buff -= BUFF_SIZE;
 	}
-	t->join = strbuff - i[0];
+	t->join = strbuff - t->i_len;
 	return (-1);
 }
 
