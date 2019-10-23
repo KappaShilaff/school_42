@@ -16,21 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-enum	e_rb_color
-{
-	RB_BLACK,
-	RB_RED
-};
-
-typedef struct			s_rb_node
-{
-	void				*data;
-	enum e_rb_color		color;
-	struct s_rb_node	*left;
-	struct s_rb_node	*right;
-	struct s_rb_node	*parent;
-}						t_rb_node;
-
 typedef struct		s_list
 {
 	void			*content;
@@ -104,11 +89,7 @@ int					ft_isblank(int c);
 void				ft_lsthead(t_list **lst, t_list *new);
 void				ft_lsttale(t_list **lst, t_list *new);
 void				ft_lstfree(void *content, size_t content_size);
-void				ft_insert_rb(t_rb_node **root, t_rb_node *t);
-void				*ft_left_rotate_rb(t_rb_node *t);
-void				*ft_right_rotate_rb(t_rb_node *t);
-t_rb_node			*ft_create_node_rb(void *data);
-long int			ft_findchr(const char *str, int s);
+int					ft_findchr(const char *str, int s);
 char				*ft_chmalloc_zend(size_t i);
 
 #endif

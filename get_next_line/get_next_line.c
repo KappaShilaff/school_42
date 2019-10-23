@@ -1,5 +1,6 @@
 #include "get_next_line.h"
 #include <stdio.h>
+#include <string.h>
 
 int		ft_buff_join(size_t buff, t_cont *t, int fd, char *join)
 {
@@ -23,6 +24,7 @@ int		ft_buff_join(size_t buff, t_cont *t, int fd, char *join)
 			t->end = i[0];
 			return (-2);
 		}
+		t->len += i[2];
 		strbuff[i[2]] = '\0';
 		while (*strbuff != '\0')
 		{
@@ -43,16 +45,16 @@ int		ft_buff_join(size_t buff, t_cont *t, int fd, char *join)
 int		ft_join(t_cont *t, int fd)
 {
 	char		*strrm;
-	long int	temp;
-	long int	temp2;
-	long int	temp1;
-	long int	temp3;
+	int			temp;
+	int			temp2;
+	int			temp1;
+	int			temp3;
 	int			lol123;
 	size_t		buff;
 
 	buff = BUFF_SIZE;
 	temp1 = 0;
-	temp2 = ft_strlen(t->str);
+	temp2 = t->len;
 	if ((temp = ft_findchr(t->str, '\n')) >= 0)
 	{
 		t->end = temp;
@@ -73,6 +75,7 @@ int		ft_join(t_cont *t, int fd)
 		if (temp == -2)
 		{
 			t->str = ft_strjoin(t->str, t->join);
+			t->len -= t->end;
 			free(strrm);
 			t->tmp = 0;
 			return (-1);
@@ -100,6 +103,7 @@ static char	*ft_str(t_cont *t, int fd)
 		if (!(t->end = (read(fd, t->str, BUFF_SIZE))))
             return (NULL);
 		(t->str)[t->end] = '\0';
+		t->len = t->end;
 	}
 	if (ft_join(t, fd) == -1)
 	{
@@ -114,6 +118,7 @@ static char	*ft_str(t_cont *t, int fd)
 	//tmprm = t->str;
 	t->str += t->end;
 	t->tmp += t->end;
+	t->len -= t->end;
 	//free(tmprm);
 	return (tmp);
 }
