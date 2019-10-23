@@ -89,7 +89,7 @@ int					ft_isblank(int c);
 void				ft_lsthead(t_list **lst, t_list *new);
 void				ft_lsttale(t_list **lst, t_list *new);
 void				ft_lstfree(void *content, size_t content_size);
-int					ft_findchr(const char *str, int s);
+long int			ft_findchr(const char *str, int s);
 char				*ft_chmalloc_zend(size_t i);
 
 #endif

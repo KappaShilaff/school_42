@@ -44,7 +44,7 @@ int		ft_buff_join(size_t buff, t_cont *t, int fd, char *join)
 int		ft_join(t_cont *t, int fd, size_t buff)
 {
 	char		*strrm;
-	int			i[3];
+	long int	i[3];
 
 	i[1] = 0;
 	i[2] = t->len;

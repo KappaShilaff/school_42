@@ -5,7 +5,7 @@ t_cont  *ft_create_cont_fd(int fd, char *str)
 {
     t_cont  *t; 
 
-    if (!(t = malloc(sizeof(t_node))))
+    if (!(t = malloc(sizeof(t_cont))))
         return(NULL);
     t->fd = fd; 
     t->str = str;

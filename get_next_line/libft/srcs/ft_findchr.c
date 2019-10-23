@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int			ft_findchr(const char *str, int s)
+long int		ft_findchr(const char *str, int s)
 {
 	long int	i;
 
