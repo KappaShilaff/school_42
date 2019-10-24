@@ -7,6 +7,7 @@ all:
 	./bench dudos.txt | wc
 	./a.out mnog_n | wc
 	./bench mnog_n | wc
+	./mda Makefile
 clean:
 	rm get_next_line.h.gch
 	rm a.out

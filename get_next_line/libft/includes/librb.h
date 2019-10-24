@@ -36,9 +36,11 @@ typedef struct  s_cont
     int			fd; 
     char		*str;
 	char		*join;
+	char		*rm;
     size_t		end;
 	size_t		tmp;
 	size_t		len;
+	size_t		i_len;
 }               t_cont;
 
 t_node					*ft_create_node(void *data);
