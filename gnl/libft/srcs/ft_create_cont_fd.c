@@ -11,5 +11,6 @@ t_cont  *ft_create_cont_fd(int fd, char *str)
     t->str = str;
     t->end = 0;
 	t->tmp = 0;
+	t->len = 0;
     return (t);
 }
