@@ -47,13 +47,14 @@ long int	gnl_n(t_cont *t, long int buff, char *tmp)
 		{
 			if (!(i[1] = read(t->fd, t->str, BUFF_SIZE)))
 			{
-				if (i[2] == buff)
-				{
-					t->str = ft_strdup(tmp);
-					free(t->rm);
-					free(tmp);
+				if (i[2] == buff && (t->str = ft_strdup(tmp)))
+//				{
+//					printf("%s\n", tmp);
+//					t->str = ft_strdup(tmp);
+//					free(t->rm);
+//					free(tmp);
 					return (-2);
-				}
+//				}
 				return (-1 * gnl_free(t, &tmp, i[0]));
 			}
 			t->tmp += i[1];
@@ -73,39 +74,25 @@ char	*gnl_str(t_cont *t, char *line, char *tmp, long int i)
 {
 	if (t->str && (i = ft_findchr(t->str, '\n')) >= 0)
 	{
-		line = ft_chmalloc_zend(i);
-		line = ft_strncpy(line, t->str, i++);
+		line = ft_memstrncpy(line, t->str, i++);
 		tmp = t->str;
 		t->str = ft_strdup(t->str + i);
 		free(tmp);
 		t->len -= i;
-		return(line);
+		return (line);
 	}
 	if (((i = gnl_n(t, BUFF_SIZE, NULL)) == -1) && (line = ft_strdup(t->str)) != NULL)
-		{
-			//line = ft_strdup(t->str);
-			free(t->str);
-			t->str = NULL;
-			return (line);
-		}
+			return (line + ft_free_enull(&(t->str)));
 	if (i == -2)
 	{
-		if (t->len != 0)
-		{
-			line = ft_chmalloc_zend(t->len);
-			line = ft_strncpy(line , t->str, t->len);
-			free(t->str);
-			t->str = NULL;
-			return (line);
-		}
-		//free(t->str);
+		if (t->len != 0 && (line = ft_memstrncpy(line, t->str, t->len)) != NULL)
+			return (line + ft_free_enull(&(t->str)));
 		return (NULL);
 	}
-	line = ft_chmalloc_zend(i);
-	line = ft_strncpy(line, t->str, i++);
+	line = ft_memstrncpy(line, t->str, i++);
 	tmp = t->str;
 	t->str = ft_strdup(t->str + i);
-	t->len = t->len - i;
+	t->len -= i;
 	free(tmp);
 	return (line);
 }

@@ -91,5 +91,7 @@ void				ft_lsttale(t_list **lst, t_list *new);
 void				ft_lstfree(void *content, size_t content_size);
 long int			ft_findchr(const char *str, int s);
 char				*ft_chmalloc_zend(size_t i);
+char				*ft_memstrncpy(char *new, const char *str, size_t i);
+int					ft_free_enull(char **str);
 
 #endif
