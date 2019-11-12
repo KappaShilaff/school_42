@@ -6,7 +6,7 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:24:27 by lcassaun          #+#    #+#             */
-/*   Updated: 2019/11/12 15:25:17 by lcassaun         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:27:29 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_cont	*ft_create_cont_fd(int fd, char *str)
 		return (NULL);
 	t->fd = fd;
 	t->str = str;
+	t->join = NULL;
 	t->end = 0;
 	t->tmp = 0;
 	t->len = 0;

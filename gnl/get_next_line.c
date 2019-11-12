@@ -6,7 +6,7 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:38:44 by lcassaun          #+#    #+#             */
-/*   Updated: 2019/11/12 15:42:41 by lcassaun         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:40:52 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ long int	gnl_n(t_cont *t, long int buff, char *tmp)
 		i[2] = buff;
 		while (i[2] != 0)
 		{
-			if (!(i[1] = read(t->fd, t->str, BUFF_SIZE)))
+			if ((i[1] = read(t->fd, t->str, BUFF_SIZE)) == 0)
 			{
 				if (i[2] == buff && (t->str = ft_strdup(tmp)))
 					return (-2);
@@ -63,31 +63,34 @@ long int	gnl_n(t_cont *t, long int buff, char *tmp)
 	return (0);
 }
 
-char		*gnl_str(t_cont *t, char *line, char *tmp, long int i)
+char		*gnl_str(t_cont *t, char *tmp, long int i)
 {
 	if (t->str && (i = ft_findchr(t->str, '\n')) >= 0)
 	{
-		line = ft_memstrncpy(line, t->str, i++);
+		t->join = ft_memstrncpy(NULL, t->str, i++);
 		tmp = t->str;
 		t->str = ft_strdup(t->str + i);
 		free(tmp);
 		t->len -= i;
-		return (line);
+		return (t->join);
 	}
 	if ((i = gnl_n(t, BUFF_SIZE, NULL)) == -1)
-		return (ft_strdup(t->str) + ft_free_enull(&(t->str)));
+	{
+		t->join = ft_strdup(t->str);
+		return (t->join + ft_free_enull(&(t->str)));
+	}
 	if (i == -2)
 	{
-		if (t->len != 0 && (line = ft_memstrncpy(line, t->str, t->len)) != NULL)
-			return (line + ft_free_enull(&(t->str)));
+		if (t->len != 0 && (t->join = ft_memstrncpy(NULL, t->str, t->len)))
+			return (t->join + ft_free_enull(&(t->str)));
 		return (NULL);
 	}
-	line = ft_memstrncpy(line, t->str, i++);
+	t->join = ft_memstrncpy(NULL, t->str, i++);
 	tmp = t->str;
 	t->str = ft_strdup(t->str + i);
 	t->len -= i;
 	free(tmp);
-	return (line);
+	return (t->join);
 }
 
 int			get_next_line(const int fd, char **line)
@@ -106,8 +109,14 @@ int			get_next_line(const int fd, char **line)
 		i = 1;
 	}
 	if (i == 0 && (((t_cont *)(curr->d))->str == NULL))
+	{
+		free(curr);
 		return (0);
-	if ((*line = gnl_str((t_cont *)(curr->d), NULL, NULL, 0)) != NULL)
+	}
+	if ((*line = ft_strdup(gnl_str((t_cont *)(curr->d), NULL, 0))) != NULL)
+	{
+		ft_free_enull(&(((t_cont *)(curr->d))->join));
 		return (1);
+	}
 	return (0);
 }

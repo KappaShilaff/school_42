@@ -6,13 +6,13 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:43:35 by lcassaun          #+#    #+#             */
-/*   Updated: 2019/11/12 15:44:01 by lcassaun         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:14:43 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE (3)
+# define BUFF_SIZE (512)
 
 # include <stdlib.h>
 # include <stdio.h>
