@@ -6,7 +6,7 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:09:04 by lcassaun          #+#    #+#             */
-/*   Updated: 2019/11/12 15:11:56 by lcassaun         ###   ########.fr       */
+/*   Updated: 2019/11/12 15:28:54 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_rotate_right(t_node *t)
 {
 	t_node	*pivot;
 
-	*pivot = t->l;
 	if (!(t->l))
 		return ;
 	pivot = t->l;
