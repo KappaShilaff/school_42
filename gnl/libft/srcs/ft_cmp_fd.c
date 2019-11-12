@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cmp_fd.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 15:25:37 by lcassaun          #+#    #+#             */
+/*   Updated: 2019/11/12 15:26:04 by lcassaun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "librb.h"
 
-int     ft_cmp_fd(t_cont a, t_cont b)
+int		ft_cmp_fd(t_cont a, t_cont b)
 {
-    if (a.fd > b.fd)
-        return (1);
-    else
-        return (-1);
+	if (a.fd > b.fd)
+		return (1);
+	else
+		return (-1);
 }

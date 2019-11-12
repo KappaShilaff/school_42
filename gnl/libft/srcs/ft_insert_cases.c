@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_insert_cases.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 15:12:40 by lcassaun          #+#    #+#             */
+/*   Updated: 2019/11/12 15:18:42 by lcassaun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "librb.h"
 
 void	ft_insert_case5(t_node *t)
@@ -9,11 +21,9 @@ void	ft_insert_case5(t_node *t)
 		t->p->c = BLACK;
 		g->c = RED;
 		if ((t == t->p->l) && (t->p == g->l))
-		{
 			ft_rotate_right(g);
-		} else {
+		else
 			ft_rotate_left(g);
-		}
 	}
 }
 
@@ -27,12 +37,16 @@ void	ft_insert_case4(t_node *t)
 		{
 			ft_rotate_left(t->p);
 			t = t->l;
-		} else if ((t == t->p->l) && (t->p == g->r))
-		{
-			ft_rotate_right(t->p);
-			t = t->r;
 		}
-	ft_insert_case5(t);
+		else
+		{
+			if ((t == t->p->l) && (t->p == g->r))
+			{
+				ft_rotate_right(t->p);
+				t = t->r;
+			}
+		}
+		ft_insert_case5(t);
 	}
 }
 
@@ -49,9 +63,9 @@ void	ft_insert_case3(t_node *t)
 		g = ft_grandp_node(t);
 		g->c = RED;
 		ft_insert_case1(g);
-	} else {
-		ft_insert_case4(t);
 	}
+	else
+		ft_insert_case4(t);
 }
 
 void	ft_insert_case2(t_node *t)

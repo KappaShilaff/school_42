@@ -6,7 +6,7 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 19:14:18 by lcassaun          #+#    #+#             */
-/*   Updated: 2019/09/22 19:08:04 by lcassaun         ###   ########.fr       */
+/*   Updated: 2019/11/12 15:08:23 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(char const *str)
 	size_t	i;
 
 	i = 0;
-	while(*str)
+	while (*str)
 	{
 		++str;
 		++i;

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_insert_node.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 15:19:21 by lcassaun          #+#    #+#             */
+/*   Updated: 2019/11/12 15:20:59 by lcassaun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "librb.h"
 
-static t_node  *ft_root(t_node *t)
+static t_node	*ft_root(t_node *t)
 {
-	t_node  *root;
+	t_node	*root;
 
 	root = t;
 	while (root->p)
@@ -10,7 +22,8 @@ static t_node  *ft_root(t_node *t)
 	return (root);
 }
 
-t_node	*ft_insert_node(t_node *root, t_node *t, int (*f)(void *, void *))
+t_node			*ft_insert_node(t_node *root, t_node *t, int (*f)
+		(void *, void *))
 {
 	if (root)
 	{
@@ -22,7 +35,7 @@ t_node	*ft_insert_node(t_node *root, t_node *t, int (*f)(void *, void *))
 				root = root->r;
 			}
 			else
-			{ 
+			{
 				t->p = root;
 				root = root->l;
 			}
