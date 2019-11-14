@@ -13,15 +13,17 @@
 #include "libft.h"
 #include "librb.h"
 
-t_cont	*ft_create_cont_fd(int fd, char *str)
+t_cont	*ft_create_cont_fd(int fd)
 {
 	t_cont	*t;
 
 	if (!(t = malloc(sizeof(t_cont))))
 		return (NULL);
 	t->fd = fd;
-	t->str = str;
+	t->str = NULL;
 	t->join = NULL;
+	t->rm = NULL;
+	t->temp = NULL;
 	t->end = 0;
 	t->tmp = 0;
 	t->len = 0;

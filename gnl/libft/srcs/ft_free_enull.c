@@ -14,7 +14,8 @@
 
 int		ft_free_enull(char **str)
 {
-	free(*str);
+	if (*str != NULL)
+		free(*str);
 	*str = NULL;
 	return (0);
 }

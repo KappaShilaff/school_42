@@ -37,10 +37,10 @@ typedef struct		s_cont
 	char		*str;
 	char		*join;
 	char		*rm;
+	char		*temp;
 	size_t		end;
 	size_t		tmp;
 	size_t		len;
-	size_t		i_len;
 }					t_cont;
 
 t_node				*ft_create_node(void *data);
@@ -56,7 +56,7 @@ void				ft_insert_case3(t_node *t);
 void				ft_insert_case4(t_node *t);
 void				ft_insert_case5(t_node *t);
 t_node				*ft_find_node_fd(t_node *list, int fd);
-t_cont				*ft_create_cont_fd(int fd, char *str);
+t_cont				*ft_create_cont_fd(int fd);
 int					ft_cmp_fd(t_cont a, t_cont b);
 
 #endif
