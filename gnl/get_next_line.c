@@ -100,7 +100,7 @@ int			get_next_line(const int fd, char **line)
 	int				i;
 
 	i = 0;
-	if (read(fd, 0, 0) == -1)
+	if (fd < 0 ||  !line || read(fd, 0, 0))
 		return (-1);
 	if (!(curr =ft_find_node_fd(root, fd)))
 	{
