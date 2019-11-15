@@ -106,7 +106,8 @@ SRCS_LIST = ft_memalloc.c\
 			ft_create_cont_fd.c\
 			ft_cmp_fd.c\
 			ft_memstrncpy.c\
-			ft_free_enull.c
+			ft_free_enull.c\
+			ft_free_cont.c
 
 GREEN = \033[01;38;5;119m
 RED = \033[01;38;5;009m

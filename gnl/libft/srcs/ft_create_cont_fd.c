@@ -19,13 +19,7 @@ t_cont	*ft_create_cont_fd(int fd)
 
 	if (!(t = malloc(sizeof(t_cont))))
 		return (NULL);
+	ft_bzero(t, sizeof(t_cont));
 	t->fd = fd;
-	t->str = NULL;
-	t->join = NULL;
-	t->rm = NULL;
-	t->temp = NULL;
-	t->end = 0;
-	t->tmp = 0;
-	t->len = 0;
 	return (t);
 }

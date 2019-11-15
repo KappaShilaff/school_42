@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "librb.h"
 
 t_node	*ft_create_node(void *data)
@@ -18,6 +19,7 @@ t_node	*ft_create_node(void *data)
 
 	if (!(t = malloc(sizeof(t_node))))
 		return (NULL);
+	ft_bzero(t, sizeof(t_node));
 	t->d = data;
 	t->c = RED;
 	t->l = NULL;

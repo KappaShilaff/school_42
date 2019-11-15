@@ -13,7 +13,7 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-int			gnl_fill(t_cont *t, long int buff)
+int			gnl_fill(t_cont *t, int buff)
 {
 	t->len += t->tmp;
 	t->tmp = 0;
@@ -23,7 +23,7 @@ int			gnl_fill(t_cont *t, long int buff)
 	return (0);
 }
 
-int			gfree(t_cont *t, long int i)
+int			gfree(t_cont *t, int i)
 {
 	if (t->temp != NULL)
 	{
@@ -36,9 +36,9 @@ int			gfree(t_cont *t, long int i)
 	return (1);
 }
 
-long int	gnl_n(t_cont *t, long int buff)
+long int	gnl_n(t_cont *t, int buff)
 {
-	long int		i[3];
+	int		i[3];
 
 	while ((i[0] = gnl_fill(t, buff)) == 0)
 	{
@@ -63,7 +63,7 @@ long int	gnl_n(t_cont *t, long int buff)
 	return (0);
 }
 
-char		*gnl_str(t_cont *t, long int i)
+char		*gnl_str(t_cont *t, int i)
 {
 	if (t->str && (i = ft_findchr(t->str, '\n')) >= 0)
 	{
@@ -95,25 +95,27 @@ char		*gnl_str(t_cont *t, long int i)
 
 int			get_next_line(const int fd, char **line)
 {
-	static t_node	*root;
-	t_node			*curr;
+	static t_node	*root[590432];
 	int				i;
 
 	i = 0;
-	if (fd < 0 ||  !line || read(fd, 0, 0))
+	if (fd < 0 ||  !line || read(fd, 0, 0) < 0)
 		return (-1);
-	if (!(curr =ft_find_node_fd(root, fd)))
+	if (!root[fd])
 	{
-		curr = ft_create_node(ft_create_cont_fd(fd));
-		root = ft_insert_node(root, curr, (void *)ft_cmp_fd);
+		root[fd] = ft_create_node(ft_create_cont_fd(fd));
 		i = 1;
 	}
-	if (i == 0 && (((t_cont *)(curr->d))->str == NULL))
-		return (0);
-	if ((*line = ft_strdup(gnl_str(((t_cont *)(curr->d)), 0))) != NULL)
+	if (i == 0 && (((t_cont *)(root[fd]->d))->str == NULL))
 	{
-		ft_free_enull(&((((t_cont *)(curr->d))->join)));
+		ft_free_cont(((t_cont *)(root[fd]->d)));
+		return (0);
+	}
+	if ((*line = ft_strdup(gnl_str(((t_cont *)(root[fd]->d)), 0))) != NULL)
+	{
+		ft_free_enull(&((((t_cont *)(root[fd]->d))->join)));
 		return (1);
 	}
+	ft_free_cont(((t_cont *)(root[fd]->d)));
 	return (0);
 }
