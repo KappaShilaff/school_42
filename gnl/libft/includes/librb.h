@@ -6,7 +6,7 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:55:12 by lcassaun          #+#    #+#             */
-/*   Updated: 2019/11/12 15:52:05 by lcassaun         ###   ########.fr       */
+/*   Updated: 2019/11/15 16:32:55 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-enum				rb_color
+enum				e_rb_color
 {
 	BLACK,
 	RED
@@ -25,7 +25,7 @@ enum				rb_color
 typedef struct		s_node
 {
 	void				*d;
-	enum rb_color		c;
+	enum e_rb_color		c;
 	struct s_node		*l;
 	struct s_node		*r;
 	struct s_node		*p;
@@ -38,8 +38,8 @@ typedef struct		s_cont
 	char		*join;
 	char		*rm;
 	char		*temp;
-	unsigned int		tmp;
-	unsigned int		len;
+	long int	tmp;
+	long int	len;
 }					t_cont;
 
 t_node				*ft_create_node(void *data);

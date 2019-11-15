@@ -6,14 +6,13 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:38:44 by lcassaun          #+#    #+#             */
-/*   Updated: 2019/11/12 18:40:52 by lcassaun         ###   ########.fr       */
+/*   Updated: 2019/11/15 16:33:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-int			gnl_fill(t_cont *t, int buff)
+int			gnl_fill(t_cont *t, long int buff)
 {
 	t->len += t->tmp;
 	t->tmp = 0;
@@ -23,7 +22,7 @@ int			gnl_fill(t_cont *t, int buff)
 	return (0);
 }
 
-int			gfree(t_cont *t, int i)
+int			gfree(t_cont *t, long int i)
 {
 	if (t->temp != NULL)
 	{
@@ -36,9 +35,9 @@ int			gfree(t_cont *t, int i)
 	return (1);
 }
 
-long int	gnl_n(t_cont *t, int buff)
+long int	gnl_n(t_cont *t, long int buff)
 {
-	int		i[3];
+	long int		i[3];
 
 	while ((i[0] = gnl_fill(t, buff)) == 0)
 	{
@@ -47,7 +46,8 @@ long int	gnl_n(t_cont *t, int buff)
 		{
 			if ((i[1] = read(t->fd, t->str, BUFF_SIZE)) == 0)
 			{
-				if (i[2] == buff && (t->str = ft_strdup(t->temp) + ft_free_enull(&(t->temp))))
+				if (i[2] == buff && (t->str = ft_strdup(t->temp) +
+							ft_free_enull(&(t->temp))))
 					return (-2);
 				return (-1 * gfree(t, i[0]));
 			}
@@ -70,8 +70,7 @@ char		*gnl_str(t_cont *t, int i)
 		t->join = ft_memstrncpy(NULL, t->str, i++);
 		t->temp = t->str;
 		t->str = ft_strdup(t->str + i);
-		ft_free_enull(&(t->temp));
-		t->len -= i;
+		t->len -= i - ft_free_enull(&(t->temp));
 		return (t->join);
 	}
 	if ((i = gnl_n(t, BUFF_SIZE)) == -1)
@@ -99,7 +98,7 @@ int			get_next_line(const int fd, char **line)
 	int				i;
 
 	i = 0;
-	if (fd < 0 ||  !line || read(fd, 0, 0) < 0)
+	if (fd < 0 || !line || read(fd, 0, 0) < 0)
 		return (-1);
 	if (!root[fd])
 	{
@@ -107,15 +106,11 @@ int			get_next_line(const int fd, char **line)
 		i = 1;
 	}
 	if (i == 0 && (((t_cont *)(root[fd]->d))->str == NULL))
-	{
-		ft_free_cont(((t_cont *)(root[fd]->d)));
 		return (0);
-	}
 	if ((*line = ft_strdup(gnl_str(((t_cont *)(root[fd]->d)), 0))) != NULL)
 	{
 		ft_free_enull(&((((t_cont *)(root[fd]->d))->join)));
 		return (1);
 	}
-	ft_free_cont(((t_cont *)(root[fd]->d)));
 	return (0);
 }
