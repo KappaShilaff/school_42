@@ -1,30 +1,41 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <gmp.h>
 #define uint128_t unsigned __int128
 
 char *ft_itoa(uint128_t n);
+uint128_t ft_atoi(char const *str);
 
 uint128_t powmod(uint128_t a, uint128_t k, uint128_t n)
 {
-  uint128_t b=1;
 
-  while (k) {
-    if (k % 2==0) {
-      k /= 2;
-      a = (a * a) % n; 
-      }
-    else {
-      k--;
-      b = (b * a) % n;
-      }
-  }
-  return b;
+	mpz_t am, nm, bm;
+	char	*str;
+
+	mpz_init_set_str(am, ft_itoa(a), 10);
+	mpz_init_set_str(nm, ft_itoa(n), 10);
+	mpz_init_set_str(bm, "1", 10);
+	while (k) {
+		if (k % 2==0) {
+			k /= 2;
+			mpz_mul(am, am, am);
+			mpz_fdiv_r(am, am, nm); 
+		}
+		else {
+			k--;
+			mpz_mul(bm, bm, am);
+			mpz_fdiv_r(bm, bm, nm);
+		}
+	}
+	str = malloc(100);
+	mpz_get_str(str, 10, bm);
+	return (ft_atoi(str));
 }
 
 uint128_t ft_random(const uint128_t min, const uint128_t max) 
 {
-    return (rand() % (max - min + 1) + min);
+	return (rand() % (max - min + 1) + min);
 }
 
 int		ft_miller_rabin(uint128_t n, int k)
@@ -42,9 +53,7 @@ int		ft_miller_rabin(uint128_t n, int k)
 	while (k-- > 0)
 	{
 		a = ft_random(2, n - 2);
-		printf("%s %s %s\n", ft_itoa(a), ft_itoa(t), ft_itoa(n));
 		x = powmod(a, t, n);
-		printf("%s\n", ft_itoa(x));
 		if (x != 1 && x != n - 1)
 		{
 			i = s - 1;
