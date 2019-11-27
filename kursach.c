@@ -3,52 +3,23 @@
 #include <stdlib.h>
 #define uint128_t unsigned __int128
 
-int		ft_numlen2(uint128_t t)
+char *ft_itoa(uint128_t n);
+
+uint128_t powmod(uint128_t a, uint128_t k, uint128_t n)
 {
-	int		i;
+  uint128_t b=1;
 
-	i = 0;
-	while (t /= 2)
-		i++;
-	return (i);
-}
-
-
-char	*ft_2(uint128_t t)
-{
-	char	*str;
-	int		i;
-
-	i = ft_numlen2(t);
-	str = malloc(i + 1);
-	str[i--] = '\0';
-	while (t)
-		{
-			str[i--] = t % 2 + '0';
-			t /= 2;
-		}
-	return (str);
-}
-
-uint128_t	ft_pow(uint128_t a, uint128_t t, uint128_t n)
-{
-	uint128_t tmp;
-	char	*str;
-	int		i;
-	
-	tmp = a;
-	i = 1;
-	str = ft_2(t);
-	a = a % n;
-	while (str[i])
-	{
-		if (str[i] == '0')
-			a = (a * a) % n;
-		if (str[i] == '1')
-			a = (tmp * a * a) % n;
-		i++;
-	}
-	return (a);
+  while (k) {
+    if (k % 2==0) {
+      k /= 2;
+      a = (a * a) % n; 
+      }
+    else {
+      k--;
+      b = (b * a) % n;
+      }
+  }
+  return b;
 }
 
 uint128_t ft_random(const uint128_t min, const uint128_t max) 
@@ -71,7 +42,9 @@ int		ft_miller_rabin(uint128_t n, int k)
 	while (k-- > 0)
 	{
 		a = ft_random(2, n - 2);
-		x = ft_pow(a, t, n);
+		printf("%s %s %s\n", ft_itoa(a), ft_itoa(t), ft_itoa(n));
+		x = powmod(a, t, n);
+		printf("%s\n", ft_itoa(x));
 		if (x != 1 && x != n - 1)
 		{
 			i = s - 1;
