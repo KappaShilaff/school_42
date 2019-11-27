@@ -3,15 +3,52 @@
 #include <stdlib.h>
 #define uint128_t unsigned __int128
 
-uint128_t	ft_pow(uint128_t k, uint128_t l)
+int		ft_numlen2(uint128_t t)
+{
+	int		i;
+
+	i = 0;
+	while (t /= 2)
+		i++;
+	return (i);
+}
+
+
+char	*ft_2(uint128_t t)
+{
+	char	*str;
+	int		i;
+
+	i = ft_numlen2(t);
+	str = malloc(i + 1);
+	str[i--] = '\0';
+	while (t)
+		{
+			str[i--] = t % 2 + '0';
+			t /= 2;
+		}
+	return (str);
+}
+
+uint128_t	ft_pow(uint128_t a, uint128_t t, uint128_t n)
 {
 	uint128_t tmp;
-	tmp = k;
-	while (l-- > 0)
+	char	*str;
+	int		i;
+	
+	tmp = a;
+	i = 1;
+	str = ft_2(t);
+	a = a % n;
+	while (str[i])
 	{
-		tmp *= k;
+		if (str[i] == '0')
+			a = (a * a) % n;
+		if (str[i] == '1')
+			a = (tmp * a * a) % n;
+		i++;
 	}
-	return (tmp);
+	return (a);
 }
 
 uint128_t ft_random(const uint128_t min, const uint128_t max) 
@@ -34,8 +71,8 @@ int		ft_miller_rabin(uint128_t n, int k)
 	while (k-- > 0)
 	{
 		a = ft_random(2, n - 2);
-		x = ft_pow(a, t) % n;
-		if (!(x == 1) && !(x == n - 1))
+		x = ft_pow(a, t, n);
+		if (x != 1 && x != n - 1)
 		{
 			i = s - 1;
 			while (i-- > 0 && (x != n - 1))
@@ -44,7 +81,7 @@ int		ft_miller_rabin(uint128_t n, int k)
 				if (x == 1)
 					return (0);
 			}
-			if (x != n - 1)
+			if (x != n - 1 || i == 0)
 				return (0);
 		}
 	}
@@ -84,8 +121,8 @@ char	*ft_itoa(uint128_t n)
 
 	if (n == 0)
 		return ("0");
-	i = ft_numlen(n + 1);
-	if (!(str = malloc(sizeof(char) * i--)))
+	i = ft_numlen(n);
+	if (!(str = malloc(sizeof(char) * (i + 1))))
 		return (0);
 	str[i] = '\0';
 	while (n != 0)
@@ -102,7 +139,7 @@ int		ft_small(uint128_t n, int *prime)
 	int		i;
 
 	i = 0;
-	while (i < 25)
+	while (i < 24)
 	{
 		if ((n % prime[i]) == 0)
 			return (0);
@@ -136,15 +173,17 @@ int		main(int ac, char *av[])
 	{
 		r = ft_random(s + 1, 4 * s + 2);
 		n = 1 + s * r;
-		if (ft_small(n, prime))
+		if (s * s + s + 1 <= n && n <= 4 * s * s + 2 * s + 1)
 		{
-			if (ft_miller_rabin(n, 5))
+			if (ft_small(n, prime))
+			{
+				if (ft_miller_rabin(n, 5))
 				{
 					printf("%s\n", ft_itoa(n));
 					return (0);
 				}
+			}
 		}
 	}
-	printf ("sostavnoe\n");
 	return (0);
 }
