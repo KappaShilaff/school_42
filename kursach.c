@@ -7,7 +7,7 @@
 char *ft_itoa(uint128_t n);
 uint128_t ft_atoi(char const *str);
 
-uint128_t powmod(uint128_t a, uint128_t k, uint128_t n)
+uint128_t powmod(uint128_t a, uint128_t k, uint128_t n, int try)
 {
 
 	mpz_t am, nm, bm;
@@ -30,7 +30,7 @@ uint128_t powmod(uint128_t a, uint128_t k, uint128_t n)
 	}
 	str = malloc(100);
 	mpz_get_str(str, 10, bm);
-	return (ft_atoi(str));
+	return(ft_atoi(str) - try);
 }
 
 uint128_t ft_random(const uint128_t min, const uint128_t max) 
@@ -53,7 +53,7 @@ int		ft_miller_rabin(uint128_t n, int k)
 	while (k-- > 0)
 	{
 		a = ft_random(2, n - 2);
-		x = powmod(a, t, n);
+		x = powmod(a, t, n, 0);
 		if (x != 1 && x != n - 1)
 		{
 			i = s - 1;
@@ -69,6 +69,38 @@ int		ft_miller_rabin(uint128_t n, int k)
 	}
 	return (1);
 }
+
+int		ft_prime_test2(uint128_t a, uint128_t r, uint128_t n)
+{
+	uint128_t	tmp;
+
+	a = powmod(a, r, n, 1);
+
+	while (a != 1)
+	{
+		tmp = a;
+		a = n % a;
+		n = tmp;
+		if (n < 3)
+			return (0);
+	}
+	return (1);
+}
+
+int		ft_prime_test(uint128_t n, int k, uint128_t r)
+{
+	uint128_t	a;
+
+	while (k-- > 0)
+	{
+		a = ft_random(2, n - 1);
+		if ((powmod(a, n - 1, n, 0) == 1) && ft_prime_test2(a, r, n))
+			return (1);
+	}
+	return (0);
+}
+
+
 uint128_t ft_atoi(char const *str)
 {
 	uint128_t		result;
@@ -155,11 +187,11 @@ int		main(int ac, char *av[])
 	{
 		r = ft_random(s + 1, 4 * s + 2);
 		n = 1 + s * r;
-		if (s * s + s + 1 <= n && n <= 4 * s * s + 2 * s + 1)
+		if (ft_small(n, prime))
 		{
-			if (ft_small(n, prime))
+			if (ft_miller_rabin(n, 5))
 			{
-				if (ft_miller_rabin(n, 5))
+				if (ft_prime_test(n, 100, r))
 				{
 					printf("%s\n", ft_itoa(n));
 					return (0);
