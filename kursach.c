@@ -191,7 +191,7 @@ int		main(int ac, char *av[])
 		{
 			if (ft_miller_rabin(n, 5))
 			{
-				if (ft_prime_test(n, 100, r))
+				if (ft_prime_test(n, 30, r))
 				{
 					printf("%s\n", ft_itoa(n));
 					return (0);
