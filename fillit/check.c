@@ -6,7 +6,7 @@
 /*   By: kdagmer <kdagmer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 16:28:21 by kdagmer           #+#    #+#             */
-/*   Updated: 2019/12/10 10:47:28 by kdagmer          ###   ########.fr       */
+/*   Updated: 2019/12/25 12:19:09 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,16 @@ static int		check_block(char *buff, int dot)
 			dot++;
 		i++;
 	}
-	printf("%d\n", i); // remove
-	printf("%d\n", sum); // remove
+//	printf("%d\n", i); // remove
+//	printf("%d\n", sum); // remove
 	if (i >= 20 && !buff[i] && sum == 4 && \
 		(nb = check_neighbour(buff, first)) && (nb == 6 || nb == 8))
 	{
-		printf("nbl: %d\n", nb); // remove
+//		printf("nbl: %d\n", nb); // remove
 		return (1);
 	}
 	else
-		print_error(3); // change to 1
+		print_error(1); // change to 1
 	return (0);
 }
 
@@ -93,7 +93,7 @@ int				check_file(t_tetris *tetris, char *file)
 		if (r >= 20 && check_block(buff, 0))
 		{
 			keep(tetris, buff);
-			printf("%s", buff);
+//			printf("%s", buff);
 		}
 		else
 			print_error(1);

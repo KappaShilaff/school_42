@@ -6,7 +6,7 @@
 /*   By: kdagmer <kdagmer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 16:51:48 by kdagmer           #+#    #+#             */
-/*   Updated: 2019/12/10 12:00:19 by kdagmer          ###   ########.fr       */
+/*   Updated: 2019/12/25 12:20:39 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_piece	*get_piece(char *buff)
 	t_point		ps;
 	int			y;
 	int			x;
-	static char	c = 'a';
+	static char	c = 'A';
 
 	if (!(newp = (t_piece *)ft_memalloc(sizeof(t_piece))))
 		print_error(1);

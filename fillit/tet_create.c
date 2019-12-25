@@ -6,7 +6,7 @@
 /*   By: kdagmer <kdagmer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 10:44:28 by kdagmer           #+#    #+#             */
-/*   Updated: 2019/12/10 13:03:34 by kdagmer          ###   ########.fr       */
+/*   Updated: 2019/12/25 12:12:34 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ static int		map(t_tetris *tetris, int size)
 	if (!(tetris->map = (char **)malloc(size * sizeof(char *))))
 		return (0);
 	i = 0;
-	printf("\n\n\n--------empty map--------\n\n\n");
+//	printf("\n\n\n--------empty map--------\n\n\n");
 	while (i < size)
 	{
 		if (!(tetris->map[i] = (char *)malloc(size * sizeof(char))))
 			return (0);
 		ft_memset(tetris->map[i], TEMPTY, size);
-		printf("%s\n", tetris->map[i]);
+//		printf("%s\n", tetris->map[i]);
 		i++;
 	}
-	printf("\n\n\n");
-	printf("----------\nnb_pieces: %d\nsizeofmap: %d\n--------\n", tetris->nb_pieces, size);
+//	printf("\n\n\n");
+//	printf("----------\nnb_pieces: %d\nsizeofmap: %d\n--------\n", tetris->nb_pieces, size);
 	return (1);
 }
 
@@ -48,11 +48,11 @@ int				tet_create(t_tetris *tetris, char *file)
 	if (check_file(tetris, file))
 	{
 		map(tetris, 4 * tetris->nb_pieces);
-		while (sd * sd < tetris->nb_pieces)
+		while (sd * sd < 4 * tetris->nb_pieces)
 			sd++;
-		tetris->size = sd * 2; // -1
-		printf("tetsize: %d\n", tetris->size);
+		tetris->size = sd; // -1
+//		printf("tetsize: %dx%d\n", tetris->size, tetris->size);
 		return (1);
-	}
+	} 
 	return (0);
 }
