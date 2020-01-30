@@ -1,14 +1,56 @@
 #include <unistd.h>
 #include <stdarg.h>
 
+int		ft_flag(char *str)
+{
+	int		i;
+	while (*str == ' ' && *str)
+		*str++;
+	if (!*str)
+		return (0);
+	if 
+
+ft_printnum(const char *str)
+{
+	size_t		i;
+	size_t		n;
+
+	n = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] = '%' && ft_)
+		{
+			i++;;
+			n++;
+		}
+		i++;
+	}
+	return (n);
+}
+
 int		ft_printf(const char *format, ...)
 {
-	va_list	lol;
-	va_start(lol, format);
-	int	i;
+	size_t	num;
+	va_list	arg;
+	int		i;
 
-	i = 0;
-	write(1, format, 3);
-	write(1, va_arg(lol, char *), 3);
+	num = ft_printnum(format);
+	va_start(arg, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			*format++;
+			if (i = ft_flag(*format))
+			{
+				*format++;
+				ft_print((void)arg, i);
+				va_arg(arg, 1);
+			}
+		}
+		if (*format)
+			write(1, &(*format++), 1);
+	}
 	return (0);
 }
