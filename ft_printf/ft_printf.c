@@ -46,10 +46,7 @@ int		ft_printf(const char *format, ...)
 		{
 			*format++;
 			if (i = ft_flag(*format))
-			{
 				*format++;
-				ft_print((void)arg, i);
-			}
 		}
 		if (*format)
 			write(1, &(*format++), 1);
