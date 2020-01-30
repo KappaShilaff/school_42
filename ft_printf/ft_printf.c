@@ -4,7 +4,10 @@
 int		ft_flag(char *str)
 {
 	int		i;
-	while (*str == ' ' && *str)
+	int		n;
+
+	n = 0;
+	while (str[n] == ' ' && str[n])
 		*str++;
 	if (!*str)
 		return (0);
@@ -46,7 +49,6 @@ int		ft_printf(const char *format, ...)
 			{
 				*format++;
 				ft_print((void)arg, i);
-				va_arg(arg, 1);
 			}
 		}
 		if (*format)
