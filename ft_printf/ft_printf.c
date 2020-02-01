@@ -32,6 +32,10 @@ int     ft_sflag(char *str, va_list *arg)
             write(1, &(*out++), 1);
         while (k-- > 0)
             write(1, " ", 1);
+    } else
+    {
+        while (*out)
+            write(1, &(*out++), 1);
     }
 }
 
