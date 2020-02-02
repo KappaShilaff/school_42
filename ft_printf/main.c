@@ -6,8 +6,10 @@ int		ft_printf(const char *format, ...);
 int		main(void)
 {
     char    *str;
-    str = "% 10s%s";
-    ft_printf(str, "lol", " kek\n");
+    str = "%321-   0 0 0     0    0       -  123123  *s%s";
+    printf("MOE\n");
+    ft_printf(str,"lol", " kek");
+    printf("\nORIG\n");
     printf(str, "lol", " kek");
     return (0);
 }
