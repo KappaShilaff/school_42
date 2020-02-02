@@ -3,51 +3,91 @@
 #include <stdarg.h>
 #include "libft.h"
 
-int     ft_sflag(char *str, va_list *arg)
+void    ft_fstar(va_list arg, char *str)
+{
+    int     i;
+    int     k;
+    char    *out;
+    char    minus;
+
+    minus = '+';
+    while (*str == '0' || *str == ' ' || *str == '+' || *str == '-') {
+        if (*str == '-')
+            minus = '-';
+        *str++;
+    }
+    if (*str == '*') {
+
+        i = va_arg(arg, int);
+        out = va_arg(arg, char *);
+        k = i - ft_strlen(out);
+        if (minus == '-') {
+            while (*out)
+                write(1, &(*out++), 1);
+            while (k-- > 0)
+                write(1, " ", 1);
+        } else {
+            while (k-- > 0)
+                write(1, " ", 1);
+            while (*out)
+                write(1, &(*out++), 1);
+        }
+    }
+}
+
+int     ft_sflag(char *str, va_list arg)
 {
     char    minus;
     int     i;
     char    *out;
     int     k;
+    char    star;
+    char    *temp;
 
-    out = va_arg(*arg, char *);
-    //printf("%s\n", va_arg(*arg, char *));
+    temp = str;
+    star = '0';
+
     i = 0;
     minus = '+';
-    while (*str == ' ' || *str == '+' || *str == '-' || *str == '0')
+    while (*str == ' ' || *str == '+' || *str == '-' || *str == '0' || *str == '*')
     {
         if (*str == '-')
             minus = '-';
+        if (*str == '*')
+            star = '1';
         *str++;
     }
-    i = ft_atoi(str);
-    if (i != 0)
+    if (star == '1')
     {
-        k = i - ft_strlen(out);
-        if (minus == '+') {
+        ft_fstar(arg, temp);
+    } else {
+        i = ft_atoi(str);
+        out = va_arg(arg, char *);
+        if (i != 0) {
+            k = i - ft_strlen(out);
+            if (minus == '+') {
+                while (k-- > 0)
+                    write(1, " ", 1);
+            }
+            while (*out)
+                write(1, &(*out++), 1);
             while (k-- > 0)
                 write(1, " ", 1);
+        } else {
+            while (*out)
+                write(1, &(*out++), 1);
         }
-        while (*out)
-            write(1, &(*out++), 1);
-        while (k-- > 0)
-            write(1, " ", 1);
-    } else
-    {
-        while (*out)
-            write(1, &(*out++), 1);
     }
 }
 
-char    *ft_flag(char *str, va_list *arg) {
+char    *ft_flag(char *str, va_list arg) {
     int i;
     int n;
     char   *tmp;
 
     tmp = str;
-//    printf("%s\n", str);
     n = 0;
-    while (str[n] && (str[n] == ' ' || str[n] == '+' || str[n] == '-' || str[n] == '0'))
+    while (str[n] && (str[n] == ' ' || str[n] == '+' || str[n] == '-' || str[n] == '0' || str[n] == '*'))
         n++;
     if (!str[n])
         return (tmp + 1);
@@ -62,40 +102,18 @@ char    *ft_flag(char *str, va_list *arg) {
     return (tmp + n + 1);
 }
 
-//ft_printnum(const char *str)
-//{
-//	size_t		i;
-//	size_t		n;
-//
-//	n = 0;
-//	i = 0;
-//	while (str[i])
-//	{
-//		if (str[i] = '%' && ft_)
-//		{
-//			i++;
-//			n++;
-//		}
-//		i++;
-//	}
-//	return (n);
-//}
-
 int		ft_printf(const char *format, ...)
 {
-    size_t num;
     va_list arg;
     int i;
 
-    format;
-//    num = ft_printnum(format);
     va_start(arg, format);
     while (*format) {
         if (*format == '%') {
             *format++;
-            format = ft_flag(format, &arg);
+            format = ft_flag((char *)format, arg);
         }
-        if (*format)
+        if (*format && *format != '%')
             write(1, &(*format++), 1);
     }
     return (0);

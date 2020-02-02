@@ -5,6 +5,9 @@ int		ft_printf(const char *format, ...);
 
 int		main(void)
 {
-    ft_printf("%2s", "lol");
+    char    *str;
+    str = "% 10s%s";
+    ft_printf(str, "lol", " kek\n");
+    printf(str, "lol", " kek");
     return (0);
 }
