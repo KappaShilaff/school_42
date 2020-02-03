@@ -1,0 +1,2 @@
+fconfig en0 | grep broadcast | awk '{print $6}'
+arp -i en0 -a
