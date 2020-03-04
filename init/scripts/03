@@ -1,0 +1,2 @@
+USER=$(last | grep -v "still" | head -n1 | awk '{print $1}')
+echo "the last logged in user was $USER"

@@ -1,0 +1,2 @@
+sudo echo "46.19.122.85 intra.42.fr" >> /etc/hosts
+# or copy to desctop, modify and copy it back to /etc/hosts
