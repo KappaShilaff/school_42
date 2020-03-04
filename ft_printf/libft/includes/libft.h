@@ -24,8 +24,8 @@ typedef struct		s_list
 }					t_list;
 
 char				*ft_strncpy(char *dst, char const *src, size_t n);
-void				ft_putnbr(int nb);
-void				ft_putnbr_fd(int nb, int fd);
+void				ft_putnbr(long long nb);
+void				ft_putnbr_fd(long long int nb, int fd);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putchar(char c);
@@ -91,5 +91,8 @@ void				ft_lsttale(t_list **lst, t_list *new);
 void				ft_lstfree(void *content, size_t content_size);
 long int			ft_findchr(const char *str, int s);
 char				*ft_chmalloc_zend(size_t i);
+void	            ft_putnbr_z_fd(size_t nb, int fd);
+int                 ft_strlen_z_nb(size_t nb);
+int                 ft_strlen_ll_nb(long long int nb);
 
 #endif

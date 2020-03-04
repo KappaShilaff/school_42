@@ -96,6 +96,9 @@ SRCS_LIST = ft_memalloc.c\
 			ft_lstfree.c\
 			ft_findchr.c\
 			ft_chmalloc_zend.c\
+			ft_putnbr_z_fd.c\
+			ft_strlen_z_nb.c\
+			ft_strlen_ll_nb.c\
 
 GREEN = \033[01;38;5;119m
 RED = \033[01;38;5;009m

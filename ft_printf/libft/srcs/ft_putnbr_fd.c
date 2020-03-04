@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int nb, int fd)
+void	ft_putnbr_fd(long long int nb, int fd)
 {
-	if (nb == -2147483648)
+	if (nb == (long long int)(-1 * 9223372036854775808ULL))
 	{
-		ft_putstr_fd("-2147483648", fd);
+		ft_putstr_fd("−9223372036854775808", fd);
 		return ;
 	}
 	if (nb < 0)

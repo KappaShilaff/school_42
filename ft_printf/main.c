@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "stdlib.h"
-//int		ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
 int		main(void)
 {
@@ -14,7 +14,8 @@ int		main(void)
 
 //    printf("\nORIG\n");
 //    printf(str, "lol", " kek");
-    printf("%+**ld", 50, 1);
+    ft_printf("%+-010zd\n", 50, 50, 50);
+    printf("%+-010zd",  50);
 
     return (0);
 }
