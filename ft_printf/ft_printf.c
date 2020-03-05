@@ -3,71 +3,71 @@
 #include <stdarg.h>
 #include "libft.h"
 
-void    ft_sstar(va_list arg, char *str)
-{
-    int     i;
-    int     k;
-    char    *out;
-    char    minus;
-    char    plus;
-    char    space;
-
-    out = str;
-    minus = '+';
-    plus = '-';
-    space = '\0';
-    while (*str != '*' && (*str == ' ' || *str == '0' || *str == '-' || *str == '+')) {
-        if (*str == '-')
-            minus = '-';
-        if (*str == '+')
-            plus = '+';
-        if (*str == ' ')
-            space = ' ';
-        *str++;
-    }
-    if (*str++ == '*') {
-        if (*str != 's') {
-            write(1, "%", 1);
-            while (*out != 's')
-                write(1, &(*out++), 1);
-            return ;
-        }
-        i = va_arg(arg, int);
-        out = va_arg(arg, char *);
-        k = i - ft_strlen(out);
-        if (minus == '-') {
-            while (*out)
-                write(1, &(*out++), 1);
-            while (k-- > 0)
-                write(1, " ", 1);
-        } else {
-            while (k-- > 0)
-                write(1, " ", 1);
-            while (*out)
-                write(1, &(*out++), 1);
-        }
-    } else {
-        write(1, "%", 1);
-        if (space == ' ' && plus == '+' && minus == '-')
-            write(1, "+-", 2);
-        if (minus == '-' && space == ' ' && plus != '+')
-            write(1, " -", 2);
-        while (*out != '*' && (*out == ' ' || *out == '0' || *out == '-' || *out == '+'))
-                *out++;
-        while (*out != 's')
-            write(1, &(*out++), 1);
-        write(1, "s", 1);
-    }
-}
+//void    ft_sstar(va_list arg, char *str)
+//{
+//    int     i;
+//    int     k;
+//    char    *out;
+//    char    minus;
+//    char    plus;
+//    char    space;
+//
+//    out = str;
+//    minus = '+';
+//    plus = '-';
+//    space = '\0';
+//    while (*str != '*' && (*str == ' ' || *str == '0' || *str == '-' || *str == '+')) {
+//        if (*str == '-')
+//            minus = '-';
+//        if (*str == '+')
+//            plus = '+';
+//        if (*str == ' ')
+//            space = ' ';
+//        *str++;
+//    }
+//    if (*str++ == '*') {
+//        if (*str != 's') {
+//            write(1, "%", 1);
+//            while (*out != 's')
+//                write(1, &(*out++), 1);
+//            return ;
+//        }
+//        i = va_arg(arg, int);
+//        out = va_arg(arg, char *);
+//        k = i - ft_strlen(out);
+//        if (minus == '-') {
+//            while (*out)
+//                write(1, &(*out++), 1);
+//            while (k-- > 0)
+//                write(1, " ", 1);
+//        } else {
+//            while (k-- > 0)
+//                write(1, " ", 1);
+//            while (*out)
+//                write(1, &(*out++), 1);
+//        }
+//    } else {
+//        write(1, "%", 1);
+//        if (space == ' ' && plus == '+' && minus == '-')
+//            write(1, "+-", 2);
+//        if (minus == '-' && space == ' ' && plus != '+')
+//            write(1, " -", 2);
+//        while (*out != '*' && (*out == ' ' || *out == '0' || *out == '-' || *out == '+'))
+//                *out++;
+//        while (*out != 's')
+//            write(1, &(*out++), 1);
+//        write(1, "s", 1);
+//    }
+//}
 
 int     ft_dflag(char *str, va_list arg) {
     char minus;
     char plus;
     int i;
     long long int nb_ll;
-    size_t nb_z;
+    size_t      nb_z;
     int k;
-    char star;
+//    char star;
     char *temp;
     char ll = '0';
     char l = '0';
@@ -78,7 +78,7 @@ int     ft_dflag(char *str, va_list arg) {
     char z = '0';
     char zero = '1';
 
-    star = '0';
+//    star = '0';
     i = 0;
     minus = '+';
     plus = '-';
@@ -88,8 +88,8 @@ int     ft_dflag(char *str, va_list arg) {
             minus = '-';
         if (*str == '+')
             plus = '+';
-        if (*str == '*')
-            star = '1';
+//        if (*str == '*')
+//            star = '1';
         if (*str == 'L')
             L = 'L';
         if (*str == '0')
@@ -123,8 +123,8 @@ int     ft_dflag(char *str, va_list arg) {
             minus = '-';
         if (*str == '+')
             plus = '+';
-        if (*str == '*')
-            star = '1';
+//        if (*str == '*')
+//            star = '1';
         if (*str == 'L')
             L = 'L';
         if (*str == '0')
@@ -152,12 +152,11 @@ int     ft_dflag(char *str, va_list arg) {
     }
     if (*str != 'd')
         return (0);
-    if (star == '1')
-        i = va_arg(arg, int);
-    else {
+//    if (star == '1')
+//        i = va_arg(arg, int);
+//    else {
         i = ft_atoi(temp);
-    }
-//  napisat' CASE l L ll h hh z j dlya va_arg a ewe napisat' strlen dlya chisel chtob virovnyalka rabotala ny i kone4no putnbr dlya vseh types
+//    }
     if (ll == 'l')
         nb_ll = va_arg(arg, long long int);
     else if (l == 'l')
@@ -176,11 +175,10 @@ int     ft_dflag(char *str, va_list arg) {
         if (minus == '+') {
             if (zero == '1') {
                 if (plus == '+') {
+                    while (k-- > 1)
+                        write(1, " ", 1);
                     write(1, "+", 1);
                     k--;
-                    while (k-- > 0)
-                        write(1, " ", 1);
-
                 } else
                     while (k-- > 0)
                         write(1, " ", 1);
@@ -223,29 +221,18 @@ int     ft_sflag(char *str, va_list arg)
     int     i;
     char    *out;
     int     k;
-    char    star;
     char    *temp;
 
     temp = str;
-    star = '0';
-    i = 0;
     minus = '+';
     while (*str == ' ' || *str == '+' || *str == '-' || *str == '*' || (*str >= '0' && *str <= '9'))
     {
         if (*str == '-')
             minus = '-';
-        if (*str == '*')
-            star = '1';
         *str++;
     }
     if (*str != 's')
         return (0);
-    if (star == '1')
-    {
-        ft_sstar(arg, temp);
-        return (1);
-    } else {
-//        printf("\n%s\n", temp);
         while (*temp == '-' || *temp == '+' || *temp == ' ' || *temp == '0')
             *temp++;
         i = ft_atoi(temp);
@@ -256,18 +243,16 @@ int     ft_sflag(char *str, va_list arg)
                 while (k-- > 0)
                     write(1, " ", 1);
             }
-            while (*out)
-                write(1, &(*out++), 1);
+            ft_putstr(out);
             while (k-- > 0)
                 write(1, " ", 1);
             return (1);
         } else {
-            while (*out)
-                write(1, &(*out++), 1);
+            ft_putstr(out);
             return (1);
         }
     }
-}
+
 
 char    *ft_flag(char *str, va_list arg) {
     int i;
@@ -281,7 +266,10 @@ char    *ft_flag(char *str, va_list arg) {
     if (!str[n])
         return (tmp + 1);
     if (str[n] == 's'  && !ft_sflag(tmp, arg))
-        return (tmp + 1);
+    {
+        write(1, "%", 1);
+        return (tmp);
+    }
     if (str[n] == 'd'  && !ft_dflag(tmp, arg))
         return (tmp + 1);
     return (tmp + n + 1);

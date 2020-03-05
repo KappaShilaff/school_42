@@ -5,17 +5,12 @@ int		ft_printf(const char *format, ...);
 
 int		main(void)
 {
+    char    *str;
 
-//    char    *str;
-//    str = "%321-   0 0 0     0    0       -  123123  *s%s";
+    str = "%10lLs";
 //    printf("MOE\n");
-//    ft_printf(str, "lol", " kek");
-
-
-//    printf("\nORIG\n");
-//    printf(str, "lol", " kek");
-    ft_printf("%+-010zd\n", 50, 50, 50);
-    printf("%+-010zd",  50);
-
+//    ft_printf(str, "lol");
+    printf("\nORIG\n");
+    printf(str, "lol", "kek");
     return (0);
 }
