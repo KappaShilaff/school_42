@@ -231,6 +231,17 @@ int     ft_sflag(char *str, va_list arg)
             minus = '-';
         *str++;
     }
+    if (*str == 'l')
+    {
+        write(1, "%", 1);
+        while (*temp != 'l')
+            write(1, &(*temp++), 1);
+        temp++;
+        while (*temp != 's')
+            write(1, &(*temp++), 1);
+        write(1, &(*temp), 1);
+        return (1);
+    }
     if (*str != 's')
         return (0);
         while (*temp == '-' || *temp == '+' || *temp == ' ' || *temp == '0')
