@@ -7,10 +7,10 @@ int		main(void)
 {
     char    *str;
 
-    str = "%10lLs";
-//    printf("MOE\n");
-//    ft_printf(str, "lol");
+    str = "%10d";
+    printf("MOE\n");
+    ft_printf(str, 50);
     printf("\nORIG\n");
-    printf(str, "lol", "kek");
+    printf(str, 50);
     return (0);
 }
