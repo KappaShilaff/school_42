@@ -77,15 +77,20 @@ int     ft_dflag(char *str, va_list arg) {
     char j = '0';
     char z = '0';
     char zero = '1';
+    char resh = '1';
+    char space = '1';
+    char kov = '1';
 
 //    star = '0';
     i = 0;
     minus = '+';
     plus = '-';
     while (*str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '0' || *str == 'l' || *str == 'z' ||
-           *str == 'h' || *str == 'L' || *str == 'j') {
+           *str == 'h' || *str == 'L' || *str == 'j' || *str == '#' || *str == '\'') {
         if (*str == '-')
             minus = '-';
+        if (*str == '\'')
+            kov = '\'';
         if (*str == '+')
             plus = '+';
 //        if (*str == '*')
@@ -95,16 +100,16 @@ int     ft_dflag(char *str, va_list arg) {
         if (*str == '0')
             zero = '0';
         if (*str == 'h') {
-            if (*(str + 1) == 'l') {
+            if (*(str + 1) && (*(str + 1) == 'l')) {
                 hh = 'h';
-                *str++;
+                str++;
             } else
                 h = 'h';
         }
         if (*str == 'l') {
-            if (*(str + 1) == 'l') {
+            if (*(str + 1) && (*(str + 1) == 'l')) {
                 ll = 'l';
-                *str++;
+                str++;
             } else
                 l = 'l';
         }
@@ -112,51 +117,37 @@ int     ft_dflag(char *str, va_list arg) {
             j = 'j';
         if (*str == 'z')
             z = 'z';
+        if (*str == '#')
+            resh = '#';
+        if (*str == ' ')
+            space = ' ';
         if (*str != 'd')
-            *str++;
+            str++;
     }
     temp = str;
-    while (*str == ' ' || *str == '+' || *str == '-' || *str == '*' || (*str >= '0' && *str <= '9') || *str == 'l' ||
-           *str == 'z' || *str == 'h' || *str == 'L' || *str == 'j')
-    {
-        if (*str == '-')
-            minus = '-';
-        if (*str == '+')
-            plus = '+';
-//        if (*str == '*')
-//            star = '1';
-        if (*str == 'L')
-            L = 'L';
-        if (*str == '0')
-            zero = '0';
-        if (*str == 'h') {
-            if (*(str + 1) == 'l') {
-                hh = 'h';
-                *str++;
-            } else
-                h = 'h';
-        }
-        if (*str == 'l') {
-            if (*(str + 1) == 'l') {
-                ll = 'l';
-                *str++;
-            } else
-                l = 'l';
-        }
-        if (*str == 'j')
-            j = 'j';
-        if (*str == 'z')
-            z = 'z';
-        if (*str != 'd')
-            *str++;
+    i = ft_atoi(str);
+    while (*str >= '0' && *str <= '9')
+            str++;
+    if (*str != 'd') {
+        write(1, "%", 1);
+        if (kov == '\'')
+            write(1, "'", 1);
+        if (resh == '#')
+            write(1, "#", 1);
+        if (plus == '+')
+            write(1, "+", 1);
+        else if (space == ' ')
+            write(1, " ", 1);
+        if (minus == '-')
+            write(1, "-", 1);
+        else if (zero == '0')
+            write(1, "0", 1);
+        while (*temp != 'd')
+            write(1, &(*temp++), 1);
+        write(1, &(*temp), 1);
+        return (1);
     }
-    if (*str != 'd')
-        return (0);
-//    if (star == '1')
-//        i = va_arg(arg, int);
-//    else {
         i = ft_atoi(temp);
-//    }
     if (ll == 'l')
         nb_ll = va_arg(arg, long long int);
     else if (l == 'l')
@@ -167,6 +158,8 @@ int     ft_dflag(char *str, va_list arg) {
         nb_ll = (long long int) (short int) (va_arg(arg, int));
     else if (hh == 'h')
         nb_ll = (long long int) (unsigned char) (va_arg(arg, int));
+    else
+        nb_ll = (long long int) (va_arg(arg, long int));
     if (i != 0) {
         if (z != 'z')
             k = i - ft_strlen_ll_nb(nb_ll);
@@ -179,9 +172,14 @@ int     ft_dflag(char *str, va_list arg) {
                         write(1, " ", 1);
                     write(1, "+", 1);
                     k--;
-                } else
+                } else {
+                    if (space == ' ') {
+                        write(1, " ", 1);
+                        k--;
+                    }
                     while (k-- > 0)
                         write(1, " ", 1);
+                }
             } else {
                 if (plus == '+') {
                     write(1, "+", 1);
@@ -189,9 +187,14 @@ int     ft_dflag(char *str, va_list arg) {
                     while (k-- > 0)
                         write(1, "0", 1);
 
-                } else
+                } else {
+                    if (space == ' ') {
+                        write(1, " ", 1);
+                        k--;
+                    }
                     while (k-- > 0)
                         write(1, "0", 1);
+                }
             }
             if (z != 'z')
                 ft_putnbr(nb_ll);
@@ -200,6 +203,10 @@ int     ft_dflag(char *str, va_list arg) {
         } else {
             if (plus == '+') {
                 write(1, "+", 1);
+                k--;
+            } else if (space == ' ')
+            {
+                write(1, " ", 1);
                 k--;
             }
             if (z != 'z')
@@ -226,13 +233,16 @@ int     ft_sflag(char *str, va_list arg)
     char    plus;
     char    space = '1';
     char    zero = '1';
+    char    kov = '1';
 
     temp = str;
     minus = '+';
     resh = '0';
     plus = '-';
-    while (*str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str >= '0' && *str <= '9'))
+    while (*str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == 0))
     {
+        if (*str == '\'')
+            kov = '\'';
         if (*str == '-')
             minus = '-';
         if (*str == '+')
@@ -243,10 +253,12 @@ int     ft_sflag(char *str, va_list arg)
             resh = '#';
         if (*str == '0')
             zero = '0';
-        *str++;
+        str++;
     }
     if (*str != 's') {
         write(1, "%", 1);
+        if (kov == '\'')
+            write(1, "'", 1);
         if (resh == '#')
             write(1, "#", 1);
         if (plus == '+')
@@ -270,10 +282,11 @@ int     ft_sflag(char *str, va_list arg)
     {
         while (*str != 's')
             write(1, &(*str++), 1);
+        write(1, "s", 1);
         return (1);
     }
 
-        while (*temp == '-' || *temp == '+' || *temp == ' ' || *temp == '0')
+        while (*temp == '-' || *temp == '+' || *temp == ' ' || *temp == '0' || *temp == '\'' || *temp == '#')
             *temp++;
         i = ft_atoi(temp);
         out = va_arg(arg, char *);

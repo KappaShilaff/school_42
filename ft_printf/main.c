@@ -7,7 +7,7 @@ int		main(void)
 {
     char    *str;
 
-    str = "%0000 - +      ### l  10s";
+    str = "%'1000   10s";
     printf("MOE\n");
     ft_printf(str, "lol");
     printf("\nORIG\n");
