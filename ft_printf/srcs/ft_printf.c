@@ -2,6 +2,31 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "libft.h"
+#include "ft_printf.h"
+
+int     ft_int_out(struct s_part *this, int i)
+{
+    this->int_out += i;
+    return(1);
+}
+
+void    ft_fill_struct(struct s_part *this)
+{
+    this->d = 0;
+    this->hashtag = 0;
+    this->k = 0;
+    this->i = 0;
+    this->l = 0;
+    this->ll = 0;
+    this->minus = 0;
+    this->plus = 0;
+    this->zero = 0;
+    this->s = 0;
+    this->quot = 0;
+    this->n = 0;
+    this->tmp = NULL;
+    this->point = 0;
+}
 
 //void    ft_sstar(va_list arg, char *str)
 //{
@@ -222,125 +247,127 @@ int     ft_dflag(char *str, va_list arg) {
 }
 
 
-int     ft_sflag(char *str, va_list arg)
+int     ft_sflag(char *str, struct s_part *part)
 {
-    char    minus;
-    int     i;
     char    *out;
-    int     k;
     char    *temp;
-    char    resh;
-    char    plus;
-    char    space = '1';
-    char    zero = '1';
-    char    kov = '1';
+    int     i;
 
     temp = str;
-    minus = '+';
-    resh = '0';
-    plus = '-';
-    while (*str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == 0))
+    while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == 0))
     {
         if (*str == '\'')
-            kov = '\'';
+            part->quot = 1;
         if (*str == '-')
-            minus = '-';
+            part->minus = 1;
         if (*str == '+')
-            plus = '+';
+            part->plus = 1;
         if (*str == ' ')
-            space = ' ';
+            part->space = 1;
         if (*str == '#')
-            resh = '#';
+            part->hashtag = 1;
         if (*str == '0')
-            zero = '0';
+            part->zero = 1;
         str++;
-    }
-    if (*str != 's') {
-        write(1, "%", 1);
-        if (kov == '\'')
-            write(1, "'", 1);
-        if (resh == '#')
-            write(1, "#", 1);
-        if (plus == '+')
-            write(1, "+", 1);
-        else if (space == ' ')
-            write(1, " ", 1);
-        if (minus == '-')
-            write(1, "-", 1);
-        else if (zero == '0')
-            write(1, "0", 1);
     }
     if (*str == 'l')
     {
+        write(ft_int_out(part, 1), "%", 1);
+        if (part->quot == 1)
+            write(ft_int_out(part, 1), "'", 1);
+        if (part->hashtag == 1)
+            write(ft_int_out(part, 1), "#", 1);
+        if (part->plus == 1)
+            write(ft_int_out(part, 1), "+", 1);
+        else if (part->space == 1)
+            write(ft_int_out(part, 1), " ", 1);
+        if (part->minus == 1)
+            write(ft_int_out(part, 1), "-", 1);
+        else if (part->zero == 1)
+            write(ft_int_out(part, 1), "0", 1);
         str++;
         while (*str != 's')
-            write(1, &(*str++), 1);
-        write(1, &(*str), 1);
+            write(ft_int_out(part, 1), &(*str++), 1);
+        write(ft_int_out(part, 1), &(*str), 1);
         return (1);
     }
-    if (*str != 's')
-    {
+    if (*str != 's' && (*str <= '0' || *str >= '9')) {
+        write(ft_int_out(part, 1), "%", 1);
+        if (part->quot == 1)
+            write(ft_int_out(part, 1), "'", 1);
+        if (part->hashtag == 1)
+            write(ft_int_out(part, 1), "#", 1);
+        if (part->plus == 1)
+            write(ft_int_out(part, 1), "+", 1);
+        else if (part->space == 1)
+            write(ft_int_out(part, 1), " ", 1);
+        if (part->minus == 1)
+            write(ft_int_out(part, 1), "-", 1);
+        else if (part->zero == 1)
+            write(ft_int_out(part, 1), "0", 1);
         while (*str != 's')
-            write(1, &(*str++), 1);
-        write(1, "s", 1);
+            write(ft_int_out(part, 1), &(*str++), 1);
+        write(ft_int_out(part, 1), "s", 1);
         return (1);
     }
-
         while (*temp == '-' || *temp == '+' || *temp == ' ' || *temp == '0' || *temp == '\'' || *temp == '#')
-            *temp++;
+            temp++;
         i = ft_atoi(temp);
-        out = va_arg(arg, char *);
+        out = va_arg(*part->arg, char *);
         if (i != 0) {
-            k = i - ft_strlen(out);
-            if (minus == '+') {
-                while (k-- > 0)
-                    write(1, " ", 1);
+            part->k = i - ft_strlen(out);
+            if (part->minus == 0) {
+                while ((part->k)-- > 0)
+                    write(ft_int_out(part, 1), " ", 1);
             }
             ft_putstr(out);
-            while (k-- > 0)
-                write(1, " ", 1);
+            ft_int_out(part, ft_strlen(out));
+            while ((part->k)-- > 0)
+                write(ft_int_out(part, 1), " ", 1);
             return (1);
         } else {
             ft_putstr(out);
+            ft_int_out(part, ft_strlen(out));
             return (1);
         }
     }
 
 
-char    *ft_flag(char *str, va_list arg) {
-    int i;
-    int n;
-    char   *tmp;
+char    *ft_flag(char *str, struct s_part *part) {
 
-    tmp = str;
-    n = 0;
-    while (str[n] && ((str[n] != 's') && str[n] != 'd'))
-        n++;
-    if (!str[n])
-        return (tmp + 1);
-    if (str[n] == 's'  && !ft_sflag(tmp, arg))
+    ft_fill_struct(part);
+    part->tmp = str;
+    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd'))
+        (part->n)++;
+    if (!str[part->n])
+        return (part->tmp + 1);
+    if (str[part->n] == 's'  && !ft_sflag(part->tmp, part))
     {
         write(1, "%", 1);
-        return (tmp);
+        (part->int_out)++;
+        return(part->tmp);
     }
-    if (str[n] == 'd'  && !ft_dflag(tmp, arg))
-        return (tmp + 1);
-    return (tmp + n + 1);
+    if (str[part->n] == 'd'  && !ft_dflag(part->tmp, *part->arg))
+        return (part->tmp + 1);
+    return (part->tmp + part->n + 1);
 }
 
 int		ft_printf(const char *format, ...)
 {
     va_list arg;
-    int i;
+    struct s_part part;
+
 
     va_start(arg, format);
+    part.arg = &arg;
+    part.int_out = 0;
     while (*format) {
         if (*format == '%') {
-            *format++;
-            format = ft_flag((char *)format, arg);
+            format++;
+            format = ft_flag((char *)format, &part);
         }
         if (*format && *format != '%')
-            write(1, &(*format++), 1);
+            write(ft_int_out(&part, 1), &(*format++), 1);
     }
-    return (0);
+    return (part.int_out);
 }

@@ -1,0 +1,9 @@
+#include "ft_printf.h"
+#include <stdio.h>
+
+int				main(void)
+{
+//    ft_printf("%10s is a string", "this");
+    printf("%------.2s", "mem added");
+    return (0);
+}
