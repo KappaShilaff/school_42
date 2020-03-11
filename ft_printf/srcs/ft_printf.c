@@ -314,6 +314,10 @@ int     ft_sflag(char *str, struct s_part *part)
             temp++;
         i = ft_atoi(temp);
         out = va_arg(*part->arg, char *);
+        if (out == NULL) {
+            write(ft_int_out(part, 6), "(null)", 6);
+            return (1);
+        }
         if (i != 0) {
             part->k = i - ft_strlen(out);
             if (part->minus == 0) {
@@ -326,6 +330,7 @@ int     ft_sflag(char *str, struct s_part *part)
                 write(ft_int_out(part, 1), " ", 1);
             return (1);
         } else {
+
             ft_putstr(out);
             ft_int_out(part, ft_strlen(out));
             return (1);
