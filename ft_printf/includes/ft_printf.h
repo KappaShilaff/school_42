@@ -21,6 +21,14 @@ typedef struct s_part
     char    *tmp;
     int     int_out;
     char    point;
+    int     field;
+    int     obj;
+    char    L;
+    char    hh;
+    char    h;
+    char    j;
+    char    z;
+    char    *format;
 }   t_part;
 
 int				ft_printf(const char *format, ...);

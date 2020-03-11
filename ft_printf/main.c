@@ -3,7 +3,7 @@
 
 int				main(void)
 {
-//    ft_printf("%10s is a string", "this");
-    printf("%------.2s", "mem added");
+    ft_printf("%5d", -42);
+    printf("%5d", -42);
     return (0);
 }
