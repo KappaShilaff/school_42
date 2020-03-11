@@ -181,21 +181,28 @@ int     ft_dflag(const char *str, struct s_part *part) {
         }
         if (part->minus == 0) {
             if (part->zero == 0) {
-                if (part->plus == 1) {
+                if (part->plus == 1 && (part->z == 1 || nb_ll >= 0)) {
                     while (k-- > 1)
                         write(ft_int_out(part, 1), " ", 1);
                     write(ft_int_out(part, 1), "+", 1);
                     k--;
                 } else {
-                    if (part->space == 1 && (part->z == 1 || nb_ll > 0)) {
+                    if (part->space == 1 && (part->z == 1 || nb_ll >= 0)) {
                         write(ft_int_out(part, 1), " ", 1);
                         k--;
                     }
                     while (k-- > 0)
                         write(ft_int_out(part, 1), " ", 1);
                 }
+                if (part->z == 0) {
+                    ft_int_out(part, ft_strlen_ll_nb(nb_ll));
+                    ft_putnbr(nb_ll);
+                } else {
+                    ft_int_out(part, ft_strlen_ll_nb(nb_z));
+                    ft_putnbr_z_fd(nb_z, 1);
+                }
             } else {
-                if (part->plus == 1 && (part->z == 1 || nb_ll > 0)) {
+                if (part->plus == 1 && (part->z == 1 || nb_ll >= 0)) {
                     write(ft_int_out(part, 1), "+", 1);
                     k--;
                     while (k-- > 0)
@@ -218,10 +225,10 @@ int     ft_dflag(const char *str, struct s_part *part) {
                 }
             }
         } else {
-            if (part->plus == 1 && (part->z == 1 || nb_ll > 0)) {
+            if (part->plus == 1 && (part->z == 1 || nb_ll >= 0)) {
                 write(ft_int_out(part, 1), "+", 1);
                 k--;
-            } else if (part->space == 1 && (part->z == 1 || nb_ll > 0)) {
+            } else if (part->space == 1 && (part->z == 1 || nb_ll >= 0)) {
                 write(ft_int_out(part, 1), " ", 1);
                 k--;
             }
@@ -237,10 +244,10 @@ int     ft_dflag(const char *str, struct s_part *part) {
             return (1);
         }
     } else {
-        if (part->plus == 1 && (part->z == 1 || nb_ll > 0)) {
+        if (part->plus == 1 && (part->z == 1 || nb_ll >= 0)) {
             write(ft_int_out(part, 1), "+", 1);
             k--;
-        } else if (part->space == 1 && (part->z == 1 || nb_ll > 0)) {
+        } else if (part->space == 1 && (part->z == 1 || nb_ll >= 0)) {
             write(ft_int_out(part, 1), " ", 1);
             k--;
         }

@@ -3,7 +3,7 @@
 
 int				main(void)
 {
-    ft_printf("%5d", -42);
-    printf("%5d", -42);
+    ft_printf("%+d", 0);
+    printf("\n%5d", -42);
     return (0);
 }
