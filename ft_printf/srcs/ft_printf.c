@@ -26,6 +26,8 @@ void    ft_fill_struct(struct s_part *this)
     this->n = 0;
     this->tmp = NULL;
     this->point = 0;
+    this->obj = 0;
+    this->field = 0;
 }
 
 //void    ft_sstar(va_list arg, char *str)
@@ -251,7 +253,6 @@ int     ft_sflag(char *str, struct s_part *part)
 {
     char    *out;
     char    *temp;
-    int     i;
 
     temp = str;
     while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == 0))
@@ -268,6 +269,10 @@ int     ft_sflag(char *str, struct s_part *part)
             part->hashtag = 1;
         if (*str == '0')
             part->zero = 1;
+        if (*str == '.') {
+            part->point = 1;
+            part->obj = ft_atoi(str + 1);
+        }
         str++;
     }
     if (*str == 'l')
@@ -312,27 +317,41 @@ int     ft_sflag(char *str, struct s_part *part)
     }
         while (*temp == '-' || *temp == '+' || *temp == ' ' || *temp == '0' || *temp == '\'' || *temp == '#')
             temp++;
-        i = ft_atoi(temp);
+        if (part->point == 0)
+            part->field = ft_atoi(temp);
+        while (*temp >= '0' && *temp <= '9')
+            temp++;
         out = va_arg(*part->arg, char *);
+        if (*temp == '.') {
+            part->obj = ft_atoi(temp + 1);
+            if (part->obj > ft_strlen(out))
+                part->obj = ft_strlen(out);
+        }
         if (out == NULL) {
             write(ft_int_out(part, 6), "(null)", 6);
             return (1);
         }
-        if (i != 0) {
-            part->k = i - ft_strlen(out);
+        if (part->field != 0) {
+            if (part->obj == 0)
+                part->obj = ft_strlen(out);
+            part->k = part->field - part->obj;
             if (part->minus == 0) {
                 while ((part->k)-- > 0)
                     write(ft_int_out(part, 1), " ", 1);
             }
-            ft_putstr(out);
-            ft_int_out(part, ft_strlen(out));
+            write(ft_int_out(part, part->obj), out, part->obj);
             while ((part->k)-- > 0)
                 write(ft_int_out(part, 1), " ", 1);
             return (1);
         } else {
-
-            ft_putstr(out);
-            ft_int_out(part, ft_strlen(out));
+            if (part->obj == 0) {
+                ft_putstr(out);
+                ft_int_out(part, ft_strlen(out));
+            } else {
+                if (part->obj > ft_strlen(out))
+                    part->obj = ft_strlen(out);
+                write(ft_int_out(part, part->obj), out, part->obj);
+            }
             return (1);
         }
     }
