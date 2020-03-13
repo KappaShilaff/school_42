@@ -7,11 +7,9 @@ int     ft_strlen_ll_nb(long long int nb)
     i = 0;
     if (nb == 0)
         return (1);
-    if (nb < 0) {
-        nb *= -1;
+    if (nb < 0)
         i++;
-    }
-    while (nb > 0)
+    while (nb != 0)
     {
         i++;
         nb /= 10;

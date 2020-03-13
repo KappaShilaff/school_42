@@ -16,7 +16,7 @@ void	ft_putnbr_fd(long long int nb, int fd)
 {
 	if (nb == (long long int)(-1 * 9223372036854775808ULL))
 	{
-		ft_putstr_fd("−9223372036854775808", fd);
+		ft_putstr_fd("-9223372036854775808", fd);
 		return ;
 	}
 	if (nb < 0)

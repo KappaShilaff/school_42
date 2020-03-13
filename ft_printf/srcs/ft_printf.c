@@ -34,64 +34,9 @@ void    ft_fill_struct(struct s_part *this)
     this->j = 0;
     this->z = 0;
     this->space = 0;
+    this->negative = 0;
 }
 
-//void    ft_sstar(va_list arg, char *str)
-//{
-//    int     i;
-//    int     k;
-//    char    *out;
-//    char    minus;
-//    char    plus;
-//    char    space;
-//
-//    out = str;
-//    minus = '+';
-//    plus = '-';
-//    space = '\0';
-//    while (*str != '*' && (*str == ' ' || *str == '0' || *str == '-' || *str == '+')) {
-//        if (*str == '-')
-//            minus = '-';
-//        if (*str == '+')
-//            plus = '+';
-//        if (*str == ' ')
-//            space = ' ';
-//        *str++;
-//    }
-//    if (*str++ == '*') {
-//        if (*str != 's') {
-//            write(1, "%", 1);
-//            while (*out != 's')
-//                write(1, &(*out++), 1);
-//            return ;
-//        }
-//        i = va_arg(arg, int);
-//        out = va_arg(arg, char *);
-//        k = i - ft_strlen(out);
-//        if (minus == '-') {
-//            while (*out)
-//                write(1, &(*out++), 1);
-//            while (k-- > 0)
-//                write(1, " ", 1);
-//        } else {
-//            while (k-- > 0)
-//                write(1, " ", 1);
-//            while (*out)
-//                write(1, &(*out++), 1);
-//        }
-//    } else {
-//        write(1, "%", 1);
-//        if (space == ' ' && plus == '+' && minus == '-')
-//            write(1, "+-", 2);
-//        if (minus == '-' && space == ' ' && plus != '+')
-//            write(1, " -", 2);
-//        while (*out != '*' && (*out == ' ' || *out == '0' || *out == '-' || *out == '+'))
-//                *out++;
-//        while (*out != 's')
-//            write(1, &(*out++), 1);
-//        write(1, "s", 1);
-//    }
-//}
 
 int     ft_dflag(const char *str, struct s_part *part) {
     long long int nb_ll;
@@ -161,18 +106,18 @@ int     ft_dflag(const char *str, struct s_part *part) {
         return (1);
     }
     part->i = ft_atoi(temp);
-    if (part->ll == 1)
+    if (part->ll == 1 || part->j == 1)
         nb_ll = va_arg(*part->arg, long long int);
     else if (part->l == 1)
-        nb_ll = (long long int) (va_arg(*part->arg, long int));
+        nb_ll = (long long int)(va_arg(*part->arg, long int));
     else if (part->z == 1)
         nb_z = va_arg(*part->arg, size_t);
     else if (part->h == 1)
-        nb_ll = (long long int) (short int) (va_arg(*part->arg, int));
+        nb_ll = (long long int)(short int)(va_arg(*part->arg, int));
     else if (part->hh == 1)
-        nb_ll = (long long int) (unsigned char) (va_arg(*part->arg, int));
+        nb_ll = (long long int)(char)(va_arg(*part->arg, int));
     else
-        nb_ll = (long long int) (va_arg(*part->arg, int));
+        nb_ll = (long long int)(va_arg(*part->arg, int));
     if (part->i != 0) {
         if (part->z == 0) {
             k = part->i - ft_strlen_ll_nb(nb_ll);
@@ -202,9 +147,16 @@ int     ft_dflag(const char *str, struct s_part *part) {
                     ft_putnbr_z_fd(nb_z, 1);
                 }
             } else {
+                if (part->z == 0 && nb_ll < 0) {
+                    write(ft_int_out(part, 1), "-", 1);
+                    nb_ll *= -1;
+                    part->negative = 1;
+                }
                 if (part->plus == 1 && (part->z == 1 || nb_ll >= 0)) {
-                    write(ft_int_out(part, 1), "+", 1);
-                    k--;
+                    if (part->negative == 0) {
+                        write(ft_int_out(part, 1), "+", 1);
+                        k--;
+                    }
                     while (k-- > 0)
                         write(ft_int_out(part, 1), "0", 1);
                 } else {
@@ -272,7 +224,7 @@ int     ft_sflag(char *str, struct s_part *part)
     char    *temp;
 
     temp = str;
-    while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == 0))
+    while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == '0'))
     {
         if (*str == '\'')
             part->quot = 1;
