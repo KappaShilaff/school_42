@@ -37,10 +37,9 @@ void    ft_fill_struct(struct s_part *this)
     this->negative = 0;
 }
 
-
-int     ft_dflag(const char *str, struct s_part *part) {
-    long long int nb_ll;
-    size_t nb_z;
+int     ft_dflag(char *str, struct s_part *part) {
+    long long int nb_ll = 0;
+    size_t nb_z = 0;
     int k;
     char *temp;
 
@@ -130,7 +129,6 @@ int     ft_dflag(const char *str, struct s_part *part) {
                     while (k-- > 1)
                         write(ft_int_out(part, 1), " ", 1);
                     write(ft_int_out(part, 1), "+", 1);
-                    k--;
                 } else {
                     if (part->space == 1 && (part->z == 1 || nb_ll >= 0)) {
                         write(ft_int_out(part, 1), " ", 1);
@@ -214,9 +212,8 @@ int     ft_dflag(const char *str, struct s_part *part) {
             write(ft_int_out(part, 1), " ", 1);
         return (1);
     }
+    return (1);
 }
-
-
 
 int     ft_sflag(char *str, struct s_part *part)
 {
@@ -324,7 +321,6 @@ int     ft_sflag(char *str, struct s_part *part)
             return (1);
         }
     }
-
 
 char    *ft_flag(char *str, struct s_part *part) {
 

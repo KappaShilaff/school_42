@@ -29,6 +29,7 @@ typedef struct s_part
     char    j;
     char    z;
     char    *format;
+    char    negative;
 }   t_part;
 
 int				ft_printf(const char *format, ...);
