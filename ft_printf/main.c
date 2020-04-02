@@ -3,8 +3,8 @@
 
 int				main(void)
 {
-    ft_printf("%hhd", 128);
+    ft_printf("%hhd", 127);
     printf("\n");
-    printf("%hhd", 128);
+    printf("%hhd", 127);
     return (0);
 }
