@@ -30,6 +30,7 @@ typedef struct s_part
     char    z;
     char    *format;
     char    negative;
+    char    points;
 }   t_part;
 
 int				ft_printf(const char *format, ...);

@@ -35,17 +35,20 @@ void    ft_fill_struct(struct s_part *this)
     this->z = 0;
     this->space = 0;
     this->negative = 0;
+    this->points = 0;
 }
 
 int     ft_dflag(char *str, struct s_part *part) {
     long long int nb_ll = 0;
     size_t nb_z = 0;
     int k;
+    int p;
     char *temp;
 
     k = 0;
+    p = 0;
     while (*str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '0' || *str == 'l' || *str == 'z' ||
-           *str == 'h' || *str == 'L' || *str == 'j' || *str == '#' || *str == '\'') {
+           *str == 'h' || *str == 'L' || *str == 'j' || *str == '#' || *str == '\'' || *str == '.') {
         if (*str == '-')
             part->minus = 1;
         if (*str == '\'')
@@ -78,15 +81,38 @@ int     ft_dflag(char *str, struct s_part *part) {
             part->hashtag = 1;
         if (*str == ' ')
             part->space = 1;
+        if (*str == '.')
+            part->points = 1;
         if (*str != 'd')
             str++;
     }
     temp = str;
-    part->i = ft_atoi(str);
+    if (part->points == 0)
+        part->i = ft_atoi(str);
+    else
+        p = ft_atoi(str);
     while (*str >= '0' && *str <= '9')
         str++;
+    if (*str == '.') {
+        part->points = 1;
+        part->zero = 0;
+        str++;
+        p = ft_atoi(str);
+        while (*str >= '0' && *str <= '9')
+            str++;
+        if (*str != 'd')
+        {
+            write(ft_int_out(part, 1), "%", 1);
+            while(*temp != 'd')
+                write(ft_int_out(part, 1), &(*temp++), 1);
+            write(ft_int_out(part, 1), &(*temp), 1);
+            return (1);
+        }
+    }
     if (*str != 'd') {
         write(ft_int_out(part, 1), "%", 1);
+        if (part->points == 1)
+            write(ft_int_out(part, 1), ".", 1);
         if (part->quot == 1)
             write(ft_int_out(part, 1), "'", 1);
         if (part->hashtag == 1)
@@ -117,11 +143,29 @@ int     ft_dflag(char *str, struct s_part *part) {
         nb_ll = (long long int)(char)(va_arg(*part->arg, int));
     else
         nb_ll = (long long int)(va_arg(*part->arg, int));
+    if (part->points == 1 && nb_ll < 0)
+        p++;
     if (part->i != 0) {
         if (part->z == 0) {
-            k = part->i - ft_strlen_ll_nb(nb_ll);
+            if (p != 0)
+                p -= ft_strlen_ll_nb(nb_ll);
+            k = part->i  - p - ft_strlen_ll_nb(nb_ll);
+            if (part->points == 1 && nb_ll == 0) {
+                if (p == 0)
+                    k++;
+                else
+                    p++;
+            }
         } else {
-            k = part->i - ft_strlen_z_nb(nb_z);
+            if (p != 0)
+                p -= ft_strlen_z_nb(nb_z);
+            k = part->i - p - ft_strlen_z_nb(nb_z);
+            if (part->points == 1 && nb_z == 0) {
+                if (p == 0)
+                    k++;
+                else
+                    p++;
+            }
         }
         if (part->minus == 0) {
             if (part->zero == 0) {
@@ -136,13 +180,25 @@ int     ft_dflag(char *str, struct s_part *part) {
                     }
                     while (k-- > 0)
                         write(ft_int_out(part, 1), " ", 1);
+                    if (part->points == 1 && nb_ll < 0) {
+                        write(ft_int_out(part, 1), "-", 1);
+                        nb_ll *= -1;
+                    }
                 }
                 if (part->z == 0) {
-                    ft_int_out(part, ft_strlen_ll_nb(nb_ll));
-                    ft_putnbr(nb_ll);
+                    while (p-- > 0)
+                        write(ft_int_out(part, 1), "0", 1);
+                    if (!(part->points == 1 && nb_ll == 0)) {
+                        ft_int_out(part, ft_strlen_ll_nb(nb_ll));
+                        ft_putnbr(nb_ll);
+                    }
                 } else {
-                    ft_int_out(part, ft_strlen_ll_nb(nb_z));
-                    ft_putnbr_z_fd(nb_z, 1);
+                    while (p-- > 0)
+                        write(ft_int_out(part, 1), "0", 1);
+                    if (!(part->points == 1 && nb_ll == 0)) {
+                        ft_int_out(part, ft_strlen_ll_nb(nb_z));
+                        ft_putnbr_z_fd(nb_z, 1);
+                    }
                 }
             } else {
                 if (part->z == 0 && nb_ll < 0) {
@@ -167,11 +223,19 @@ int     ft_dflag(char *str, struct s_part *part) {
                 }
 
                 if (part->z == 0) {
-                    ft_int_out(part, ft_strlen_ll_nb(nb_ll));
-                    ft_putnbr(nb_ll);
+                    while (p-- > 0)
+                        write(ft_int_out(part, 1), "0", 1);
+                    if (!(part->points == 1 && nb_ll == 0)) {
+                        ft_int_out(part, ft_strlen_ll_nb(nb_ll));
+                        ft_putnbr(nb_ll);
+                    }
                 } else {
-                    ft_int_out(part, ft_strlen_ll_nb(nb_z));
-                    ft_putnbr_z_fd(nb_z, 1);
+                    while (p-- > 0)
+                        write(ft_int_out(part, 1), "0", 1);
+                    if (!(part->points == 1 && nb_ll == 0)) {
+                        ft_int_out(part, ft_strlen_ll_nb(nb_z));
+                        ft_putnbr_z_fd(nb_z, 1);
+                    }
                 }
             }
         } else {
@@ -183,11 +247,19 @@ int     ft_dflag(char *str, struct s_part *part) {
                 k--;
             }
             if (part->z == 0) {
-                ft_putnbr(nb_ll);
-                ft_int_out(part, ft_strlen_ll_nb(nb_ll));
+                while (p-- > 0)
+                    write(ft_int_out(part, 1), "0", 1);
+                if (!(part->points == 1 && nb_ll == 0)) {
+                    ft_putnbr(nb_ll);
+                    ft_int_out(part, ft_strlen_ll_nb(nb_ll));
+                }
             } else {
-                ft_putnbr_z_fd(nb_z, 1);
-                ft_int_out(part, ft_strlen_ll_nb(nb_z));
+                while (p-- > 0)
+                    write(ft_int_out(part, 1), "0", 1);
+                if (!(part->points == 1 && nb_ll == 0)) {
+                    ft_putnbr_z_fd(nb_z, 1);
+                    ft_int_out(part, ft_strlen_ll_nb(nb_z));
+                }
             }
             while (k-- > 0)
                 write(ft_int_out(part, 1), " ", 1);
@@ -202,11 +274,19 @@ int     ft_dflag(char *str, struct s_part *part) {
             k--;
         }
         if (part->z == 0) {
-            ft_putnbr(nb_ll);
-            ft_int_out(part, ft_strlen_ll_nb(nb_ll));
+            while (p-- > 0)
+                write(ft_int_out(part, 1), "0", 1);
+            if (!(part->points == 1 && nb_ll == 0)) {
+                ft_putnbr(nb_ll);
+                ft_int_out(part, ft_strlen_ll_nb(nb_ll));
+            }
         } else {
-            ft_putnbr_z_fd(nb_z, 1);
-            ft_int_out(part, ft_strlen_ll_nb(nb_z));
+            while (p-- > 0)
+                write(ft_int_out(part, 1), "0", 1);
+            if (!(part->points == 1 && nb_ll == 0)) {
+                ft_putnbr_z_fd(nb_z, 1);
+                ft_int_out(part, ft_strlen_ll_nb(nb_z));
+            }
         }
         while (k-- > 0)
             write(ft_int_out(part, 1), " ", 1);

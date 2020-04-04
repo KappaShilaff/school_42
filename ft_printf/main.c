@@ -3,8 +3,10 @@
 
 int				main(void)
 {
-    ft_printf("%hhd", 127);
+    int     i, k;
+    i = ft_printf("%zd", -1);
     printf("\n");
-    printf("%hhd", 127);
+    k = printf("%zd", -1);
+    printf("\n%d\n%d", i, k);
     return (0);
 }
