@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int		ft_numlen(int n)
+int		ft_numlen(long int n)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ int		ft_numlen(int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long int n)
 {
 	char	*str;
 	int		i;
@@ -34,8 +34,8 @@ char	*ft_itoa(int n)
 	if (n == 0)
 		return (ft_strdup("0"));
 	i = ft_numlen(n) + 2;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+	if (n == -9223372036854775807 - 1)
+		return (ft_strdup("-9223372036854775808"));
 	if (!(str = malloc(sizeof(char) * i--)))
 		return (0);
 	if (n < 0)

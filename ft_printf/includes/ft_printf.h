@@ -5,6 +5,8 @@
 typedef struct s_part
 {
     va_list *arg;
+    int     len;
+    long int    nb_ll;
     char    d;
     char    s;
     char    l;
@@ -22,6 +24,7 @@ typedef struct s_part
     int     int_out;
     char    point;
     int     field;
+    int     size;
     int     obj;
     char    L;
     char    hh;
@@ -29,6 +32,7 @@ typedef struct s_part
     char    j;
     char    z;
     char    *format;
+    char    *num;
     char    negative;
     char    points;
     char    flags;

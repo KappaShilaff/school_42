@@ -34,7 +34,7 @@ int					ft_strcmp(char const *s1, char const *s2);
 size_t				ft_strlen(char const *str);
 void				ft_strclr(char *s);
 char				*ft_strdup(char const *src);
-char				*ft_itoa(int n);
+char				*ft_itoa(long int n);
 int					ft_atoi(char const *str);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
