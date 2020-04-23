@@ -31,6 +31,7 @@ typedef struct s_part
     char    *format;
     char    negative;
     char    points;
+    char    flags;
 }   t_part;
 
 int				ft_printf(const char *format, ...);

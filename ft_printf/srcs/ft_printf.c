@@ -10,6 +10,20 @@ int     ft_int_out(struct s_part *this, int i)
     return(1);
 }
 
+int     ft_filler(struct s_part *this, long int i, char k)
+{
+    char    *out;
+    long int    temp;
+    if (i <= 0)
+        return (0);
+    temp = i;
+    out = malloc(i + 1);
+    while (i-- > 0)
+        out[i] = k;
+    write(ft_int_out(this, (int)temp), out, temp);
+    return (0);
+}
+
 void    ft_fill_struct(struct s_part *this)
 {
     this->d = 0;
@@ -36,7 +50,76 @@ void    ft_fill_struct(struct s_part *this)
     this->space = 0;
     this->negative = 0;
     this->points = 0;
+    this->flags = 0;
 }
+
+int     ft_cflag(char *str, struct s_part *part)
+{
+    char    out;
+    char    *temp;
+
+    temp = str;
+    while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == '0'))
+    {
+        if (*str == '\'')
+            part->quot = 1;
+        if (*str == '-')
+            part->minus = 1;
+        if (*str == '+')
+            part->plus = 1;
+        if (*str == ' ')
+            part->space = 1;
+        if (*str == '#')
+            part->hashtag = 1;
+        if (*str == '0')
+            part->zero = 1;
+        str++;
+    }
+    part->field = ft_atoi(temp);
+    while (*temp >= '0' && *temp <= '9')
+        temp++;
+    out = (char)va_arg(*part->arg, char *);
+    if (*temp == '.') {
+        temp++;
+        while (*temp >= '0' && *temp <= '9')
+            temp++;
+    }
+    if (part->field == 0 || part->field == 1 || part->field == -1)
+        write(ft_int_out(part, 1), &out, 1);
+    else {
+        if (part->field < 0) {
+            write(ft_int_out(part, 1), &out, 1);
+            ft_filler(part, (long int)(part->field * -1 - 1), ' ');
+//            write(ft_int_out(part, part->field * -1 - 1), " ", part->field * -1 - 1);
+        } else {
+            ft_filler(part, (long int)(part->field - 1), ' ');
+//            write(ft_int_out(part, part->field - 1), " ", part->field - 1);
+            write(ft_int_out(part, 1), &out, 1);
+        }
+    }
+//    if (part->field != 0) {
+//        if (part->obj == 0)
+//            part->obj = 1;
+//        part->k = part->field - part->obj;
+//        if (part->minus == 0) {
+//            while ((part->k)-- > 0)
+//                write(ft_int_out(part, 1), " ", 1);
+//        }
+//        write(ft_int_out(part, part->obj), &out, part->obj);
+//        while ((part->k)-- > 0)
+//            write(ft_int_out(part, 1), " ", 1);
+//        return (1);
+//    } else {
+//        if (part->obj == 0) {
+//            ft_putchar(out);
+//            ft_int_out(part, 1);
+//        } else {
+//            if (part->obj > 1)
+//                part->obj = 1;
+//            write(ft_int_out(part, part->obj), &out, part->obj);
+//        }
+        return (1);
+    }
 
 int     ft_dflag(char *str, struct s_part *part) {
     long long int nb_ll = 0;
@@ -109,27 +192,6 @@ int     ft_dflag(char *str, struct s_part *part) {
             return (1);
         }
     }
-    if (*str != 'd') {
-        write(ft_int_out(part, 1), "%", 1);
-        if (part->points == 1)
-            write(ft_int_out(part, 1), ".", 1);
-        if (part->quot == 1)
-            write(ft_int_out(part, 1), "'", 1);
-        if (part->hashtag == 1)
-            write(ft_int_out(part, 1), "#", 1);
-        if (part->plus == 1)
-            write(ft_int_out(part, 1), "+", 1);
-        else if (part->space == 1)
-            write(ft_int_out(part, 1), " ", 1);
-        if (part->minus == 1)
-            write(ft_int_out(part, 1), "-", 1);
-        else if (part->zero == 1)
-            write(ft_int_out(part, 1), "0", 1);
-        while (*temp != 'd')
-            write(ft_int_out(part, 1), &(*temp++), 1);
-        write(ft_int_out(part, 1), &(*temp), 1);
-        return (1);
-    }
     part->i = ft_atoi(temp);
     if (part->ll == 1 || part->j == 1)
         nb_ll = va_arg(*part->arg, long long int);
@@ -170,31 +232,27 @@ int     ft_dflag(char *str, struct s_part *part) {
         if (part->minus == 0) {
             if (part->zero == 0) {
                 if (part->plus == 1 && (part->z == 1 || nb_ll >= 0)) {
-                    while (k-- > 1)
-                        write(ft_int_out(part, 1), " ", 1);
+                    k = ft_filler(part, (long int)(k - 1), ' ') + 1;
                     write(ft_int_out(part, 1), "+", 1);
                 } else {
                     if (part->space == 1 && (part->z == 1 || nb_ll >= 0)) {
                         write(ft_int_out(part, 1), " ", 1);
                         k--;
                     }
-                    while (k-- > 0)
-                        write(ft_int_out(part, 1), " ", 1);
+                    k = ft_filler(part, (long int)k, ' ');
                     if (part->points == 1 && nb_ll < 0) {
                         write(ft_int_out(part, 1), "-", 1);
                         nb_ll *= -1;
                     }
                 }
                 if (part->z == 0) {
-                    while (p-- > 0)
-                        write(ft_int_out(part, 1), "0", 1);
+                    p = ft_filler(part, (long int)p, '0');
                     if (!(part->points == 1 && nb_ll == 0)) {
                         ft_int_out(part, ft_strlen_ll_nb(nb_ll));
                         ft_putnbr(nb_ll);
                     }
                 } else {
-                    while (p-- > 0)
-                        write(ft_int_out(part, 1), "0", 1);
+                    p = ft_filler(part, (long int)p, '0');
                     if (!(part->points == 1 && nb_ll == 0)) {
                         ft_int_out(part, ft_strlen_ll_nb(nb_z));
                         ft_putnbr_z_fd(nb_z, 1);
@@ -211,27 +269,23 @@ int     ft_dflag(char *str, struct s_part *part) {
                         write(ft_int_out(part, 1), "+", 1);
                         k--;
                     }
-                    while (k-- > 0)
-                        write(ft_int_out(part, 1), "0", 1);
+                    k = ft_filler(part, (long int)k, '0');
                 } else {
                     if (part->space == 1) {
                         write(ft_int_out(part, 1), " ", 1);
                         k--;
                     }
-                    while (k-- > 0)
-                        write(ft_int_out(part, 1), "0", 1);
+                    k = ft_filler(part, (long int)k, '0');
                 }
 
                 if (part->z == 0) {
-                    while (p-- > 0)
-                        write(ft_int_out(part, 1), "0", 1);
+                    p = ft_filler(part, (long int)p, '0');
                     if (!(part->points == 1 && nb_ll == 0)) {
                         ft_int_out(part, ft_strlen_ll_nb(nb_ll));
                         ft_putnbr(nb_ll);
                     }
                 } else {
-                    while (p-- > 0)
-                        write(ft_int_out(part, 1), "0", 1);
+                    p = ft_filler(part, (long int)p, '0');
                     if (!(part->points == 1 && nb_ll == 0)) {
                         ft_int_out(part, ft_strlen_ll_nb(nb_z));
                         ft_putnbr_z_fd(nb_z, 1);
@@ -321,46 +375,6 @@ int     ft_sflag(char *str, struct s_part *part)
         }
         str++;
     }
-    if (*str == 'l')
-    {
-        write(ft_int_out(part, 1), "%", 1);
-        if (part->quot == 1)
-            write(ft_int_out(part, 1), "'", 1);
-        if (part->hashtag == 1)
-            write(ft_int_out(part, 1), "#", 1);
-        if (part->plus == 1)
-            write(ft_int_out(part, 1), "+", 1);
-        else if (part->space == 1)
-            write(ft_int_out(part, 1), " ", 1);
-        if (part->minus == 1)
-            write(ft_int_out(part, 1), "-", 1);
-        else if (part->zero == 1)
-            write(ft_int_out(part, 1), "0", 1);
-        str++;
-        while (*str != 's')
-            write(ft_int_out(part, 1), &(*str++), 1);
-        write(ft_int_out(part, 1), &(*str), 1);
-        return (1);
-    }
-    if (*str != 's' && (*str <= '0' || *str >= '9')) {
-        write(ft_int_out(part, 1), "%", 1);
-        if (part->quot == 1)
-            write(ft_int_out(part, 1), "'", 1);
-        if (part->hashtag == 1)
-            write(ft_int_out(part, 1), "#", 1);
-        if (part->plus == 1)
-            write(ft_int_out(part, 1), "+", 1);
-        else if (part->space == 1)
-            write(ft_int_out(part, 1), " ", 1);
-        if (part->minus == 1)
-            write(ft_int_out(part, 1), "-", 1);
-        else if (part->zero == 1)
-            write(ft_int_out(part, 1), "0", 1);
-        while (*str != 's')
-            write(ft_int_out(part, 1), &(*str++), 1);
-        write(ft_int_out(part, 1), "s", 1);
-        return (1);
-    }
         while (*temp == '-' || *temp == '+' || *temp == ' ' || *temp == '0' || *temp == '\'' || *temp == '#')
             temp++;
         if (part->point == 0)
@@ -381,13 +395,10 @@ int     ft_sflag(char *str, struct s_part *part)
             if (part->obj == 0)
                 part->obj = ft_strlen(out);
             part->k = part->field - part->obj;
-            if (part->minus == 0) {
-                while ((part->k)-- > 0)
-                    write(ft_int_out(part, 1), " ", 1);
-            }
+            if (part->minus == 0)
+                part->k = ft_filler(part, (long int)(part->k), ' ');
             write(ft_int_out(part, part->obj), out, part->obj);
-            while ((part->k)-- > 0)
-                write(ft_int_out(part, 1), " ", 1);
+            part->k = ft_filler(part, (long int)(part->k), ' ');
             return (1);
         } else {
             if (part->obj == 0) {
@@ -406,7 +417,7 @@ char    *ft_flag(char *str, struct s_part *part) {
 
     ft_fill_struct(part);
     part->format = str;
-    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd'))
+    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd' && str[part->n] != 'c'))
         (part->n)++;
     if (!str[part->n])
         return (part->format + 1);
@@ -417,6 +428,8 @@ char    *ft_flag(char *str, struct s_part *part) {
         return(part->format);
     }
     if (str[part->n] == 'd'  && !ft_dflag((part->format), part))
+        return (part->format + 1);
+    if (str[part->n] == 'c'  && !ft_cflag((part->format), part))
         return (part->format + 1);
     return (part->format + part->n + 1);
 }
@@ -438,5 +451,6 @@ int		ft_printf(const char *format, ...)
         if (*format && *format != '%')
             write(ft_int_out(&part, 1), &(*format++), 1);
     }
+    va_end(arg);
     return (part.int_out);
 }

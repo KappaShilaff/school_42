@@ -4,9 +4,9 @@
 int				main(void)
 {
     int     i, k;
-    i = ft_printf("%zd", -1);
+    i = ft_printf("%1c", NULL);
     printf("\n");
-    k = printf("%zd", -1);
+    k = printf("%1c", NULL);
     printf("\n%d\n%d", i, k);
     return (0);
 }
