@@ -53,6 +53,21 @@ void    ft_fill_struct(struct s_part *this)
     this->flags = 0;
 }
 
+int     ft_perflag(char *str, struct s_part *part)
+{
+    while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == '0'))
+            str++;
+    while (*str >= '0' && *str <= '9')
+        str++;
+    if (*str == '.') {
+        str++;
+        while (*str >= '0' && *str <= '9')
+            str++;
+    }
+    write(ft_int_out(part, 1), "%", 1);
+    return (1);
+}
+
 int     ft_cflag(char *str, struct s_part *part)
 {
     char    out;
@@ -90,34 +105,11 @@ int     ft_cflag(char *str, struct s_part *part)
         if (part->field < 0) {
             write(ft_int_out(part, 1), &out, 1);
             ft_filler(part, (long int)(part->field * -1 - 1), ' ');
-//            write(ft_int_out(part, part->field * -1 - 1), " ", part->field * -1 - 1);
         } else {
             ft_filler(part, (long int)(part->field - 1), ' ');
-//            write(ft_int_out(part, part->field - 1), " ", part->field - 1);
             write(ft_int_out(part, 1), &out, 1);
         }
     }
-//    if (part->field != 0) {
-//        if (part->obj == 0)
-//            part->obj = 1;
-//        part->k = part->field - part->obj;
-//        if (part->minus == 0) {
-//            while ((part->k)-- > 0)
-//                write(ft_int_out(part, 1), " ", 1);
-//        }
-//        write(ft_int_out(part, part->obj), &out, part->obj);
-//        while ((part->k)-- > 0)
-//            write(ft_int_out(part, 1), " ", 1);
-//        return (1);
-//    } else {
-//        if (part->obj == 0) {
-//            ft_putchar(out);
-//            ft_int_out(part, 1);
-//        } else {
-//            if (part->obj > 1)
-//                part->obj = 1;
-//            write(ft_int_out(part, part->obj), &out, part->obj);
-//        }
         return (1);
     }
 
@@ -417,7 +409,7 @@ char    *ft_flag(char *str, struct s_part *part) {
 
     ft_fill_struct(part);
     part->format = str;
-    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd' && str[part->n] != 'c'))
+    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd' && str[part->n] != 'c' && str[part->n] != '%'))
         (part->n)++;
     if (!str[part->n])
         return (part->format + 1);
@@ -430,6 +422,8 @@ char    *ft_flag(char *str, struct s_part *part) {
     if (str[part->n] == 'd'  && !ft_dflag((part->format), part))
         return (part->format + 1);
     if (str[part->n] == 'c'  && !ft_cflag((part->format), part))
+        return (part->format + 1);
+    if (str[part->n] == '%'  && !ft_perflag((part->format), part))
         return (part->format + 1);
     return (part->format + part->n + 1);
 }
