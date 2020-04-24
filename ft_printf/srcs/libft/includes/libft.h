@@ -94,5 +94,7 @@ char				*ft_chmalloc_zend(size_t i);
 void	            ft_putnbr_z_fd(size_t nb, int fd);
 int                 ft_strlen_z_nb(size_t nb);
 int                 ft_strlen_ll_nb(long long int nb);
+char			    *ft_itoa_base(long int value, int base, char x);
+char			    *ft_unsigned_itoa_base(size_t value, int base, char x);
 
 #endif

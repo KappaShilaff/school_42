@@ -99,6 +99,8 @@ SRCS_LIST = ft_memalloc.c\
 			ft_putnbr_z_fd.c\
 			ft_strlen_z_nb.c\
 			ft_strlen_ll_nb.c\
+			ft_itoa_base.c\
+			ft_unsigned_itoa_base.c\
 
 GREEN = \033[01;38;5;119m
 RED = \033[01;38;5;009m

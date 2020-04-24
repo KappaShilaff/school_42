@@ -71,6 +71,27 @@ int     ft_part_minus(struct s_part *part)
     return (1);
 }
 
+int     ft_ox_part_minus(struct s_part *part, char type)
+{
+    if (part->hashtag == 1 ) {
+        if (type == 'x')
+            write(ft_int_out(part, 2), "0x", 2);
+        if (type == 'X')
+            write(ft_int_out(part, 2), "0X", 2);
+        if (type == 'o')
+            write(ft_int_out(part, 1), "0", 1);
+    }
+    if (part->size > part->len)
+        ft_filler(part, part->size - part->len, '0');
+    if (part->len != 0) {
+        ft_putstr(part->number);
+        ft_int_out(part, part->len);
+    }
+    if (part->field >= part->size)
+        ft_filler(part, part->field - part->size, ' ');
+    return (1);
+}
+
 int     ft_part_nominus(struct s_part *part)
 {
     if (part->negative == 1 && part->zero == 1)
@@ -91,6 +112,52 @@ int     ft_part_nominus(struct s_part *part)
         ft_filler(part, part->size - part->len, '0');
     write(ft_int_out(part, part->len), part->num, part->len);
     return (1);
+}
+
+int     ft_ox_part_nominus(struct s_part *part, char type)
+{
+    if (part->zero == 0)
+        ft_filler(part, part->field - part->size, ' ');
+    if (part->hashtag == 1) {
+        if (type == 'x')
+            write(ft_int_out(part, 2), "0x", 2);
+        if (type == 'X')
+            write(ft_int_out(part, 2), "0X", 2);
+        if (type == 'o')
+            write(ft_int_out(part, 1), "0", 1);
+    }
+    if (part->zero == 1)
+        ft_filler(part, part->field - part->size, '0');
+    ft_filler(part, part->size - part->len, '0');
+    if (part->len != 0) {
+        ft_putstr(part->number);
+        ft_int_out(part, part->len);
+    }
+    return (1);
+}
+
+void    ft_oxnumber(struct s_part *part, char type)
+{
+    if (part->ll == 1 || part->l == 1)
+        part->nb_z = va_arg(*part->arg, unsigned long int);
+    else
+        part->nb_z = (unsigned long int)va_arg(*part->arg, unsigned int);
+    if (type == 'x' || type == 'X')
+        part->number = ft_unsigned_itoa_base(part->nb_z, 16, type);
+    else
+        part->number = ft_unsigned_itoa_base(part->nb_z, 8, 'X');
+    part->len = ft_strlen(part->number);
+    if (part->nb_z == 0) {
+        if (part->hashtag == 1)
+            part->nb_ll = 1;
+        part->hashtag = 0;
+    }
+    if (part->hashtag == 1) {
+        if (type == 'x' || type == 'X')
+            part->field -= 2;
+        else
+            part->field -= 1;
+    }
 }
 
 void    ft_parsing(struct s_part *part, char **str, char flag)
@@ -128,6 +195,7 @@ void    ft_parsing(struct s_part *part, char **str, char flag)
             part->field = ft_atoi(*str);
             while (**str >= '0' && **str <= '9')
                 (*str)++;
+            (*str)--;
         }
         if (**str == '.') {
             part->points = 1;
@@ -171,6 +239,22 @@ void    ft_fill_struct(struct s_part *this)
     this->flags = 0;
     this->nb_ll = 0;
     this->size = 0;
+}
+
+int     ft_oxflag(char *str, struct s_part *part, char type)
+{
+    ft_parsing(part, &str, type);
+    ft_oxnumber(part, type);
+    if (!(part->nb_ll == 1 && type == 'o' && part->nb_z == 0 && part->size == 0))
+        if (part->size == 0 && part->points == 1 && part->nb_z == 0)
+            part->len = 0;
+    if (part->len > part->size)
+        part->size = part->len;
+    if (part->size > part->field)
+        part->field = part->size;
+    if (part->minus == 1)
+        return (ft_ox_part_minus(part, type));
+    return (ft_ox_part_nominus(part, type));
 }
 
 int     ft_perflag(char *str, struct s_part *part)
@@ -233,8 +317,8 @@ int     ft_cflag(char *str, struct s_part *part)
         return (1);
     }
 
-int     ft_dflag(char *str, struct s_part *part) {
-    ft_parsing(part, &str, 'd');
+int     ft_dflag(char *str, struct s_part *part, char type) {
+    ft_parsing(part, &str, type);
     ft_dnumber(part);
     if (part->negative == 1 || part->plus == 1 || part->space == 1)
         part->field -= 1;
@@ -312,24 +396,29 @@ int     ft_sflag(char *str, struct s_part *part)
     }
 
 char    *ft_flag(char *str, struct s_part *part) {
-
     ft_fill_struct(part);
     part->format = str;
-    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd' && str[part->n] != 'c' && str[part->n] != '%'))
+    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd' && str[part->n] != 'c'
+    && str[part->n] != '%' && str[part->n] != 'x') && str[part->n] != 'X' && str[part->n] != 'i' && str[part->n] != 'o'
+                                                                                                    && str[part->n] != 'u')
         (part->n)++;
     if (!str[part->n])
         return (part->format + 1);
     if (str[part->n] == 's'  && !ft_sflag(part->format, part))
-    {
-        write(1, "%", 1);
-        (part->int_out)++;
-        return(part->format);
-    }
-    if (str[part->n] == 'd'  && !ft_dflag((part->format), part))
+        return(part->format + 1);
+    if (str[part->n] == 'd'  && !ft_dflag((part->format), part, 'd'))
         return (part->format + 1);
     if (str[part->n] == 'c'  && !ft_cflag((part->format), part))
         return (part->format + 1);
     if (str[part->n] == '%'  && !ft_perflag((part->format), part))
+        return (part->format + 1);
+    if (str[part->n] == 'x'  && !ft_oxflag((part->format), part, 'x'))
+        return (part->format + 1);
+    if (str[part->n] == 'X'  && !ft_oxflag((part->format), part, 'X'))
+        return (part->format + 1);
+    if (str[part->n] == 'o'  && !ft_oxflag((part->format), part, 'o'))
+        return (part->format + 1);
+    if (str[part->n] == 'i'  && !ft_dflag((part->format), part, 'i'))
         return (part->format + 1);
     return (part->format + part->n + 1);
 }

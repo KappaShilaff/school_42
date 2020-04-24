@@ -1,6 +1,8 @@
 #ifndef FT_PRINTF_FT_PRINTF_H
 # define FT_PRINTF_FT_PRINTF_H
 # include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_part
 {
@@ -36,6 +38,8 @@ typedef struct s_part
     char    negative;
     char    points;
     char    flags;
+    char    *number;
+    size_t  nb_z;
 }   t_part;
 
 int				ft_printf(const char *format, ...);

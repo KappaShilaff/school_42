@@ -4,9 +4,9 @@
 int				main(void)
 {
     int     i, k;
-    i = ft_printf("@moulitest: %5.d %5.0d", 0, 0);
+    i = ft_printf("@moulitest: %#.o %#.0o", 0, 0);
     printf("\n");
-    k = printf("@moulitest: %5.d %5.0d", 0, 0);
+    k = printf("@moulitest: %.o %.0o", 0, 0);
     printf("\n%d\n%d", i, k);
     return (0);
 }
