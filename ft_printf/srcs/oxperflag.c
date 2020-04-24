@@ -26,7 +26,7 @@ int     ft_ox_part_minus(struct s_part *part, char type)
 
 int     ft_ox_part_nominus(struct s_part *part, char type)
 {
-    if (part->zero == 0)
+    if (part->zero == 0 || part->points == 1)
         ft_filler(part, part->field - part->size, ' ');
     if (part->hashtag == 1) {
         if (type == 'x')
@@ -36,7 +36,7 @@ int     ft_ox_part_nominus(struct s_part *part, char type)
         if (type == 'o')
             write(ft_int_out(part, 1), "0", 1);
     }
-    if (part->zero == 1)
+    if (part->zero == 1 && part->points == 0)
         ft_filler(part, part->field - part->size, '0');
     ft_filler(part, part->size - part->len, '0');
     if (part->len != 0) {

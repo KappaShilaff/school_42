@@ -63,5 +63,6 @@ int     ft_cflag(char *str, struct s_part *part);
 int     ft_dflag(char *str, struct s_part *part, char type);
 int     ft_sflag(char *str, struct s_part *part);
 char    *ft_flag(char *str, struct s_part *part);
+int     ft_pflag(char *str, struct s_part *part, char type);
 
 #endif

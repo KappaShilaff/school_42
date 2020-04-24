@@ -1,12 +1,14 @@
 #include "ft_printf.h"
+#include "libft.h"
 #include <stdio.h>
 
 int				main(void)
 {
     int     i, k;
-    i = ft_printf("%lu", -42);
+    int     ded = 1;
+    i = ft_printf("%p", 0);
     printf("\n");
-    k = printf("%lu", -42);
+    k = printf("%p", 0);
     printf("\n%d\n%d", i, k);
     return (0);
 }

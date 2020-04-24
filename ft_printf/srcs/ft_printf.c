@@ -110,7 +110,8 @@ char    *ft_flag(char *str, struct s_part *part) {
     part->format = str;
     while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd' && str[part->n] != 'c'
     && str[part->n] != '%' && str[part->n] != 'x') && str[part->n] != 'X' && str[part->n] != 'i' && str[part->n] != 'o'
-                                                                                                    && str[part->n] != 'u')
+                                                                                                    && str[part->n] != 'u'
+                                                                                                       && str[part->n] != 'p')
         (part->n)++;
     if (!str[part->n])
         return (part->format + 1);
@@ -131,6 +132,8 @@ char    *ft_flag(char *str, struct s_part *part) {
     if (str[part->n] == 'i'  && !ft_dflag((part->format), part, 'i'))
         return (part->format + 1);
     if (str[part->n] == 'u'  && !ft_uflag((part->format), part))
+        return (part->format + 1);
+    if (str[part->n] == 'p'  && !ft_pflag((part->format), part, 'x'))
         return (part->format + 1);
     return (part->format + part->n + 1);
 }
