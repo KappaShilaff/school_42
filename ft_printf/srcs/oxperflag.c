@@ -50,6 +50,10 @@ void    ft_oxnumber(struct s_part *part, char type)
 {
     if (part->ll == 1 || part->l == 1)
         part->nb_z = va_arg(*part->arg, unsigned long int);
+    else if (part->h == 1)
+        part->nb_z = (unsigned short int)va_arg(*part->arg, int);
+    else if (part->hh == 1)
+        part->nb_z = (unsigned char)va_arg(*part->arg, int);
     else
         part->nb_z = (unsigned long int)va_arg(*part->arg, unsigned int);
     if (type == 'x' || type == 'X')

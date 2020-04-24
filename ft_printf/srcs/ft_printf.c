@@ -105,37 +105,39 @@ void    ft_fill_struct(struct s_part *this)
     this->size = 0;
 }
 
-char    *ft_flag(char *str, struct s_part *part) {
+int    ft_flag(struct s_part *part) {
+    char *str;
+
     ft_fill_struct(part);
-    part->format = str;
-    while (str[part->n] && ((str[part->n] != 's') && str[part->n] != 'd' && str[part->n] != 'c'
-    && str[part->n] != '%' && str[part->n] != 'x') && str[part->n] != 'X' && str[part->n] != 'i' && str[part->n] != 'o'
+    str = part->format;
+    while (str[part->n] && str[part->n] != 's' && str[part->n] != 'd' && str[part->n] != 'c'
+    && str[part->n] != '%' && str[part->n] != 'x' && str[part->n] != 'X' && str[part->n] != 'i' && str[part->n] != 'o'
                                                                                                     && str[part->n] != 'u'
                                                                                                        && str[part->n] != 'p')
         (part->n)++;
     if (!str[part->n])
-        return (part->format + 1);
+        return (0);
     if (str[part->n] == 's'  && !ft_sflag(part->format, part))
-        return(part->format + 1);
+        return (1);
     if (str[part->n] == 'd'  && !ft_dflag((part->format), part, 'd'))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == 'c'  && !ft_cflag((part->format), part))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == '%'  && !ft_perflag((part->format), part))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == 'x'  && !ft_oxflag((part->format), part, 'x'))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == 'X'  && !ft_oxflag((part->format), part, 'X'))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == 'o'  && !ft_oxflag((part->format), part, 'o'))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == 'i'  && !ft_dflag((part->format), part, 'i'))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == 'u'  && !ft_uflag((part->format), part))
-        return (part->format + 1);
+        return (1);
     if (str[part->n] == 'p'  && !ft_pflag((part->format), part, 'x'))
-        return (part->format + 1);
-    return (part->format + part->n + 1);
+        return (1);
+    return (1);
 }
 
 int		ft_printf(const char *format, ...)
@@ -147,13 +149,17 @@ int		ft_printf(const char *format, ...)
     va_start(arg, format);
     part.arg = &arg;
     part.int_out = 0;
-    while (*format) {
-        if (*format == '%') {
-            format++;
-            format = ft_flag((char *)format, &part);
+    part.format = (char *)format;
+    while (*part.format) {
+        if (*part.format == '%') {
+            (part.format)++;
+            if (ft_flag(&part) == 1)
+                (part.format) += part.n + 1;
+            else
+                return(-1);
         }
-        if (*format && *format != '%')
-            write(ft_int_out(&part, 1), &(*format++), 1);
+        if (*part.format && *part.format != '%')
+            write(ft_int_out(&part, 1), &(*(part.format)++), 1);
     }
     va_end(arg);
     return (part.int_out);
