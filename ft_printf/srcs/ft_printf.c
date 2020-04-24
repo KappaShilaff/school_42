@@ -75,6 +75,12 @@ void    ft_parsing(struct s_part *part, char **str, char flag)
 
 void    ft_fill_struct(struct s_part *this)
 {
+    if (this->negative == 1 && this->nb_ll != 0)
+        (this->num)--;
+    if (this->nb_ll != 0)
+        free(this->num);
+    if (this->nb_z != 0)
+        free(this->number);
     this->len = 0;
     this->d = 0;
     this->hashtag = 0;
@@ -88,7 +94,6 @@ void    ft_fill_struct(struct s_part *this)
     this->s = 0;
     this->quot = 0;
     this->n = 0;
-    this->tmp = NULL;
     this->point = 0;
     this->obj = 0;
     this->field = 0;
@@ -102,6 +107,7 @@ void    ft_fill_struct(struct s_part *this)
     this->points = 0;
     this->flags = 0;
     this->nb_ll = 0;
+    this->nb_z = 0;
     this->size = 0;
 }
 
@@ -145,7 +151,7 @@ int		ft_printf(const char *format, ...)
     va_list arg;
     struct s_part part;
 
-
+    ft_bzero(&part, sizeof(struct s_part));
     va_start(arg, format);
     part.arg = &arg;
     part.int_out = 0;

@@ -93,7 +93,7 @@ int     ft_cflag(char *str, struct s_part *part)
     part->field = ft_atoi(temp);
     while (*temp >= '0' && *temp <= '9')
         temp++;
-    out = (char)va_arg(*part->arg, char *);
+    out = va_arg(*part->arg, int);
     if (*temp == '.') {
         temp++;
         while (*temp >= '0' && *temp <= '9')

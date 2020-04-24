@@ -102,9 +102,6 @@ SRCS_LIST = ft_memalloc.c\
 			ft_itoa_base.c\
 			ft_unsigned_itoa_base.c\
 
-GREEN = \033[01;38;5;119m
-RED = \033[01;38;5;009m
-RESET = \033[0m
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
@@ -118,26 +115,18 @@ all:  $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo ""
-	ranlib $(NAME)
-	@echo "obj files were created."
-	@echo "$(NAME) was created.$(RESET)"
+	@ranlib $(NAME)
 
 $(OBJ_DIR):
-	@echo "$(GREEN)"
 	@mkdir -p $(OBJ_DIR)
-	@echo "Directory \"$(OBJ_DIR:/=)\" was created.\n"
 
 $(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HEADERS)
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "\n$(RED)$(OBJ_DIR:/=) was deleted.$(RESET)"
-	@echo "$(RED)obj files were deleted.$(RESET)"
 
 fclean: clean 
-	@rm -rf $(NAME)	
-	@echo "$(RED)$(NAME) was deleted.$(RESET)"
+	@rm -rf $(NAME)
 
 re: fclean all
