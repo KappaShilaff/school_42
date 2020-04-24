@@ -4,9 +4,9 @@
 int				main(void)
 {
     int     i, k;
-    i = ft_printf("@moulitest: %#.o %#.0o", 0, 0);
+    i = ft_printf("%lu", -42);
     printf("\n");
-    k = printf("@moulitest: %.o %.0o", 0, 0);
+    k = printf("%lu", -42);
     printf("\n%d\n%d", i, k);
     return (0);
 }
