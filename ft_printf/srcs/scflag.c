@@ -71,44 +71,16 @@ int     ft_sflag(char *str, struct s_part *part)
 int     ft_cflag(char *str, struct s_part *part)
 {
     char    out;
-    char    *temp;
 
-    temp = str;
-    while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == '0'))
-    {
-        if (*str == '\'')
-            part->quot = 1;
-        if (*str == '-')
-            part->minus = 1;
-        if (*str == '+')
-            part->plus = 1;
-        if (*str == ' ')
-            part->space = 1;
-        if (*str == '#')
-            part->hashtag = 1;
-        if (*str == '0')
-            part->zero = 1;
-        str++;
-    }
-    part->field = ft_atoi(temp);
-    while (*temp >= '0' && *temp <= '9')
-        temp++;
+    ft_parsing(part, &str, 'c');
     out = va_arg(*part->arg, int);
-    if (*temp == '.') {
-        temp++;
-        while (*temp >= '0' && *temp <= '9')
-            temp++;
-    }
-    if (part->field == 0 || part->field == 1 || part->field == -1)
+    if (part->minus == 1) {
         write(ft_int_out(part, 1), &out, 1);
-    else {
-        if (part->field < 0) {
-            write(ft_int_out(part, 1), &out, 1);
-            ft_filler(part, (long int)(part->field * -1 - 1), ' ');
-        } else {
-            ft_filler(part, (long int)(part->field - 1), ' ');
-            write(ft_int_out(part, 1), &out, 1);
-        }
+        ft_filler(part, (long int) (part->field - 1), ' ');
     }
+    else {
+        ft_filler(part, (long int) (part->field - 1), ' ');
+        write(ft_int_out(part, 1), &out, 1);
+        }
     return (1);
 }

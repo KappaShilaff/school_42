@@ -6,9 +6,9 @@ int				main(void)
 {
     int     i, k;
     int     ded = 1;
-    i = ft_printf("%x", 0);
+    i = ft_printf("%c", 0);
     printf("\n");
-    k = printf("%o, %ho, %hho", -42, -42, -42);
+    k = printf("%c", 0);
     printf("\n%d\n%d", i, k);
     return (0);
 }
