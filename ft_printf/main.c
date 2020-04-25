@@ -6,9 +6,9 @@ int				main(void)
 {
     int     i, k;
     int     ded = 1;
-    i = ft_printf("%c", 0);
+    i = ft_printf("%-.2s is a string", NULL);
     printf("\n");
-    k = printf("%c", 0);
+    k = printf("%-.2s is a string", NULL);
     printf("\n%d\n%d", i, k);
     return (0);
 }
