@@ -24,37 +24,41 @@ int     ft_filler(struct s_part *this, long int i, char k)
     return (0);
 }
 
+void    ft_helpforparsing(struct s_part *part, char **str)
+{
+    if (**str == '-')
+        part->minus = 1;
+    if (**str == '+')
+        part->plus = 1;
+    if (**str == 'L')
+        part->L = 1;
+    if (**str == '0')
+        part->zero = 1;
+    if (**str == 'h') {
+        if (*(*str + 1) && (*(*str + 1) == 'h')) {
+            part->hh = 1;
+            (*str)++;
+        } else
+            part->h = 1;
+    }
+    if (**str == 'l') {
+        if (*(*str + 1) && (*(*str + 1) == 'l')) {
+            part->ll = 1;
+            (*str)++;
+        } else
+            part->l = 1;
+    }
+}
+
 void    ft_parsing(struct s_part *part, char **str, char flag)
 {
     while (**str == ' ' || **str == '+' || **str == '-'  || (**str >= '0' && **str <= '9') || **str == 'l'  ||
            **str == 'h' || **str == 'j' || **str == '#' || **str == '.') {
-        if (**str == '-')
-            part->minus = 1;
-        if (**str == '+')
-            part->plus = 1;
-        if (**str == 'L')
-            part->L = 1;
-        if (**str == '0')
-            part->zero = 1;
-        if (**str == 'h') {
-            if (*(*str + 1) && (*(*str + 1) == 'h')) {
-                part->hh = 1;
-                (*str)++;
-            } else
-                part->h = 1;
-        }
-        if (**str == 'l') {
-            if (*(*str + 1) && (*(*str + 1) == 'l')) {
-                part->ll = 1;
-                (*str)++;
-            } else
-                part->l = 1;
-        }
+        ft_helpforparsing(part, str);
         if (**str == '#')
             part->hashtag = 1;
         if (**str == ' ')
             part->space = 1;
-
         if (**str >= '1' && **str <= '9') {
             part->field = ft_atoi(*str);
             while (**str >= '0' && **str <= '9')
