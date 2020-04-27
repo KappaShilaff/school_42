@@ -29,6 +29,8 @@ int     ft_upart_minus(struct s_part *part)
     if (part->size > part->len)
         ft_filler(part, part->size - part->len, '0');
     write(ft_int_out(part, part->len), part->num, part->len);
+    if (part->len != 0 && part->nb_z != 0)
+        free(part->num);
     if (part->field >= part->size)
         ft_filler(part, part->field - part->size, ' ');
     return (1);
@@ -43,6 +45,8 @@ int     ft_upart_nominus(struct s_part *part)
     if (part->size > part->len)
         ft_filler(part, part->size - part->len, '0');
     write(ft_int_out(part, part->len), part->num, part->len);
+    if (part->len != 0 && part->nb_z != 0)
+        free(part->num);
     return (1);
 }
 
