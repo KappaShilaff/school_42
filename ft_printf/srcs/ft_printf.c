@@ -21,6 +21,7 @@ int     ft_filler(struct s_part *this, long int i, char k)
     while (i-- > 0)
         out[i] = k;
     write(ft_int_out(this, (int)temp), out, temp);
+    free(out);
     return (0);
 }
 
