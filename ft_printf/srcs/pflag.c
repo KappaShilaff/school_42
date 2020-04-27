@@ -30,9 +30,11 @@ int     ft_pflag(char *str, struct s_part *part, char type)
     part->hashtag = 1;
     ft_pnumber(part, 'x');
     if (part->nb_z == 0) {
-        part->number = malloc(3);
-        part->number = "0";
-        part->len = 1;
+        if (!(part->points == 1 && part->size == 0)) {
+            part->number = malloc(3);
+            part->number = "0";
+            part->len = 1;
+        }
         part->field -= 2;
     }
     if (part->len > part->size)
