@@ -60,6 +60,8 @@ int     ft_part_nominus(struct s_part *part)
         write(ft_int_out(part, 1), "-", 1);
     if (part->plus == 1 && part->zero == 1)
         write(ft_int_out(part, 1), "+", 1);
+    if (part->space == 1)
+        write(ft_int_out(part, 1), " ", 1);
     if (part->zero == 1)
         ft_filler(part, part->field - part->size, '0');
     else
@@ -68,8 +70,6 @@ int     ft_part_nominus(struct s_part *part)
         write(ft_int_out(part, 1), "-", 1);
     if (part->plus == 1 && part->zero == 0)
         write(ft_int_out(part, 1), "+", 1);
-    if (part->space == 1)
-        write(ft_int_out(part, 1), " ", 1);
     if (part->size > part->len)
         ft_filler(part, part->size - part->len, '0');
     write(ft_int_out(part, part->len), part->num, part->len);
