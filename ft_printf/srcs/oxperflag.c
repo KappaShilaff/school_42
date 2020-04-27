@@ -35,8 +35,9 @@ int     ft_ox_part_nominus(struct s_part *part, char type)
             write(ft_int_out(part, 2), "0x", 2);
         if (type == 'X')
             write(ft_int_out(part, 2), "0X", 2);
-        if (type == 'o')
+        if (type == 'o') {
             write(ft_int_out(part, 1), "0", 1);
+        }
     }
     if (part->zero == 1 && part->points == 0)
         ft_filler(part, part->field - part->size, '0');
@@ -70,10 +71,11 @@ void    ft_oxnumber(struct s_part *part, char type)
         part->hashtag = 0;
     }
     if (part->hashtag == 1) {
-        if (type == 'x' || type == 'X')
-            part->field -= 2;
-        else
-            part->field -= 1;
+        part->field -= 2;
+            if (type == 'o') {
+                part->field += 1;
+                part->size -= 1;
+            }
     }
 }
 
