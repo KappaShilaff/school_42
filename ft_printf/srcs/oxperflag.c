@@ -17,6 +17,8 @@ int     ft_ox_part_minus(struct s_part *part, char type)
         ft_filler(part, part->size - part->len, '0');
     if (part->len != 0) {
         ft_putstr(part->number);
+        if (part->len != 0 && part->nb_z != 0)
+            free(part->number);
         ft_int_out(part, part->len);
     }
     if (part->field >= part->size)
@@ -41,6 +43,8 @@ int     ft_ox_part_nominus(struct s_part *part, char type)
     ft_filler(part, part->size - part->len, '0');
     if (part->len != 0) {
         ft_putstr(part->number);
+        if (part->len != 0 && part->nb_z != 0)
+            free((part->number));
         ft_int_out(part, part->len);
     }
     return (1);
@@ -60,7 +64,6 @@ void    ft_oxnumber(struct s_part *part, char type)
         part->number = ft_unsigned_itoa_base(part->nb_z, 16, type);
     else
         part->number = ft_unsigned_itoa_base(part->nb_z, 8, 'X');
-    part->len = ft_strlen(part->number);
     if (part->nb_z == 0) {
         if (part->hashtag == 1)
             part->nb_ll = 1;
@@ -78,6 +81,7 @@ int     ft_oxflag(char *str, struct s_part *part, char type)
 {
     ft_parsing(part, &str, type);
     ft_oxnumber(part, type);
+    part->len = ft_strlen(part->number);
     if (!(part->nb_ll == 1 && type == 'o' && part->nb_z == 0 && part->size == 0))
         if (part->size == 0 && part->points == 1 && part->nb_z == 0)
             part->len = 0;

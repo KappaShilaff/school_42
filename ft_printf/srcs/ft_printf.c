@@ -79,12 +79,7 @@ void    ft_parsing(struct s_part *part, char **str, char flag)
 
 void    ft_fill_struct(struct s_part *this)
 {
-    if (this->negative == 1 && this->nb_ll != 0)
-        (this->num)--;
-    if (this->nb_ll != 0)
-        free(this->num);
-    if (this->nb_z != 0)
-        free(this->number);
+
     this->len = 0;
     this->d = 0;
     this->hashtag = 0;

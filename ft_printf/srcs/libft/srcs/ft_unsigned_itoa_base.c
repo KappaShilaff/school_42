@@ -28,7 +28,7 @@ char			*ft_unsigned_itoa_base(size_t value, int base, char x)
     sign = 0;
     if (value == 0)
         return ("0");
-    tab_base = (char *)malloc(sizeof(char) * 17);
+//    tab_base = (char *)malloc(sizeof(char) * 17);
     if (x == 'X')
         tab_base = "0123456789ABCDEF";
     else
@@ -44,6 +44,7 @@ char			*ft_unsigned_itoa_base(size_t value, int base, char x)
         value /= base;
     }
     ret[taille] = '\0';
+//    free(tab_base);
     return (ret);
 }
 
