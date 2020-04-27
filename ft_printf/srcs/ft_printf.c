@@ -162,7 +162,7 @@ int		ft_printf(const char *format, ...)
             if (ft_flag(&part) == 1)
                 (part.format) += part.n + 1;
             else
-                return(-1);
+                return(0);
         }
         if (*part.format && *part.format != '%')
             write(ft_int_out(&part, 1), &(*(part.format)++), 1);

@@ -30,7 +30,7 @@ int     ft_pflag(char *str, struct s_part *part, char type)
     part->hashtag = 1;
     ft_pnumber(part, 'x');
     if (part->nb_z == 0) {
-        write(ft_int_out(part, 5), "(nil)", 5);
+        write(ft_int_out(part, 3), "0x0", 3);
         return (1);
     }
     if (part->len > part->size)

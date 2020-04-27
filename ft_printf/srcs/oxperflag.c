@@ -96,15 +96,16 @@ int     ft_oxflag(char *str, struct s_part *part, char type)
 
 int     ft_perflag(char *str, struct s_part *part)
 {
-    while (*str == '.' || *str == '\'' || *str == ' ' || *str == '+' || *str == '-' || *str == '*' || *str == '#' || (*str == '0'))
-        str++;
-    while (*str >= '0' && *str <= '9')
-        str++;
-    if (*str == '.') {
-        str++;
-        while (*str >= '0' && *str <= '9')
-            str++;
-    }
-    write(ft_int_out(part, 1), "%", 1);
+    ft_parsing(part, &str, '%');
+    if(part->size > part->field)
+        part->field = part->size;
+    if (part->minus == 1)
+        write(ft_int_out(part, 1), "%", 1);
+    if (part->zero == 1)
+        ft_filler(part, part->field - 1, '0');
+    else
+        ft_filler(part, part->field - 1, ' ');
+    if (part->minus == 0)
+        write(ft_int_out(part, 1), "%", 1);
     return (1);
 }
