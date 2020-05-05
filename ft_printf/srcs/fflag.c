@@ -53,4 +53,3 @@ int     ft_fflag(char *str, struct s_part *part)
     ft_fnumber(part);
     return (1);
 }
-
