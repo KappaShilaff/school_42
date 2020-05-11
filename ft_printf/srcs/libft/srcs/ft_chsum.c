@@ -3,10 +3,10 @@
 
 char    *ft_chsum(char *str1, char *str2)
 {
-    int     i[6];
+    int     i[5];
     char    *res;
 
-    ft_bzero(i, sizeof(int[6]));
+    ft_bzero(i, sizeof(int[5]));
     while (str1[i[1]] && str1[i[1]] != '.')
         i[1]++;
     while (str2[i[2]] && str2[i[2]] != '.')
