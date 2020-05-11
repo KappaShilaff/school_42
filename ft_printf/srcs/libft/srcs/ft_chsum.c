@@ -58,10 +58,13 @@ char    *ft_chsum(char *str1, char *str2)
             i[0]--;
         }
     }
-    if (*res == '0') {
+    if (res[0] == '0' && res[1] != '.') {
         del = res;
         res = ft_strdup(++res);
         free(del);
     }
+    i[0] = ft_strlen(res) - 1;
+    while(res[i[0]] == '0' && res[i[0] - 1] != '.')
+        res[i[0]--] = '\0';
     return (res);
 }

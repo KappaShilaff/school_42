@@ -12,7 +12,8 @@ int				main(void)
 //    printf("\n");
 //    ft_printf("%f", (double)5);
 //    printf("hehe %d\n", (((unsigned long int)(double)-100 >> 62) & 1u));
-    printf("%s", ft_chmult("9992312321312.123", "999923.123"));
-//    ft_printf("%s\n", ft_chsum("312764126749.812376846718913726", "891327649123874682391.18327466918237469321786"));
+    printf("%.5f\n", 0.3+0.3+0.3);
+    printf("%s\n", ft_chmult("100.0", "1.0"));
+    ft_printf("%s\n", ft_chsum("1.05", "1.05"));
     return (0);
 }

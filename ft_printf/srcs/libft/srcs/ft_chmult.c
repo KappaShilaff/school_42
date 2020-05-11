@@ -19,8 +19,8 @@ char    *ft_chmult(char *str1, char *str2)
         i[4]++;
     i[0] = i[1] + i[2] + i[3] + i[4] - 1;
     res = malloc(i[0] + 1);
-    ft_bzero(res, i[0]);
-    i[5] = i[2] + i[4];
+    ft_bzero(res, i[0] + 1);
+    i[5] = i[3] + i[4] - 1;
     res[i[0] - i[5]] = 100;
     i[1] += i[3] - 1;
     i[2] += i[4] - 1;
@@ -31,8 +31,10 @@ char    *ft_chmult(char *str1, char *str2)
     while(i[2] >= 0)
     {
         i[0] = i[6];
-        if (res[i[0]] == 100)
+        if (res[i[0]] == 100) {
             i[0]--;
+            i[6]--;
+        }
         if (str2[i[2]] == '.')
             i[2]--;
         i[1] = i[7];
@@ -53,15 +55,18 @@ char    *ft_chmult(char *str1, char *str2)
     i[0] = 0;
     while (res[i[0]] == '\0')
         res[i[0]++] = '0';
-    while(i[0] != i[8]) {
+    while(i[0] <= i[8]) {
         if (res[i[0]] == 100)
             res[i[0]++] = '.';
         res[i[0]++] += '0';
     }
-    if (*res == '0') {
+    if (res[0] == '0' && res[1] != '.') {
         del = res;
         res = ft_strdup(res + 1);
         free(del);
+        i[8]--;
     }
+    while(res[i[8]] == '0' && res[i[8] - 1] != '.')
+        res[i[8]--] = '\0';
     return (res);
 }
