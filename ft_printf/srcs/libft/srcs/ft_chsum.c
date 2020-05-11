@@ -5,6 +5,7 @@ char    *ft_chsum(char *str1, char *str2)
 {
     int     i[5];
     char    *res;
+    char    *del;
 
     ft_bzero(i, sizeof(int[5]));
     while (str1[i[1]] && str1[i[1]] != '.')
@@ -56,6 +57,11 @@ char    *ft_chsum(char *str1, char *str2)
             }
             i[0]--;
         }
+    }
+    if (*res == '0') {
+        del = res;
+        res = ft_strdup(++res);
+        free(del);
     }
     return (res);
 }
