@@ -18,8 +18,8 @@ char    *ft_chmult(char *str1, char *str2)
     while (str2[i[2] + i[4]])
         i[4]++;
     i[0] = i[1] + i[2] + i[3] + i[4] - 1;
-    res = malloc(i[0] + 1);
-    ft_bzero(res, i[0] + 1);
+    res = malloc(i[0] + 2);
+    ft_bzero(res, i[0] + 3);
     i[5] = i[3] + i[4] - 1;
     res[i[0] - i[5]] = 100;
     i[1] += i[3] - 1;

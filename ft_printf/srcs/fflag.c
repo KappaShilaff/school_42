@@ -10,6 +10,9 @@ void    ft_fnumber(struct s_part *part)
     int    e, k, l, mt, i[11];
     unsigned long int       kek;
     char    *mant;
+    char    *bin;
+    char    *exp;
+    char    *res;
 
     e = -1023;
     k = 1;
@@ -44,7 +47,10 @@ void    ft_fnumber(struct s_part *part)
         part->negative = 1;
     if (e == -1023)
         mant[0] = '0';
-    printf("mantissa %s\nexponent %d\nnegative %d", mant, e, part->negative);
+    bin = bin2str(mant);
+    exp = ft_chexp("2.0", e);
+    res = ft_chmult(exp, bin);
+    printf("mantissa %s = %s\nexponent %d = %s\nnegative %d\nresult %s", mant, bin, e, exp, part->negative, res);
 }
 
 int     ft_fflag(char *str, struct s_part *part)

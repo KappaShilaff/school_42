@@ -24,8 +24,8 @@ char    *ft_chsum(char *str1, char *str2)
         i[0] += i[3];
     else
         i[0] += i[4];
-    res = malloc(i[0] + 1);
-    ft_bzero(res, i[0]);
+    res = malloc(i[0] + 2);
+    ft_bzero(res, i[0] + 3);
     i[3]--;
     i[4]--;
     res[0] = '0';

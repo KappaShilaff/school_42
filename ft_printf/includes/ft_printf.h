@@ -66,5 +66,6 @@ int     ft_sflag(char *str, struct s_part *part);
 int     ft_flag(struct s_part *part);
 int     ft_pflag(char *str, struct s_part *part, char type);
 int     ft_fflag(char *str, struct s_part *part);
+char    *bin2str(char *str);
 
 #endif
