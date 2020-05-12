@@ -45,10 +45,13 @@ void    ft_fnumber(struct s_part *part)
             e += i[k - 1];
     if (((kek >> l & 1u)) == 1)
         part->negative = 1;
-    if (e == -1023)
-        mant[0] = '0';
+        if (e == -1022)
+            mant[0] = '0';
     bin = bin2str(mant);
-    exp = ft_chexp("2.0", e);
+    if (e > 0)
+        exp = ft_chexp("2.0", e);
+    else
+        exp = ft_chexp("0.5", -e);
     res = ft_chmult(exp, bin);
     printf("mantissa %s = %s\nexponent %d = %s\nnegative %d\nresult %s", mant, bin, e, exp, part->negative, res);
 }

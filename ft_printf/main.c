@@ -10,8 +10,8 @@ int				main(void)
 //    int     ded = 1;
 //    i = ft_printf("%#.3o", 1);
 //    printf("\n");
-    ft_printf("%f", (double)5.1);
-    printf("\n%.49f", (double)5.1);
+    ft_printf("%f", (double)1.0000000000000002);
+    printf("\n%.49f", (double)1.0000000000000002);
 //    printf("hehe %d\n", (((unsigned long int)(double)-100 >> 62) & 1u));
 //    printf("%.5f\n", 0.3+0.3+0.3);
 //    printf("%s\n", ft_chmult("100.0", "1.0"));
