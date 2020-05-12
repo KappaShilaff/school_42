@@ -104,6 +104,7 @@ SRCS_LIST = ft_memalloc.c\
 			ft_chsum.c\
 			ft_chmult.c\
 			ft_chexp.c\
+			ft_chround.c\
 
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))

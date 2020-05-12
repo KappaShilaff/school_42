@@ -8,6 +8,7 @@ char    *bin2str(char *str)
 {
     char    *res;
     char    *buf;
+    char    *exp;
     int     i;
 
     i = 2;
@@ -16,8 +17,10 @@ char    *bin2str(char *str)
     {
         if (str[i] == '1') {
             buf = res;
-            res = ft_chsum(res, ft_chexp("0.5", i - 1));
-//            free(buf);
+            exp = ft_chexp("0.5", i - 1);
+            res = ft_chsum(res, exp);
+            free(exp);
+            free(buf);
         }
         i++;
     }

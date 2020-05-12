@@ -10,7 +10,7 @@ OBJ_DIR =	obj/
 SRC_DIR =	srcs/
 LIB_DIR =	srcs/libft/
 
-CFILE =		ft_printf.c uflag.c idflag.c oxperflag.c scflag.c pflag.c\
+CFILE =		ft_printf.c uflag.c idflag.c oxperflag.c scflag.c pflag.c fflag.c bin2str.c\
 
 
 CFIND =		$(CFILE:%=$(SRC_DIR)%)
