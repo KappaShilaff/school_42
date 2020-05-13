@@ -12,7 +12,7 @@ char    *ft_chexp(char *str, size_t n)
     while (n-- > 1) {
         buf = res;
         res = ft_chmult(res, str);
-//        free(buf);
+        free(buf);
     }
     return (res);
 }
