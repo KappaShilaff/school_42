@@ -19,9 +19,10 @@ int				main(void)
 //    printf("%s\n", ft_chmult("100.0", "25.0"));
 //      printf("%s\n", bin2str("0.111111111111111111111111111111111\0"));
 //      printf("%s\n", ft_chexp("0.5", 2));
-//      ft_printf("%s\n", ft_chsum("0.0", "0.25"));
+//      printf("%s\n", ft_chsum("100.0", "15.250"));
 //    res = bin2str("0.111111");
-    ft_printf("%f", (double)5.1);
+    ft_printf("%f", (double)5.4);
+    printf("\n%.49f", (double)5.4);
 //    free(res);
     return (0);
 }
