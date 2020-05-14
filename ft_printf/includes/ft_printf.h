@@ -40,6 +40,7 @@ typedef struct s_part
     char    flags;
     char    *number;
     double  dnum;
+    int     e;
     unsigned long long int nb_z;
 }   t_part;
 

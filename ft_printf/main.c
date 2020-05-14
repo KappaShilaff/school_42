@@ -23,8 +23,10 @@ int				main(void)
 //      printf("%s\n", ft_chexp("0.5", 2));
 //      printf("%s\n", ft_chsum("100.0", "15.250"));
 //    res = bin2str("0.111111");
-    ft_printf("%f", (double)5.4);
-    printf("\n%.49f", (double)5.4);
+    ft_printf("%+ 050.32f\n", (double)5.123);
+    printf("%+ 050.32f\n", (double)5.123);
+//    ft_printf("% +050d\n", 50123);
+//    printf("% +050d\n", 50123);
 //    free(res);
     return (0);
 }

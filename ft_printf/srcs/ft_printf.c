@@ -109,6 +109,7 @@ void    ft_fill_struct(struct s_part *this)
     this->nb_ll = 0;
     this->nb_z = 0;
     this->size = 0;
+    this->e = -1023;
 }
 
 int    ft_flag(struct s_part *part) {

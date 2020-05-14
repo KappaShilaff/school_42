@@ -16,30 +16,37 @@ static char *zeronum(size_t n)
     return (res);
 }
 
-char    *ft_chround(char *str, size_t n)
+static void norme1(int i[1], int k[1], int n[1], char **str)
+{
+    char    *buf;
+
+    i[0] = 0;
+    k[0] = 0;
+    while ((*str)[i[0]] && (*str)[i[0]] != '.')
+        i[0]++;
+    if (i[0] + n[0] + 1 < ft_strlen(*str))
+        if ((*str)[i[0] + n[0] + 1] >= '4'  && (*str)[i[0] + n[0] + 1] <= '9')
+        {
+            buf = zeronum(n[0]);
+            *str = ft_chsum(*str, buf);
+            free(buf);
+            k[0] = 1;
+        }
+}
+
+char    *ft_chround(char *str, int n)
 {
     char    *res;
-    char    *buf;
-    size_t     i;
+    int     i;
     int     size;
     int     k;
 
-    i = 0;
-    k = 0;
-    while (str[i] && str[i] != '.')
-        i++;
-    if (i + n < ft_strlen(str))
-        if (str[i + n] >= '4'  && str[i + n] <= '9')
-        {
-            buf = zeronum(n);
-            str = ft_chsum(str, buf);
-            free(buf);
-            k = 1;
-        }
-    res = ft_chmalloc_zend(i + n);
+    norme1(&i, &k, &n, &str);
+    res = ft_chmalloc_zend(i + n + 1);
     size = i + n;
     i = 0;
-    while ((size-- >= 0) && str[i]) {
+    while ((size-- >= 0) && str[i])
+    {
         res[i] = str[i];
         i++;
     }
