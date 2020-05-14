@@ -6,7 +6,8 @@
 
 int				main(void)
 {
-    char *res;
+//    char *res;
+//    res = ft_chexp("0.5", 100000);
 //    int     i, k;
 //    int     ded = 1;
 //        ft_printf("%s\n", "lol");
@@ -16,7 +17,8 @@ int				main(void)
 //    printf("\n%-100.100f", (double)123.1);
 //    printf("hehe %d\n", (((unsigned long int)(double)-100 >> 62) & 1u));
 //    printf("%.5f\n", 0.3+0.3+0.3);
-//    printf("%s\n", ft_chmult("100.0", "25.0"));
+//    printf("%s\n", res);
+//    free(res);
 //      printf("%s\n", bin2str("0.111111111111111111111111111111111\0"));
 //      printf("%s\n", ft_chexp("0.5", 2));
 //      printf("%s\n", ft_chsum("100.0", "15.250"));

@@ -54,6 +54,10 @@ void    ft_fnumber(struct s_part *part)
         exp = ft_chexp("0.5", -e);
     res = ft_chmult(exp, bin);
     printf("mantissa %s = %s\nexponent %d = %s\nnegative %d\nresult %s", mant, bin, e, exp, part->negative, res);
+    free(res);
+    free(mant);
+    free(bin);
+    free(exp);
 }
 
 int     ft_fflag(char *str, struct s_part *part)
