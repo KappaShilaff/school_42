@@ -24,7 +24,7 @@ static void norme1(int i[1], int k[1], int n[1], char **str)
     k[0] = 0;
     while ((*str)[i[0]] && (*str)[i[0]] != '.')
         i[0]++;
-    if (i[0] + n[0] + 1 < ft_strlen(*str))
+    if (i[0] + n[0] + 1 < (int)ft_strlen(*str))
         if ((*str)[i[0] + n[0] + 1] >= '4'  && (*str)[i[0] + n[0] + 1] <= '9')
         {
             buf = zeronum(n[0]);
