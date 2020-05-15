@@ -54,7 +54,7 @@ void    ft_helpforparsing(struct s_part *part, char **str)
 void    ft_parsing(struct s_part *part, char **str, char flag)
 {
     while (**str == ' ' || **str == '+' || **str == '-'  || (**str >= '0' && **str <= '9') || **str == 'l'  ||
-           **str == 'h' || **str == 'j' || **str == '#' || **str == '.') {
+           **str == 'h' || **str == 'j' || **str == '#' || **str == '.' || **str == 'L') {
         ft_helpforparsing(part, str);
         if (**str == '#')
             part->hashtag = 1;
@@ -72,6 +72,7 @@ void    ft_parsing(struct s_part *part, char **str, char flag)
             part->size = ft_atoi(*str);
             while (**str >= '0' && **str <= '9')
                 (*str)++;
+            (*str)--;
         }
         if (**str != flag)
             (*str)++;
@@ -110,6 +111,7 @@ void    ft_fill_struct(struct s_part *this)
     this->nb_z = 0;
     this->size = 0;
     this->e = -1023;
+    this->f = 0;
 }
 
 int    ft_flag(struct s_part *part) {

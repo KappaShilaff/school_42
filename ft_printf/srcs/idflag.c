@@ -73,7 +73,7 @@ int     ft_part_nominus(struct s_part *part)
     if (part->size > part->len)
         ft_filler(part, part->size - part->len, '0');
     write(ft_int_out(part, part->len), part->num, part->len);
-    if (part->negative == 1)
+    if (part->negative == 1 && part->f == 0)
         part->num--;
     free(part->num);
     return (1);

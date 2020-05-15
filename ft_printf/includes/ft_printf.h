@@ -41,7 +41,9 @@ typedef struct s_part
     char    *number;
     double  dnum;
     int     e;
+    long double ldnum;
     unsigned long long int nb_z;
+    char    f;
 }   t_part;
 
 int				ft_printf(const char *format, ...);
@@ -68,5 +70,6 @@ int     ft_flag(struct s_part *part);
 int     ft_pflag(char *str, struct s_part *part, char type);
 int     ft_fflag(char *str, struct s_part *part);
 char    *bin2str(char *str);
+void    flnumber(struct s_part *part);
 
 #endif

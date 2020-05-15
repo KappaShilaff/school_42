@@ -9,7 +9,7 @@ char    *ft_chexp(char *str, size_t n)
 
     value = ft_strdup(str);
     if (n == 0)
-        return ("1.0");
+        return (ft_strdup("1.0"));
     res = ft_strdup("1.0");
     while (n > 0)
     {
