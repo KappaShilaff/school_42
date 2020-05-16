@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <zconf.h>
 
 int				main(void)
 {
@@ -23,8 +24,8 @@ int				main(void)
 //      printf("%s\n", ft_chexp("0.5", 2));
 //      printf("%s\n", ft_chsum("100.0", "15.250"));
 //    res = bin2str("0.111111");
-   ft_printf("%.f\n", (double)15.449);
-   printf("%.f\n", (double)15.449);
+   ft_printf("%.hhx|%-.hhx|%#.hhx|%0.hhx\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+   printf("%.hhx|%-.hhx|%#.hhx|%0.hhx", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
 //    ft_printf("%f\n", (double)-2.123123123);
 //    printf("%+ 050.32Lf\n", (long double)5.123);
 //printf("%d", sizeof(double));
