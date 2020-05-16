@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <zconf.h>
+#define ULLONG_MAX 18446744073709551615ULL
 
 int				main(void)
 {
