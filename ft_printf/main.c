@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
-#define ULLONG_MAX 18446744073709551615ULL
 
 int				main(void)
 {
@@ -24,8 +23,8 @@ int				main(void)
 //      printf("%s\n", ft_chexp("0.5", 2));
 //      printf("%s\n", ft_chsum("100.0", "15.250"));
 //    res = bin2str("0.111111");
-   ft_printf("%.hhx|%-.hhx|%#.hhx|%0.hhx\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
-   printf("%.hhx|%-.hhx|%#.hhx|%0.hhx", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    ft_printf("{%f}{%f}{%Lf}\n", -1444565444646.6465424242242454654,  -1444565444646.6465424242242454654, -1444565444646.6465424242242454654l);
+    printf("{%f}{%f}{%Lf}", -1444565444646.6465424242242454654,  -1444565444646.6465424242242454654, -1444565444646.6465424242242454654l);
 //    ft_printf("%f\n", (double)-2.123123123);
 //    printf("%+ 050.32Lf\n", (long double)5.123);
 //printf("%d", sizeof(double));
