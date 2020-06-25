@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 21:40:49 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/25 23:25:19 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main(int ac, char **argv)
 	{
 		mlx->x_max = temp_x;
 		while ((mlx->x_max-- != 1))
-			printf("%2.0f ", (mlx->pxl)[temp_y - mlx->y_max][temp_x - mlx->x_max]);
+			printf("%3.0f ", (mlx->pxl)[temp_y - mlx->y_max][temp_x - mlx->x_max]);
 		printf("\n");
 	}
 	mlx->x_max = temp_x;

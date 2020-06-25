@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:59:51 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 22:19:52 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/25 23:24:59 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int 	map_x(const char *av)
 
 	i = 0;
 	x = 0;
-	while (av[i] && (av[i] >= '0' && av[i] <= '9' || av[i] == ' '))
+	while (av[i] && (av[i] >= '0' && av[i] <= '9' || av[i] == '-' || av[i] == ' '))
 	{
-		if (av[i] >= '0' && av[i] <= '9')
+		if (av[i] >= '0' && av[i] <= '9' || av[i] == '-')
 		{
 			x++;
-			while (av[i] && av[i] >= '0' && av[i] <= '9')
+			while (av[i] && av[i] >= '0' && av[i] <= '9' || av[i] == '-')
 				i++;
 			if (av[i] && av[i] != ' ')
 				return (0);
@@ -59,6 +59,5 @@ int 	fdf_valid_malloc(t_mlx *mlx, char **av)
 			return (free_line(&line));
 		free(line);
 	}
-//	free(line);
 	return (1);
 }
