@@ -6,10 +6,11 @@
 #    By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/22 23:24:36 by lcassaun          #+#    #+#              #
-#    Updated: 2020/06/22 23:25:46 by lcassaun         ###   ########.fr        #
+#    Updated: 2020/06/25 17:03:46 by lcassaun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	gcc -o mlx main.c -L minilibx/ -g -lmlx_x86_64 -lX11 -lXext
-	./mlx
+	#gcc -o mlx main.c -L ./minilibx/ -lmlx_x86_64 -lXext -lX11 -lm
+	#./mlx
+	gcc -o kek main.c -L ./srcs/libft -lft

@@ -10,6 +10,67 @@
 
 
 #include	"mlx_int.h"
+#include <string.h>
+
+static int             mlx_get_color_value(t_xvar *xvar,int color)
+{
+	return(mlx_int_get_good_color(xvar,color));
+}
+
+static int	mlx_int_str_str(char *str,char *find,int len)
+{
+	int	len_f;
+	int	pos;
+	char	*s;
+	char	*f;
+
+	len_f = strlen(find);
+	if (len_f>len)
+		return (-1);
+	pos = 0;
+	while (*(str+len_f-1))
+	{
+		s = str;
+		f = find;
+		while (*(f++) == *(s++))
+			if (!*f)
+				return (pos);
+		str ++;
+		pos ++;
+	}
+	return (-1);
+}
+
+static int	mlx_int_str_str_cote(char *str,char *find,int len)
+{
+	int	len_f;
+	int	pos;
+	char	*s;
+	char	*f;
+	int	cote;
+
+	len_f = strlen(find);
+	if (len_f>len)
+		return (-1);
+	cote = 0;
+	pos = 0;
+	while (*(str+len_f-1))
+	{
+		if (*str=='"')
+			cote = 1-cote;
+		if (!cote)
+		{
+			s = str;
+			f = find;
+			while (*(f++) == *(s++))
+				if (!*f)
+					return (pos);
+		}
+		str ++;
+		pos ++;
+	}
+	return (-1);
+}
 
 extern struct s_col_name mlx_col_name[];
 
@@ -59,7 +120,7 @@ char	*mlx_int_static_line(char **xpm_data,int *pos,int size)
       len = len2;
     }
   /* strcpy(copy,str); */
-  strlcpy(copy, str, len2+1);
+  strcpy(copy, str);
   return (copy);
 }
 

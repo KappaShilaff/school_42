@@ -9,6 +9,15 @@
 */
 
 #include	"mlx_int.h"
+#include <X11/XKBlib.h>
+#include <X11/Xlib.h>
+#include <X11/extensions/XInput.h>
+#include <X11/keysymdef.h>
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
 int	mlx_int_param_undef()
 {
