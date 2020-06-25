@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 22:55:01 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 16:58:12 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/25 17:38:20 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@
 //	mlx_loop(mlx_ptr);
 //}
 
-int main(int ac, char **argv)
-{
-	char *line;
-	int fd1;
-	int fd2;
-	fd1 = open(argv[1], O_RDONLY);
-	while (get_next_line(fd1, &line) > 0)
-	{
-		printf("%s\n", line);
-		free(line);
-	}
-	return (0);
-}
+//int main(int ac, char **argv)
+//{
+//	char *line;
+//	int fd1;
+//	int fd2;
+//	fd1 = open(argv[1], O_RDONLY);
+//	while (get_next_line(fd1, &line) > 0)
+//	{
+//		printf("%s\n", line);
+//		free(line);
+//	}
+//	return (0);
+//}
