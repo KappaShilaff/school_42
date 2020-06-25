@@ -6,13 +6,13 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:55:12 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 16:55:00 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/25 22:21:21 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define BUFF_SIZE (16)
+# define BUFF_SIZE (64)
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>

@@ -6,7 +6,7 @@
 /*   By: lcassaun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:38:44 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 16:48:49 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/25 23:05:43 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ int			get_next_line(const int fd, char **line)
 		ft_free_enull(&((((t_cont *)(root[fd]->d))->join)));
 		return (1);
 	}
+	free(((t_cont *)(root[fd]->d))->rm);
 	return (0);
 }

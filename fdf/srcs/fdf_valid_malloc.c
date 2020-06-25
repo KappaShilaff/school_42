@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:59:51 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 18:32:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/25 22:19:52 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int 	fdf_valid_malloc(t_mlx *mlx, char **av)
 			return (free_line(&line));
 		free(line);
 	}
+//	free(line);
 	return (1);
 }

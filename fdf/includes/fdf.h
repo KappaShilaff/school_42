@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 18:32:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/25 18:59:40 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct		s_mlx
 {
 //	float			*x;
 //	float 			*y;
-//	float 			*z;
+	float 			**pxl;
 	int 			x_max;
 	int 			y_max;
 	int 			fd;
