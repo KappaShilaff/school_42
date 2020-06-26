@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 14:32:27 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 14:45:49 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int 	draw(void *mlx_ptr, void *win_ptr, t_mlx *mlx)
 	float 	y;
 	float 	y1;
 	float 	max;
-	float 	temp_max;
+	float 	max_temp;
 	float 	step_x;
 	float 	step_y;
 
 	x = 10;
 	x1 = 50;
 	y = 20;
-	y2 = 100;
+	y1 = 100;
 	max = ft_abs((long)(x - x1));
 	max_temp = ft_abs((long)(y - y1));
 	if (max_temp > max)
