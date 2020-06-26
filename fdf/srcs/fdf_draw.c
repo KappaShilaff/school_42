@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 15:36:10 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 15:42:18 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int 	isometric(t_mlx *mlx)
 	float	z1;
 	float 	z2;
 
-	z1 = (mlx->pxl)[(int)mlx->x1][(int)mlx->y1];
-	z2 = (mlx->pxl)[(int)mlx->x2][(int)mlx->y2];
+	z1 = (mlx->pxl)[(int)mlx->y1][(int)mlx->x1];
+	z2 = (mlx->pxl)[(int)mlx->y2][(int)mlx->x2];
 	mlx->x1 = (float)((mlx->x1 - mlx->y1) * cos(0.8));
 	mlx->y1 = (float)((mlx->x1 + mlx->y1) * sin(0.8) - z1);
 	mlx->x2 = (float)((mlx->x2 - mlx->y2) * cos(0.8));
