@@ -36,7 +36,7 @@ int main(int ac, char **argv)
 		return (0);
 	}
 	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, 500, 500, "fdf");
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	draw(mlx);
 	mlx_loop(mlx->mlx_ptr);
 //	printf("x = %d\ny = %d\n", mlx->x_max, mlx->y_max);

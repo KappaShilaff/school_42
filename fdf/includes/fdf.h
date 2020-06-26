@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 14:42:23 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 15:15:43 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define MENU		250
 # include "../srcs/libft/includes/libft.h"
 # include "mlx.h"
+# include <math.h>
 
 typedef struct		s_mlx
 {
@@ -30,6 +31,7 @@ typedef struct		s_mlx
 	int 			x_max;
 	int 			y_max;
 	int 			fd;
+	int 			zoom;
 }					t_mlx;
 
 t_mlx 	*map_parsing(char **av);
