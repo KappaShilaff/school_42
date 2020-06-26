@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 16:19:48 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 16:21:59 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int 	draw_line(t_mlx *mlx)
 	mlx->y1 += 150;
 	mlx->y2 += 150;
 	if (float_abs(x_step) > float_abs(y_step))
-		max = (int)x_step;
+		max = (int)float_abs(x_step);
 	else
-		max = (int)y_step;
+		max = (int)float_abs(y_step);
 	x_step /= (float)max;
 	y_step /= (float)max;
 	while ((int)(mlx->x1 - mlx->x2) || (int)(mlx->y1 - mlx->y2))
