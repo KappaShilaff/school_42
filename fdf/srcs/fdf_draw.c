@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 15:49:10 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 15:49:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,22 @@ int 	draw(t_mlx *mlx)
 		x = 0;
 		while(x < mlx->x_max)
 		{
-			mlx->x1 = (float)x * (float)mlx->zoom;
-			mlx->x2 = ((float)x + 1) * (float)mlx->zoom;
-			mlx->y1 = (float)y * (float)mlx->zoom;
-			mlx->y2 = ((float)y) * (float)mlx->zoom;
-			draw_line(mlx);
-			mlx->x1 = (float)x * (float)mlx->zoom;
-			mlx->x2 = ((float)x) * (float)mlx->zoom;
-			mlx->y1 = (float)y * (float)mlx->zoom;
-			mlx->y2 = ((float)y + 1) * (float)mlx->zoom;
-			draw_line(mlx);
+			if (x < mlx->x_max - 1)
+			{
+				mlx->x1 = (float) x * (float) mlx->zoom;
+				mlx->x2 = ((float) x + 1) * (float) mlx->zoom;
+				mlx->y1 = (float) y * (float) mlx->zoom;
+				mlx->y2 = ((float) y) * (float) mlx->zoom;
+				draw_line(mlx);
+			}
+			if (y < mlx->y_max - 1)
+			{
+				mlx->x1 = (float) x * (float) mlx->zoom;
+				mlx->x2 = ((float) x) * (float) mlx->zoom;
+				mlx->y1 = (float) y * (float) mlx->zoom;
+				mlx->y2 = ((float) y + 1) * (float) mlx->zoom;
+				draw_line(mlx);
+			}
 			x++;
 		}
 		y++;
