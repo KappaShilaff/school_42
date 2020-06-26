@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 16:38:39 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 16:39:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int 	draw_line(t_mlx *mlx)
 
 	z1 = (mlx->pxl)[(int)mlx->y1][(int)mlx->x1];
 	z2 = (mlx->pxl)[(int)mlx->y2][(int)mlx->x2];
-	mlx->color = (z1) ? 0xe80c0c : 0xffffff;
+	mlx->color = (z1 || z2) ? 0xe80c0c : 0xffffff;
  	mlx->x1 *= (float)mlx->zoom;
 	mlx->x2 *= (float)mlx->zoom;
 	mlx->y1 *= (float)mlx->zoom;
