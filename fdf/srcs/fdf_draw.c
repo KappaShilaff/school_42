@@ -6,11 +6,16 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 16:10:54 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 16:13:11 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+float 	float_abs(float x)
+{
+	return (x < 0 ? -x : x);
+}
 
 int 	isometric(t_mlx *mlx, float z1, float z2)
 {
@@ -37,7 +42,7 @@ int 	draw_line(t_mlx *mlx)
 	x_step = mlx->x2 - mlx->x1;
 	y_step = mlx->y2 - mlx->y1;
 //	isometric(mlx, z1, z2);
-	if (ft_abs((long)x_step) > ft_abs((long)y_step))
+	if (float_abs(x_step) > float_abs(y_step))
 		max = (int)x_step;
 	else
 		max = (int)y_step;
