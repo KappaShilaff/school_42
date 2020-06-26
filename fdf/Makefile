@@ -6,14 +6,14 @@
 #    By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/22 23:24:36 by lcassaun          #+#    #+#              #
-#    Updated: 2020/06/25 17:03:46 by lcassaun         ###   ########.fr        #
+#    Updated: 2020/06/26 14:06:53 by lcassaun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -O3
+FLAGS = 
 LIBRARIES = -lmlx -lm -lft -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 
