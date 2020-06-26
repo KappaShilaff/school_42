@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 15:20:24 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 15:21:30 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int 	draw_line(t_mlx *mlx)
 int 	draw(t_mlx *mlx)
 {
 	mlx->x1 = 100;
-	mlx->x2 = 157;
-	mlx->y1 = 130;
-	mlx->y2 = 30;
+	mlx->x2 = 100;
+	mlx->y1 = 100;
+	mlx->y2 = 200;
 	draw_line(mlx);
 	return (0);
 }
