@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 14:45:49 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 14:47:25 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int 	draw(void *mlx_ptr, void *win_ptr, t_mlx *mlx)
 	step_y = (y1 - y) / max;
 	while((int)(x1 - x) > 0 || (int)(y1 - y) > 0)
 	{
-		mlx_pixel_put(mlx_ptr, win_ptr, (int)x, (int)y, oxffffff);
+		mlx_pixel_put(mlx_ptr, win_ptr, (int)x, (int)y, 0xffffff);
 		x += step_x;
 		y += step_y;
 	}
