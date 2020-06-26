@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 16:36:49 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 16:38:04 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int 	draw_line(t_mlx *mlx)
 	y_step /= (float)max;
 	while ((int)(mlx->x1 - mlx->x2) || (int)(mlx->y1 - mlx->y2))
 	{
-		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, (int)mlx->x1, (int)mlx->y1, mlx->color;
+		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, (int)mlx->x1, (int)mlx->y1, mlx->color);
 		mlx->x1 += x_step;
 		mlx->y1 += y_step;
 	}
