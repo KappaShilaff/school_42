@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 15:45:50 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 15:47:28 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int 	draw(t_mlx *mlx)
 	int 	y;
 
 	y = 0;
-	mlx->zoom = 100;
+	mlx->zoom = 30;
 	while (y < mlx->y_max)
 	{
 		x = 0;
