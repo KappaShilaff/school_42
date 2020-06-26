@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 15:42:18 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 15:43:29 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int 	isometric(t_mlx *mlx)
 	float	z1;
 	float 	z2;
 
-	z1 = (mlx->pxl)[(int)mlx->y1][(int)mlx->x1];
-	z2 = (mlx->pxl)[(int)mlx->y2][(int)mlx->x2];
+	z1 = (mlx->pxl)[(int)mlx->y1 / mlx->zoom][(int)mlx->x1 / mlx->zoom];
+	z2 = (mlx->pxl)[(int)mlx->y2 / mlx->zoom][(int)mlx->x2 / mlx->zoom];
 	mlx->x1 = (float)((mlx->x1 - mlx->y1) * cos(0.8));
 	mlx->y1 = (float)((mlx->x1 + mlx->y1) * sin(0.8) - z1);
 	mlx->x2 = (float)((mlx->x2 - mlx->y2) * cos(0.8));
@@ -42,7 +42,7 @@ int 	draw_line(t_mlx *mlx)
 	y_step /= (float)max;
 	while ((int)(mlx->x2 - mlx->x1) || (int)(mlx->y2 - mlx->y1))
 	{
-		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, (int)mlx->x1 * mlx->zoom, (int)mlx->y1 * mlx->zoom, 0xffffff);
+		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, (int)mlx->x1, (int)mlx->y1, 0xffffff);
 		mlx->x1 += x_step;
 		mlx->y1 += y_step;
 	}
@@ -61,10 +61,10 @@ int 	draw(t_mlx *mlx)
 		x = 0;
 		while(x < mlx->x_max)
 		{
-			mlx->x1 = (float)x;
-			mlx->x2 = (float)x + 1;
-			mlx->y1 = (float)y;
-			mlx->y2 = (float)y + 1;
+			mlx->x1 = (float)x * (float)mlx->zoom;
+			mlx->x2 = ((float)x + 1) * (float)mlx->zoom;
+			mlx->y1 = (float)y * (float)mlx->zoom;
+			mlx->y2 = ((float)y + 1) * (float)mlx->zoom;
 			draw_line(mlx);
 			x++;
 		}
