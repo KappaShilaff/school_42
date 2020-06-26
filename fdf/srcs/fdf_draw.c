@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 16:33:56 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 16:36:49 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ int 	draw_line(t_mlx *mlx)
 
 	z1 = (mlx->pxl)[(int)mlx->y1][(int)mlx->x1];
 	z2 = (mlx->pxl)[(int)mlx->y2][(int)mlx->x2];
-	mlx->x1 *= (float)mlx->zoom;
+	mlx->color = (z1) ? 0xe80c0c : 0xffffff;
+ 	mlx->x1 *= (float)mlx->zoom;
 	mlx->x2 *= (float)mlx->zoom;
 	mlx->y1 *= (float)mlx->zoom;
 	mlx->y2 *= (float)mlx->zoom;
 	isometric(mlx, z1, z2);
-	mlx->x1 += 250;
-	mlx->x2 += 250;
-	mlx->y1 += 250;
-	mlx->y2 += 250;
+	mlx->x1 += 500;
+	mlx->x2 += 500;
+	mlx->y1 += 500;
+	mlx->y2 += 500;
 	x_step = mlx->x2 - mlx->x1;
 	y_step = mlx->y2 - mlx->y1;
 	if (float_abs(x_step) > float_abs(y_step))
@@ -54,7 +55,7 @@ int 	draw_line(t_mlx *mlx)
 	y_step /= (float)max;
 	while ((int)(mlx->x1 - mlx->x2) || (int)(mlx->y1 - mlx->y2))
 	{
-		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, (int)mlx->x1, (int)mlx->y1, 0xffffff);
+		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, (int)mlx->x1, (int)mlx->y1, mlx->color;
 		mlx->x1 += x_step;
 		mlx->y1 += y_step;
 	}
