@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 14:11:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 14:15:13 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main(int ac, char **argv)
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "fdf");
 	mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xffffff);
-	mlx_string_put(mlx_ptr, win_ptr, 100, 100, "lol");
+	mlx_string_put(mlx_ptr, win_ptr, 100, 100, 0xffffff, "lol");
 	mlx_loop(mlx_ptr);
 	return (0);
 }
