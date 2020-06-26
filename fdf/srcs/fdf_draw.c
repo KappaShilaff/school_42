@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 16:31:27 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 16:33:56 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int 	draw_line(t_mlx *mlx)
 	mlx->y1 *= (float)mlx->zoom;
 	mlx->y2 *= (float)mlx->zoom;
 	isometric(mlx, z1, z2);
-	mlx->x1 += 150;
-	mlx->x2 += 150;
-	mlx->y1 += 150;
-	mlx->y2 += 150;
+	mlx->x1 += 250;
+	mlx->x2 += 250;
+	mlx->y1 += 250;
+	mlx->y2 += 250;
 	x_step = mlx->x2 - mlx->x1;
 	y_step = mlx->y2 - mlx->y1;
 	if (float_abs(x_step) > float_abs(y_step))
