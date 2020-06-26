@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 14:32:27 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/26 14:42:23 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int main(int ac, char **argv)
 	t_mlx	*mlx;
 	int 	temp_x;
 	int 	temp_y;
-	void 	*mlx_ptr;
-	void 	*win_ptr;
 
 	mlx = map_parsing(argv);
 	if (mlx == NULL)
@@ -37,10 +35,10 @@ int main(int ac, char **argv)
 		ft_putstr("invalid otstrelen\n");
 		return (0);
 	}
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "fdf");
-	draw(mlx_ptr, win_ptr, mlx);
-	mlx_loop(mlx_ptr);
+	mlx->mlx_ptr = mlx_init();
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, 500, 500, "fdf");
+	draw(mlx);
+	mlx_loop(mlx->mlx_ptr);
 //	printf("x = %d\ny = %d\n", mlx->x_max, mlx->y_max);
 //	temp_x = mlx->x_max;
 //	temp_y = mlx->y_max;
