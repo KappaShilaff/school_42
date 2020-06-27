@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 17:22:00 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:23:56 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define KEY_ESC		53
 # define KEY_E 			14
 # define KEY_Q 			12
-# define KEY_W 			13
-# define KEY_S 			1
+# define KEY_S 			13
+# define KEY_W 			1
 # define KEY_A 			0
 # define KEY_D 			2
 
