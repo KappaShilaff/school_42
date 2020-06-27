@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 17:26:37 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:45:22 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int main(int ac, char **argv)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	mlx->shift_x = 100;
 	mlx->shift_y = 100;
-	mlx->zoom_z = 2;
+	mlx->zoom_z = 1;
 	mlx->x = 0.8;
 	mlx->zoom = 10;
 	draw(mlx);
