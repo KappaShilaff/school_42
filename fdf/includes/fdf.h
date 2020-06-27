@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:10:59 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:11:29 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int 	fdf_valid_malloc(t_mlx *mlx);
 int 	draw(t_mlx *mlx, int x, int y);
 int 	free_mlx(t_mlx *mlx);
 int 	key_hook(int key, t_mlx *mlx);
+void 	fdf_color(t_mlx *mlx, float z1, float z2);
 
 #endif
