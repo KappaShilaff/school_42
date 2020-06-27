@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 08:21:42 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 08:22:46 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main(int ac, char **argv)
 	mlx->shift_x = 100;
 	mlx->shift_y = 100;
 	draw(mlx);
-	mlx_key_hook(mlx->mlx_ptr, key_hook, mlx);
+	mlx_key_hook(mlx->win_ptr, key_hook, mlx);
 	mlx_loop(mlx->mlx_ptr);
 //	printf("x = %d\ny = %d\n", mlx->x_max, mlx->y_max);
 //	temp_x = mlx->x_max;
