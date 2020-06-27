@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 17:53:26 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:56:02 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ int 	key_hook(int key, t_mlx *mlx)
 			mlx->x -= 0.1;
 		if (key == KEY_RIGHT)
 		{
-			if (mlx->zoom_z == -2)
-				mlx->zoom_z = 2;
-			else
+//			if (mlx->zoom_z == -2)
+//				mlx->zoom_z = 2;
+//			else
 				mlx->zoom_z += 2;
 		}
 		if (key == KEY_LEFT)
 		{
-			if (mlx->zoom_z == 2)
-				mlx->zoom_z = -2;
-			else
+//			if (mlx->zoom_z == 2)
+//				mlx->zoom_z = -2;
+//			else
 				mlx->zoom_z -= 2;
 		}
 		mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
