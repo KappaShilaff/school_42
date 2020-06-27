@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 00:33:01 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:00:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:18:28 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		key_hook(int key, t_mlx *mlx)
 		key_shift(key, mlx);
 		key_zoom(key, mlx);
 		key_iso(key, mlx);
+		if (key == KEY_F)
+			mlx->clr_switch = (mlx->clr_switch + 1) % 5;
 		if (key == KEY_ESC)
 		{
 			free_mlx(mlx);
