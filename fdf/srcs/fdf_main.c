@@ -6,12 +6,22 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 09:23:30 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 09:33:55 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <stdio.h>
+
+int 	free_mlx(t_mlx *mlx)
+{
+	while ((mlx->y_max)-- != 0)
+		free((mlx->pxl)[mlx->y_max]);
+	free(mlx->pxl);
+	close(mlx->fd);
+	free(mlx);
+	return (0);
+}
 
 int 	key_hook(int key, t_mlx *mlx)
 {
@@ -27,7 +37,10 @@ int 	key_hook(int key, t_mlx *mlx)
 		if (key == 124)
 			mlx->shift_x += mlx->zoom;
 		if (key == 53)
-			return (0);
+		{
+			free_mlx(mlx);
+			exit(EXIT_SUCCESS);
+		}
 		if (key == 12 && mlx->zoom > 2)
 			mlx->zoom -= 2;
 		if (key == 14)
@@ -44,16 +57,6 @@ int 	key_hook(int key, t_mlx *mlx)
 		draw(mlx);
 	}
 	return (1);
-}
-
-int 	free_mlx(t_mlx *mlx)
-{
-	while ((mlx->y_max)-- != 0)
-		free((mlx->pxl)[mlx->y_max]);
-	free(mlx->pxl);
-	close(mlx->fd);
-	free(mlx);
-	return (0);
 }
 
 int main(int ac, char **argv)
@@ -75,8 +78,7 @@ int main(int ac, char **argv)
 	mlx->x = 0.8;
 	mlx->zoom = 10;
 	draw(mlx);
-	if (mlx_key_hook(mlx->win_ptr, key_hook, mlx) == 0)
-		return (free_mlx(mlx));
+	mlx_key_hook(mlx->win_ptr, key_hook, mlx);
 	mlx_loop(mlx->mlx_ptr);
 //	printf("x = %d\ny = %d\n", mlx->x_max, mlx->y_max);
 //	temp_x = mlx->x_max;
