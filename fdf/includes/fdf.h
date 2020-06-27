@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 08:16:11 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 09:21:02 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ typedef struct		s_mlx
 	int 			color;
 	int 			shift_x;
 	int 			shift_y;
-	double 			sin;
-	double 			cos;
+	double 			x;
 }					t_mlx;
 
 t_mlx 	*map_parsing(char **av);

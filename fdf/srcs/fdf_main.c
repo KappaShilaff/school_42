@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 09:22:49 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 09:23:30 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int 	key_hook(int key, t_mlx *mlx)
 			mlx->zoom -= 2;
 		if (key == 14)
 			mlx->zoom += 2;
-		if (key == 13 && mlx->cos <= 0.9)
-			mlx->cos += 0.1;
-		if (key == 1 && mlx->cos >= -0.9)
-			mlx->cos -= 0.1;
-		if (key == 2 && mlx->sin <= 0.9)
-			mlx->sin += 0.1;
-		if (key == 0 && mlx->sin >= -0.9)
-			mlx->sin -= 0.1;
+		if (key == 13 && mlx->x <= 0.9)
+			mlx->x += 0.1;
+		if (key == 1 && mlx->x >= -0.9)
+			mlx->x -= 0.1;
+//		if (key == 2 && mlx->sin <= 0.9)
+//			mlx->sin += 0.1;
+//		if (key == 0 && mlx->sin >= -0.9)
+//			mlx->sin -= 0.1;
 		mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
 		draw(mlx);
 	}
@@ -72,8 +72,7 @@ int main(int ac, char **argv)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	mlx->shift_x = 100;
 	mlx->shift_y = 100;
-	mlx->cos = 0.8;
-	mlx->sin = 0.8;
+	mlx->x = 0.8;
 	mlx->zoom = 10;
 	draw(mlx);
 	if (mlx_key_hook(mlx->win_ptr, key_hook, mlx) == 0)

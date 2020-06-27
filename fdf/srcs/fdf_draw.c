@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 09:08:34 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 09:21:02 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ float 	float_abs(float x)
 
 int 	isometric(t_mlx *mlx, float z1, float z2)
 {
-	mlx->x1 = (float)((mlx->x1 - mlx->y1) * cos(mlx->cos));
-	mlx->y1 = (float)((mlx->x1 + mlx->y1) * sin(mlx->sin) - z1);
-	mlx->x2 = (float)((mlx->x2 - mlx->y2) * cos(mlx->cos));
-	mlx->y2 = (float)((mlx->x2 + mlx->y2) * sin(mlx->sin) - z2);
+	mlx->x1 = (float)((mlx->x1 - mlx->y1) * cos(mlx->x));
+	mlx->y1 = (float)((mlx->x1 + mlx->y1) * sin(mlx->x) - z1);
+	mlx->x2 = (float)((mlx->x2 - mlx->y2) * cos(mlx->x));
+	mlx->y2 = (float)((mlx->x2 + mlx->y2) * sin(mlx->x) - z2);
 }
 
 int 	draw_line(t_mlx *mlx)
