@@ -25,6 +25,24 @@ int 	isometric(t_mlx *mlx, float z1, float z2)
 	mlx->y2 = (float)((mlx->x2 + mlx->y2) * sin(mlx->x) - z2);
 }
 
+void	mlx_fill(t_mlx *mlx, float *z1, float *z2)
+{
+	*z1 = (mlx->pxl)[(int)mlx->y1][(int)mlx->x1];
+	*z2 = (mlx->pxl)[(int)mlx->y2][(int)mlx->x2];
+	mlx->color = (*z1 || *z2) ? 0xe80c0c : 0xffffff;
+	mlx->x1 *= (float)mlx->zoom;
+	mlx->x2 *= (float)mlx->zoom;
+	mlx->y1 *= (float)mlx->zoom;
+	mlx->y2 *= (float)mlx->zoom;
+	*z1 *= mlx->zoom_z * mlx->zoom;
+	*z2 *= mlx->zoom_z * mlx->zoom;
+	isometric(mlx, *z1, *z2);
+	mlx->x1 += (float)mlx->shift_x;
+	mlx->x2 += (float)mlx->shift_x;
+	mlx->y1 += (float)mlx->shift_y;
+	mlx->y2 += (float)mlx->shift_y;
+}
+
 int 	draw_line(t_mlx *mlx)
 {
 	float 	x_step;
@@ -33,20 +51,7 @@ int 	draw_line(t_mlx *mlx)
 	float 	z2;
 	int 	max;
 
-	z1 = (mlx->pxl)[(int)mlx->y1][(int)mlx->x1];
-	z2 = (mlx->pxl)[(int)mlx->y2][(int)mlx->x2];
-	mlx->color = (z1 || z2) ? 0xe80c0c : 0xffffff;
- 	mlx->x1 *= (float)mlx->zoom;
-	mlx->x2 *= (float)mlx->zoom;
-	mlx->y1 *= (float)mlx->zoom;
-	mlx->y2 *= (float)mlx->zoom;
-	z1 *= mlx->zoom_z * mlx->zoom;
-	z2 *= mlx->zoom_z * mlx->zoom;
-	isometric(mlx, z1, z2);
-	mlx->x1 += (float)mlx->shift_x;
-	mlx->x2 += (float)mlx->shift_x;
-	mlx->y1 += (float)mlx->shift_y;
-	mlx->y2 += (float)mlx->shift_y;
+	mlx_fill(mlx, &z1, &z2);
 	x_step = mlx->x2 - mlx->x1;
 	y_step = mlx->y2 - mlx->y1;
 	if (float_abs(x_step) > float_abs(y_step))
