@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 00:33:01 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:18:28 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 02:42:46 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	key_iso(int key, t_mlx *mlx)
 int		key_hook(int key, t_mlx *mlx)
 {
 	if ((key >= 123 && key <= 126) || (key >= 12 && key <= 14)
-		|| (key >= 0 && key <= 2) || key == 53)
+		|| (key >= 0 && key <= 3) || key == 53)
 	{
 		key_shift(key, mlx);
 		key_zoom(key, mlx);
