@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 18:05:27 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 00:25:32 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int 	key_hook(int key, t_mlx *mlx)
 	if ((key >= 123 && key <= 126) || (key >= 12 && key <= 14)
 	|| (key >= 0 && key <= 2) || key == 53)
 	{
-		if (key == KEY_S)
-			mlx->shift_y -= mlx->zoom;
 		if (key == KEY_W)
+			mlx->shift_y -= mlx->zoom;
+		if (key == KEY_S)
 			mlx->shift_y += mlx->zoom;
 		if (key == KEY_A)
 			mlx->shift_x -= mlx->zoom;
@@ -50,19 +50,9 @@ int 	key_hook(int key, t_mlx *mlx)
 		if (key == KEY_E && mlx->x >= -0.9)
 			mlx->x -= 0.1;
 		if (key == KEY_RIGHT)
-		{
-//			if (mlx->zoom_z == -2)
-//				mlx->zoom_z = 2;
-//			else
 				mlx->zoom_z += (float)0.2;
-		}
 		if (key == KEY_LEFT)
-		{
-//			if (mlx->zoom_z == 2)
-//				mlx->zoom_z = -2;
-//			else
 				mlx->zoom_z -= (float)0.2;
-		}
 		mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
 		draw(mlx);
 	}
@@ -85,7 +75,7 @@ int main(int ac, char **argv)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	mlx->shift_x = 100;
 	mlx->shift_y = 100;
-	mlx->zoom_z = 2;
+	mlx->zoom_z = (float)0.2;
 	mlx->x = 0.8;
 	mlx->zoom = 10;
 	draw(mlx);
