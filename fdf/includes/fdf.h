@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 17:35:10 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 00:26:16 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ typedef struct		s_mlx
 t_mlx 	*map_parsing(char **av);
 int 	fdf_valid_malloc(t_mlx *mlx, char **av);
 int 	draw(t_mlx *mlx);
+int 	free_mlx(t_mlx *mlx);
+int 	key_hook(int key, t_mlx *mlx);
 
 #endif
