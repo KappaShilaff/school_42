@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 08:22:46 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 08:34:44 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int 	key_hook(int key, t_mlx *mlx)
 {
+	printf("%d\n", key);
 	if (key == 126)
 		mlx->shift_y -= 10;
 	if (key == 125)
