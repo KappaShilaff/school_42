@@ -6,26 +6,27 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:59:51 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:08:47 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:20:37 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int 	free_line(char **line)
+int		free_line(char **line)
 {
 	free(*line);
 	return (0);
 }
 
-int 	map_x(const char *av)
+int		map_x(const char *av)
 {
-	int 	i;
-	int 	x;
+	int		i;
+	int		x;
 
 	i = 0;
 	x = 0;
-	while ((av[i] && av[i] >= '0' && av[i] <= '9') || (av[i] == '-' || av[i] == ' '))
+	while ((av[i] && av[i] >= '0' && av[i] <= '9') ||
+	(av[i] == '-' || av[i] == ' '))
 	{
 		if ((av[i] >= '0' && av[i] <= '9') || av[i] == '-')
 		{
@@ -43,9 +44,9 @@ int 	map_x(const char *av)
 	return (x);
 }
 
-int 	fdf_valid_malloc(t_mlx *mlx)
+int		fdf_valid_malloc(t_mlx *mlx)
 {
-	char 	*line;
+	char	*line;
 
 	mlx->y_max = 0;
 	mlx->x_max = 0;

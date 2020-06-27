@@ -6,14 +6,14 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:13:11 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:19:19 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <stdio.h>
 
-int 	free_mlx(t_mlx *mlx)
+int		free_mlx(t_mlx *mlx)
 {
 	while ((mlx->y_max)-- != 0)
 		free((mlx->pxl)[mlx->y_max]);
@@ -23,7 +23,7 @@ int 	free_mlx(t_mlx *mlx)
 	return (0);
 }
 
-int main(int ac, char **argv)
+int		main(int ac, char **argv)
 {
 	t_mlx	*mlx;
 

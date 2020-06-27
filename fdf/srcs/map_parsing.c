@@ -6,24 +6,24 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:23:10 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/25 21:41:48 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:22:23 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-float 	**fdf_split(t_mlx *mlx, char **av)
+float	**fdf_split(t_mlx *mlx, char **av)
 {
 	float	**temp;
-	char 	**nbr;
-	char 	*line;
-	int 	y;
-	int 	x;
+	char	**nbr;
+	char	*line;
+	int		y;
+	int		x;
 
 	y = 0;
 	temp = malloc(sizeof(float *) * mlx->y_max);
 	mlx->fd = open(av[1], O_RDONLY);
-		while (get_next_line(mlx->fd, &line) > 0 && y < mlx->y_max)
+	while ((get_next_line(mlx->fd, &line) > 0) && (y < mlx->y_max))
 	{
 		nbr = ft_strsplit(line, ' ');
 		free(line);
@@ -40,7 +40,7 @@ float 	**fdf_split(t_mlx *mlx, char **av)
 	return (temp);
 }
 
-t_mlx 	*map_parsing(char **av)
+t_mlx	*map_parsing(char **av)
 {
 	t_mlx	*mlx;
 
