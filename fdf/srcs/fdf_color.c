@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 02:17:49 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 02:49:56 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 02:50:30 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void 	fdf_color(t_mlx *mlx, float z1, float z2)
 	else
 		z = (int)z2;
 	if (mlx->clr_switch == 4)
-		mlx->color = clr + (257 * z * 5);
+		mlx->color = clr - (257 * z);
 	else
 		mlx->color = clr - (257 * z * 15);
 }
