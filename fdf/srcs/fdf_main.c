@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 09:33:55 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:23:56 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,31 @@ int 	key_hook(int key, t_mlx *mlx)
 	if ((key >= 123 && key <= 126) || (key >= 12 && key <= 14)
 	|| (key >= 0 && key <= 2) || key == 53)
 	{
-		if (key == 126)
+		if (key == KEY_S)
 			mlx->shift_y -= mlx->zoom;
-		if (key == 125)
+		if (key == KEY_W)
 			mlx->shift_y += mlx->zoom;
-		if (key == 123)
+		if (key == KEY_A)
 			mlx->shift_x -= mlx->zoom;
-		if (key == 124)
+		if (key == KEY_D)
 			mlx->shift_x += mlx->zoom;
-		if (key == 53)
+		if (key == KEY_ESC)
 		{
 			free_mlx(mlx);
 			exit(EXIT_SUCCESS);
 		}
-		if (key == 12 && mlx->zoom > 2)
+		if (key == KEY_UP && mlx->zoom > 2)
 			mlx->zoom -= 2;
-		if (key == 14)
+		if (key == KEY_DOWN)
 			mlx->zoom += 2;
-		if (key == 13 && mlx->x <= 0.9)
+		if (key == KEY_Q && mlx->x <= 0.9)
 			mlx->x += 0.1;
-		if (key == 1 && mlx->x >= -0.9)
+		if (key == KEY_E && mlx->x >= -0.9)
 			mlx->x -= 0.1;
-//		if (key == 2 && mlx->sin <= 0.9)
-//			mlx->sin += 0.1;
-//		if (key == 0 && mlx->sin >= -0.9)
-//			mlx->sin -= 0.1;
+		if (key == KEY_RIGHT)
+			mlx->zoom_z += 2;
+		if (key == KEY_LEFT && mlx->zoom_z > 2)
+			mlx->zoom_z -= 2;
 		mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
 		draw(mlx);
 	}
@@ -75,6 +75,7 @@ int main(int ac, char **argv)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	mlx->shift_x = 100;
 	mlx->shift_y = 100;
+	mlx->zoom_z = 2;
 	mlx->x = 0.8;
 	mlx->zoom = 10;
 	draw(mlx);

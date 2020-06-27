@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 09:21:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:22:00 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 # define FDF_FDF_H
 # define WIDTH		1600
 # define HEIGHT		900
-# define MENU		250
+# define KEY_UP			125
+# define KEY_DOWN		126
+# define KEY_RIGHT		124
+# define KEY_LEFT		123
+# define KEY_ESC		53
+# define KEY_E 			14
+# define KEY_Q 			12
+# define KEY_W 			13
+# define KEY_S 			1
+# define KEY_A 			0
+# define KEY_D 			2
+
 # include "../srcs/libft/includes/libft.h"
 # include "mlx.h"
 # include <math.h>
@@ -36,6 +47,7 @@ typedef struct		s_mlx
 	int 			shift_x;
 	int 			shift_y;
 	double 			x;
+	int 			zoom_z;
 }					t_mlx;
 
 t_mlx 	*map_parsing(char **av);
