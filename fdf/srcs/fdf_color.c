@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 02:17:49 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 02:30:25 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 02:42:46 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void 	fdf_color_switch(t_mlx *mlx, int *clr)
 	if (mlx->clr_switch == 0)
 		*clr = WHITE;
 	if (mlx->clr_switch == 1)
-		*clr = RED;
+		*clr = RED_FDF;
 	if (mlx->clr_switch == 2)
 		*clr = YELLOW;
 	if (mlx->clr_switch == 3)
