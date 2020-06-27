@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:00:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:03:19 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int 	isometric(t_mlx *mlx, float z1, float z2)
 	mlx->y1 = (float)((mlx->x1 + mlx->y1) * sin(mlx->x) - z1);
 	mlx->x2 = (float)((mlx->x2 - mlx->y2) * cos(0.8));
 	mlx->y2 = (float)((mlx->x2 + mlx->y2) * sin(mlx->x) - z2);
+	return (0);
 }
 
 void	mlx_fill(t_mlx *mlx, float *z1, float *z2)

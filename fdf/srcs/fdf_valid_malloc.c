@@ -25,12 +25,12 @@ int 	map_x(const char *av)
 
 	i = 0;
 	x = 0;
-	while (av[i] && (av[i] >= '0' && av[i] <= '9' || av[i] == '-' || av[i] == ' '))
+	while (av[i] && (av[i] >= '0' && av[i] <= '9') || (av[i] == '-' || av[i] == ' '))
 	{
-		if (av[i] >= '0' && av[i] <= '9' || av[i] == '-')
+		if ((av[i] >= '0' && av[i] <= '9') || av[i] == '-')
 		{
 			x++;
-			while (av[i] && av[i] >= '0' && av[i] <= '9' || av[i] == '-')
+			while ((av[i] && av[i] >= '0' && av[i] <= '9') || av[i] == '-')
 				i++;
 			if (av[i] && av[i] != ' ')
 				return (0);
