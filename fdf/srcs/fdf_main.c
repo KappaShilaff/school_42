@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 09:08:34 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 09:11:53 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int 	key_hook(int key, t_mlx *mlx)
 			mlx->shift_x += mlx->zoom;
 		if (key == 53)
 			return (0);
-		if (key == 12 && mlx->zoom != 0)
-			mlx->zoom = (int)ft_abs((long)(mlx->zoom - 5));
+		if (key == 12 && mlx->zoom > 2)
+			mlx->zoom -= 2;
 		if (key == 14)
-			mlx->zoom += 5;
+			mlx->zoom += 2;
 		mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
 		draw(mlx);
 	}
