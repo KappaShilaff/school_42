@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 02:17:44 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 02:22:13 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ void		mlx_fill(t_mlx *mlx, float *z1, float *z2)
 	*z1 = (mlx->pxl)[(int)mlx->y1][(int)mlx->x1];
 	*z2 = (mlx->pxl)[(int)mlx->y2][(int)mlx->x2];
 	fdf_color(mlx, *z1, *z2);
-//	mlx->color = (*z1 || *z2) ? 16711680 : 0xffffff;
-//	if (*z1 > *z2)
-//		mlx->color = 16711680 + (255 * 257 - *z1 * );
 	mlx->x1 *= (float)mlx->zoom;
 	mlx->x2 *= (float)mlx->zoom;
 	mlx->y1 *= (float)mlx->zoom;
