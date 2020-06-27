@@ -40,6 +40,8 @@ int 	draw_line(t_mlx *mlx)
 	mlx->x2 *= (float)mlx->zoom;
 	mlx->y1 *= (float)mlx->zoom;
 	mlx->y2 *= (float)mlx->zoom;
+	z1 *= (float)mlx->zoom_z;
+	z2 *= (float)mlx->zoom_z;
 	isometric(mlx, z1, z2);
 	mlx->x1 += (float)mlx->shift_x;
 	mlx->x2 += (float)mlx->shift_x;
