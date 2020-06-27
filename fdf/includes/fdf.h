@@ -33,6 +33,8 @@ typedef struct		s_mlx
 	int 			fd;
 	int 			zoom;
 	int 			color;
+	int 			shift_x;
+	int 			shift_y;
 }					t_mlx;
 
 t_mlx 	*map_parsing(char **av);

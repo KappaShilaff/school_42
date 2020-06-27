@@ -6,12 +6,27 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/26 14:42:23 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 08:21:42 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <stdio.h>
+
+int 	key_hook(int key, t_mlx *mlx)
+{
+	if (key == 126)
+		mlx->shift_y -= 10;
+	if (key == 125)
+		mlx->shift_y += 10;
+	if (key == 123)
+		mlx->shift_x -= 10;
+	if (key == 124)
+		mlx->shift_x += 10;
+	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
+	draw(mlx);
+	return (0);
+}
 
 int 	free_mlx(t_mlx *mlx)
 {
@@ -37,7 +52,10 @@ int main(int ac, char **argv)
 	}
 	mlx->mlx_ptr = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
+	mlx->shift_x = 100;
+	mlx->shift_y = 100;
 	draw(mlx);
+	mlx_key_hook(mlx->mlx_ptr, key_hook, mlx);
 	mlx_loop(mlx->mlx_ptr);
 //	printf("x = %d\ny = %d\n", mlx->x_max, mlx->y_max);
 //	temp_x = mlx->x_max;

@@ -41,10 +41,10 @@ int 	draw_line(t_mlx *mlx)
 	mlx->y1 *= (float)mlx->zoom;
 	mlx->y2 *= (float)mlx->zoom;
 	isometric(mlx, z1, z2);
-	mlx->x1 += 500;
-	mlx->x2 += 500;
-	mlx->y1 += 250;
-	mlx->y2 += 250;
+	mlx->x1 += (float)mlx->shift_x;
+	mlx->x2 += (float)mlx->shift_x;
+	mlx->y1 += (float)mlx->shift_y;
+	mlx->y2 += (float)mlx->shift_y;
 	x_step = mlx->x2 - mlx->x1;
 	y_step = mlx->y2 - mlx->y1;
 	if (float_abs(x_step) > float_abs(y_step))
