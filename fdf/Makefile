@@ -34,7 +34,8 @@ SOURCES_DIRECTORY = ./srcs/
 SOURCES_LIST = fdf_main.c\
 	fdf_valid_malloc.c\
 	map_parsing.c\
-	fdf_draw.c
+	fdf_draw.c\
+	fdf_key_hook.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = obj/
