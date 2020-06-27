@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 17:23:56 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:35:10 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ typedef struct		s_mlx
 	int 			x_max;
 	int 			y_max;
 	int 			fd;
-	int 			zoom;
+	float 			zoom;
 	int 			color;
 	int 			shift_x;
 	int 			shift_y;
 	double 			x;
-	int 			zoom_z;
+	float 			zoom_z;
 }					t_mlx;
 
 t_mlx 	*map_parsing(char **av);
