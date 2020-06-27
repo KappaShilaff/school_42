@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 00:32:55 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 00:35:05 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(int ac, char **argv)
 	mlx->zoom_z = (float)0.2;
 	mlx->x = 0.8;
 	mlx->zoom = 10;
-	draw(mlx);
+	draw(mlx, 0, 0);
 	mlx_key_hook(mlx->win_ptr, key_hook, mlx);
 	mlx_loop(mlx->mlx_ptr);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 00:33:01 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 00:35:05 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 00:47:41 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int 	key_hook(int key, t_mlx *mlx)
 			exit(EXIT_SUCCESS);
 		}
 		mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-		draw(mlx);
+		draw(mlx, 0, 0);
 	}
 	return (1);
 }

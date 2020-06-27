@@ -110,6 +110,7 @@ SRCS_LIST = ft_memalloc.c\
 			ft_free_enull.c\
 			ft_create_cont_fd.c\
 			ft_create_node.c\
+			ft_abs_f.c\
 
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))

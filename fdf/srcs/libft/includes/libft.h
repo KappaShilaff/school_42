@@ -133,5 +133,6 @@ char				*ft_memstrncpy(char *new, const char *str, size_t i);
 t_node				*ft_create_node(void *data);
 t_cont				*ft_create_cont_fd(int fd);
 int					get_next_line(const int fd, char **line);
+float				ft_abs_f(float x);
 
 #endif
