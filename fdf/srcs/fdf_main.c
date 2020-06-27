@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 00:35:05 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:00:02 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(int ac, char **argv)
 	t_mlx	*mlx;
 
 	mlx = map_parsing(argv);
-	if (mlx == NULL)
+	if (mlx == NULL || ac != 1)
 	{
 		ft_putstr("invalid otstrelen\n");
 		return (0);
