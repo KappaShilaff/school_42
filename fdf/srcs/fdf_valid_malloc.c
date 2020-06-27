@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:59:51 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:08:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 01:08:47 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int 	map_x(const char *av)
 	return (x);
 }
 
-int 	fdf_valid_malloc(t_mlx *mlx, char **av)
+int 	fdf_valid_malloc(t_mlx *mlx)
 {
 	char 	*line;
 
