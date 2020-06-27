@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/27 08:34:44 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/27 08:45:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,27 @@
 
 int 	key_hook(int key, t_mlx *mlx)
 {
-	printf("%d\n", key);
-	if (key == 126)
-		mlx->shift_y -= 10;
-	if (key == 125)
-		mlx->shift_y += 10;
-	if (key == 123)
-		mlx->shift_x -= 10;
-	if (key == 124)
-		mlx->shift_x += 10;
-	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-	draw(mlx);
-	return (0);
+	if ((key >= 123 && key <= 126) || (key >= 12 && key <= 14)
+	|| (key >= 0 && key <= 2) || key == 53)
+	{
+		if (key == 126)
+			mlx->shift_y -= 10;
+		if (key == 125)
+			mlx->shift_y += 10;
+		if (key == 123)
+			mlx->shift_x -= 10;
+		if (key == 124)
+			mlx->shift_x += 10;
+		if (key == 53)
+			return (0);
+		if (key == 12)
+			mlx->zoom -= 10;
+		if (key == 14)
+			mlx->zoom += 10;
+		mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
+		draw(mlx);
+	}
+	return (1);
 }
 
 int 	free_mlx(t_mlx *mlx)
@@ -55,8 +64,10 @@ int main(int ac, char **argv)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	mlx->shift_x = 100;
 	mlx->shift_y = 100;
+	mlx->zoom = 10;
 	draw(mlx);
-	mlx_key_hook(mlx->win_ptr, key_hook, mlx);
+	if (mlx_key_hook(mlx->win_ptr, key_hook, mlx) == 0)
+		return (free_mlx(mlx));
 	mlx_loop(mlx->mlx_ptr);
 //	printf("x = %d\ny = %d\n", mlx->x_max, mlx->y_max);
 //	temp_x = mlx->x_max;
