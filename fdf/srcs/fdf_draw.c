@@ -55,7 +55,7 @@ int 	draw_line(t_mlx *mlx)
 	y_step /= (float)max;
 	while ((int)(mlx->x1 - mlx->x2) || (int)(mlx->y1 - mlx->y2))
 	{
-		if (((int)mlx->y1 < WIDTH) && (int)mlx->x1 < HEIGHT)
+		if (((int)mlx->x1 < WIDTH) && (int)mlx->y1 < HEIGHT)
 			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, (int)mlx->x1, (int)mlx->y1, mlx->color);
 		mlx->x1 += x_step;
 		mlx->y1 += y_step;
@@ -72,7 +72,7 @@ int 	draw(t_mlx *mlx)
 	while (y < mlx->y_max)
 	{
 		x = 0;
-		while(x < mlx->x_max || x * mlx->zoom )
+		while(x < mlx->x_max)
 		{
 			if (x < mlx->x_max - 1)
 			{
