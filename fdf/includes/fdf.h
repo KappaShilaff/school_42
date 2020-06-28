@@ -6,14 +6,14 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 02:42:46 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/28 02:43:59 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_FDF_H
 # define FDF_FDF_H
-# define WIDTH		1600
-# define HEIGHT		900
+# define WIDTH			1600
+# define HEIGHT			900
 # define WHITE			16777215
 # define RED_FDF		16711680
 # define YELLOW			14548736
