@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 21:31:21 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/16 21:31:21 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 19:50:27 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_part
 	char    f;
 }   t_part;
 
-int				ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 void    ft_unumber(struct s_part *part);
 int     ft_upart_minus(struct s_part *part);
 int     ft_upart_nominus(struct s_part *part);
@@ -84,5 +84,8 @@ int     ft_fflag(char *str, struct s_part *part);
 char    *bin2str(char *str);
 void    flnumber(struct s_part *part);
 void 	norm_for_ft_oxnumber(struct s_part *part);
+void	help_for_ft_helpforparsing(struct s_part *part, char **str);
+void 	help_for_ft_fill_struct(struct s_part *this);
+int 	ft_help_for_ft_flag(struct s_part *part, char *str);
 
 #endif
