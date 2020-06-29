@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:42:41 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/29 20:02:49 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 20:03:20 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_help_for_ft_flag(struct s_part *part, char *str)
 		return (1);
 	if (str[part->n] == 'f' && !ft_fflag((part->format), part))
 		return (1);
+	return (0);
 }
 
 int		ft_int_out(struct s_part *this, int i)
