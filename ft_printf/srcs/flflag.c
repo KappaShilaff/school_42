@@ -6,22 +6,20 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 21:27:27 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/16 21:27:27 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 19:20:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdio.h>
-#include <stdarg.h>
 #include "libft.h"
 #include "ft_printf.h"
 
-static char *mantissa(struct s_part *part, int k, int l)
+static char		*mantissa(struct s_part *part, int k, int l)
 {
-	char    *mant;
-	int     mt;
+	char			*mant;
+	int				mt;
 	__uint128_t		*n;
-	int     i;
+	int				i;
 
 	n = (__uint128_t *)&part->ldnum;
 	i = 0;
@@ -32,23 +30,22 @@ static char *mantissa(struct s_part *part, int k, int l)
 	while (l + 1 > 0)
 		mant[l-- + 1] = '0' + ((((*n) >> i++) & 1) == 1);
 	mant[1] = '.';
-	mant[k = 0] = '1';
+	k = 0;
+	mant[k] = '1';
 	part->e = (((*n) << 49 >> 49) >> 64) - 16383;
 	if (part->ldnum < 0)
 		part->negative = 1;
 	return (mant);
 }
 
-
-void flnumber(struct s_part *part)
+void			flnumber(struct s_part *part)
 {
-	char    *mant;
-	char    *bin;
-	char    *exp;
-	char    *res;
+	char	*mant;
+	char	*bin;
+	char	*exp;
+	char	*res;
 
-
-	mant  = mantissa(part, 1, 0);
+	mant = mantissa(part, 1, 0);
 	bin = bin2str(mant);
 	free(mant);
 	if (part->e > 0)
@@ -65,4 +62,3 @@ void flnumber(struct s_part *part)
 	free(res);
 	part->num = mant;
 }
-

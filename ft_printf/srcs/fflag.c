@@ -6,34 +6,33 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 21:31:41 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/16 21:31:41 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 19:19:43 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include "libft.h"
 #include "ft_printf.h"
 
-static void norme1(unsigned long int kek, int k[1], int i[15], int l[1])
+static void		norme1(unsigned long int kek, int k[1], int i[15], int l[1])
 {
 	i[0] = 1;
 	while (k[0]++ < 11)
 		i[k[0] - 1] = i[k[0] - 2] * 2;
 	k[0] = 0;
-	while (k[0] < 52 && k[0] != 100)
+	while ((k[0] < 52) && (k[0] != 100))
 		if (((kek >> l[0]++) & 1u) == 1)
 			k[0] = 100;
 		else
 			k[0]++;
 }
 
-static char *mantissa(struct s_part *part, unsigned long kek, int k, int l)
+static char		*mantissa(struct s_part *part, unsigned long kek, int k, int l)
 {
-	int     i[11];
-	char    *mant;
-	int     mt;
+	int		i[11];
+	char	*mant;
+	int		mt;
 
 	norme1(kek, &k, i, &l);
 	mt = 53 - --l;
@@ -45,7 +44,8 @@ static char *mantissa(struct s_part *part, unsigned long kek, int k, int l)
 		else
 			mant[mt--] = '0';
 	mant[1] = '.';
-	mant[k = 0] = '1';
+	k = 0;
+	mant[k] = '1';
 	while (k++ < 11)
 		if (((kek >> l++) & 1u) == 1)
 			part->e += i[k - 1];
@@ -56,17 +56,16 @@ static char *mantissa(struct s_part *part, unsigned long kek, int k, int l)
 	return (mant);
 }
 
-
-void   ft_fnumber(struct s_part *part)
+void			ft_fnumber(struct s_part *part)
 {
-	unsigned long int       kek;
-	char    *mant;
-	char    *bin;
-	char    *exp;
-	char    *res;
+	unsigned long int	kek;
+	char				*mant;
+	char				*bin;
+	char				*exp;
+	char				*res;
 
 	ft_memcpy(&kek, &part->dnum, 8);
-	mant  = mantissa(part, kek, 1, 0);
+	mant = mantissa(part, kek, 1, 0);
 	bin = bin2str(mant);
 	free(mant);
 	if (part->e > 0)
@@ -84,7 +83,7 @@ void   ft_fnumber(struct s_part *part)
 	part->num = mant;
 }
 
-int     ft_fflag(char *str, struct s_part *part)
+int				ft_fflag(char *str, struct s_part *part)
 {
 	ft_parsing(part, &str, 'f');
 	part->f = 1;
@@ -92,7 +91,9 @@ int     ft_fflag(char *str, struct s_part *part)
 	{
 		part->ldnum = va_arg(*part->arg, long double);
 		flnumber(part);
-	} else {
+	}
+	else
+	{
 		part->dnum = va_arg(*part->arg, double);
 		ft_fnumber(part);
 	}

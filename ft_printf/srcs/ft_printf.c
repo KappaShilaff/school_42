@@ -16,13 +16,13 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int		ft_int_out(struct s_part *this, int i)
+int			ft_int_out(struct s_part *this, int i)
 {
 	this->int_out += i;
 	return (1);
 }
 
-int		ft_filler(struct s_part *this, long int i, char k)
+int			ft_filler(struct s_part *this, long int i, char k)
 {
 	char		*out;
 	long int	temp;
@@ -38,7 +38,7 @@ int		ft_filler(struct s_part *this, long int i, char k)
 	return (0);
 }
 
-void	ft_helpforparsing(struct s_part *part, char **str)
+void		ft_helpforparsing(struct s_part *part, char **str)
 {
 	if (**str == '-')
 		part->minus = 1;
@@ -70,7 +70,7 @@ void	ft_helpforparsing(struct s_part *part, char **str)
 	}
 }
 
-void	ft_parsing(struct s_part *part, char **str, char flag)
+void		ft_parsing(struct s_part *part, char **str, char flag)
 {
 	while (**str == ' ' || **str == '+' || **str == '-'
 	|| (**str >= '0' && **str <= '9') || **str == 'l' || **str == 'h' ||
@@ -102,7 +102,7 @@ void	ft_parsing(struct s_part *part, char **str, char flag)
 	}
 }
 
-void	ft_fill_struct(struct s_part *this)
+void		ft_fill_struct(struct s_part *this)
 {
 	this->len = 0;
 	this->d = 0;
@@ -136,7 +136,7 @@ void	ft_fill_struct(struct s_part *this)
 	this->f = 0;
 }
 
-int		ft_flag(struct s_part *part)
+int			ft_flag(struct s_part *part)
 {
 	char	*str;
 
@@ -174,7 +174,7 @@ int		ft_flag(struct s_part *part)
 	return (1);
 }
 
-int					ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list			arg;
 	struct s_part	part;

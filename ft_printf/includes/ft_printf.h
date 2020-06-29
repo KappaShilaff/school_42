@@ -83,5 +83,6 @@ int     ft_pflag(char *str, struct s_part *part, char type);
 int     ft_fflag(char *str, struct s_part *part);
 char    *bin2str(char *str);
 void    flnumber(struct s_part *part);
+void 	norm_for_ft_oxnumber(struct s_part *part);
 
 #endif
