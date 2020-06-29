@@ -12,7 +12,6 @@ LIB_DIR =	srcs/libft/
 
 CFILE =		ft_printf.c uflag.c idflag.c oxperflag.c scflag.c pflag.c fflag.c bin2str.c flflag.c norm_printf.c\
 
-
 CFIND =		$(CFILE:%=$(SRC_DIR)%)
 
 OFILE =		$(CFILE:%.c=%.o)
