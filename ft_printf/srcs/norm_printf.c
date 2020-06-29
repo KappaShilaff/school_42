@@ -6,17 +6,15 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 19:42:41 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/29 19:53:19 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 20:02:49 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
-#include <stdarg.h>
-#include "libft.h"
 #include "ft_printf.h"
 
-int 		ft_help_for_ft_flag(struct s_part *part, char *str)
+int		ft_help_for_ft_flag(struct s_part *part, char *str)
 {
 	if (str[part->n] == 'x' && !ft_oxflag((part->format), part, 'x'))
 		return (1);
@@ -34,13 +32,13 @@ int 		ft_help_for_ft_flag(struct s_part *part, char *str)
 		return (1);
 }
 
-int			ft_int_out(struct s_part *this, int i)
+int		ft_int_out(struct s_part *this, int i)
 {
 	this->int_out += i;
 	return (1);
 }
 
-int			ft_filler(struct s_part *this, long int i, char k)
+int		ft_filler(struct s_part *this, long int i, char k)
 {
 	char		*out;
 	long int	temp;
@@ -56,7 +54,7 @@ int			ft_filler(struct s_part *this, long int i, char k)
 	return (0);
 }
 
-void 		help_for_ft_helpforparsing(struct s_part *part, char **str)
+void	help_for_ft_helpforparsing(struct s_part *part, char **str)
 {
 	if (**str == '-')
 		part->minus = 1;
@@ -68,7 +66,7 @@ void 		help_for_ft_helpforparsing(struct s_part *part, char **str)
 		part->zero = 1;
 }
 
-void 		help_for_ft_fill_struct(struct s_part *this)
+void	help_for_ft_fill_struct(struct s_part *this)
 {
 	this->field = 0;
 	this->L = 0;
