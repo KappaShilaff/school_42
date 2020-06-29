@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 01:27:04 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/29 20:29:58 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 20:30:24 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ char			*ft_itoa_base(long int value, int base, char x)
 		tab_base = "0123456789ABCDEF";
 	else
 		tab_base = "0123456789abcdef";
-	taille = digit_count(value, base + help_itoa(&taille, &i, &ret, sign));
+	taille = digit_count(value, base);
+	help_itoa(&taille, &i, &ret, sign);
 	while (value != 0)
 	{
 		ret[taille - i++] = tab_base[value % base];

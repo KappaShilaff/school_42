@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 01:38:55 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/29 20:23:11 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 20:54:47 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static size_t	digit_count(size_t nb, int base)
 static int		help_itoa(size_t *taille, size_t *i, char **ret, size_t sign)
 {
 	*taille += (sign ? 1 : 0);
-	*ret = (char *)malloc(sizeof(char) * (*taille + 1));
+	*ret = (char *)malloc(sizeof(char) * ((*taille) + 1));
 	*i = 1;
-	sign ? (*ret[0] = '-') : 0;
+	sign ? ((*ret)[0] = '-') : 0;
 	return (0);
 }
 
@@ -53,7 +53,8 @@ char			*ft_unsigned_itoa_base(size_t value, int base, char x)
 		tab_base = "0123456789ABCDEF";
 	else
 		tab_base = "0123456789abcdef";
-	taille = digit_count(value, base + help_itoa(&taille, &i, &ret, sign));
+	taille = digit_count(value, base);
+	help_itoa(&taille, &i, &ret, sign);
 	while (value != 0)
 	{
 		ret[taille - i++] = tab_base[value % base];
