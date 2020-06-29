@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 01:27:04 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:27:56 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/29 20:29:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,28 @@ static size_t	digit_count(long nb, int base)
 	return (i);
 }
 
+static int		help_itoa(long int *taille, long int *i,
+		char **ret, long int sign)
+{
+	*taille += (sign ? 1 : 0);
+	*ret = (char *)malloc(sizeof(char) * (*taille + 1));
+	*i = 1;
+	sign ? (*ret[0] = '-') : 0;
+	return (0);
+}
+
+static int		help2(long int *sign, int base, long int value)
+{
+	sign = 0;
+	if (base == 10 && value < 0)
+		*sign = 1;
+	if (value < 0)
+		value = -value;
+	if (value == 0)
+		return (0);
+	return (1);
+}
+
 char			*ft_itoa_base(long int value, int base, char x)
 {
 	char			*ret;
@@ -39,22 +61,13 @@ char			*ft_itoa_base(long int value, int base, char x)
 		return (0);
 	if (base == 10 && value == (-9223372036854775807 - 1))
 		return ("-9223372036854775808");
-	sign = 0;
-	if (base == 10 && value < 0)
-		sign = 1;
-	if (value < 0)
-		value = -value;
-	if (value == 0)
+	if (help2(&sign, base, value) == 0)
 		return ("0");
 	if (x == 'X')
 		tab_base = "0123456789ABCDEF";
 	else
 		tab_base = "0123456789abcdef";
-	taille = digit_count(value, base);
-	taille += (sign ? 1 : 0);
-	ret = (char *)malloc(sizeof(char) * (taille + 1));
-	i = 1;
-	sign ? (ret[0] = '-') : 0;
+	taille = digit_count(value, base + help_itoa(&taille, &i, &ret, sign));
 	while (value != 0)
 	{
 		ret[taille - i++] = tab_base[value % base];
