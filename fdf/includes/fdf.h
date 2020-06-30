@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 20:25:53 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 21:23:34 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,31 @@
 typedef struct		s_mlx
 {
 	float			x1;
-	float 			y1;
-	float 			x2;
-	float 			y2;
-	void 			*mlx_ptr;
-	void 			*win_ptr;
-	float 			**pxl;
-	int 			x_max;
-	int 			y_max;
-	int 			fd;
-	float 			zoom;
-	int 			color;
-	int 			shift_x;
-	int 			shift_y;
-	double 			x;
-	float 			zoom_z;
-	int 			clr_switch;
-	int 			key_iso;
+	float			y1;
+	float			x2;
+	float			y2;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	float			**pxl;
+	int				x_max;
+	int				y_max;
+	int				fd;
+	float			zoom;
+	int				color;
+	int				shift_x;
+	int				shift_y;
+	double			x;
+	float			zoom_z;
+	int				clr_switch;
+	int				key_iso;
 }					t_mlx;
 
-t_mlx 	*map_parsing(char **av);
-int 	fdf_valid_malloc(t_mlx *mlx);
-int 	draw(t_mlx *mlx, int x, int y);
-int 	free_mlx(t_mlx *mlx);
-int 	key_hook(int key, t_mlx *mlx);
-void 	fdf_color(t_mlx *mlx, float z1, float z2);
-void	drow_menu(t_mlx *mlx);
+t_mlx				*map_parsing(char **av);
+int					fdf_valid_malloc(t_mlx *mlx);
+int					draw(t_mlx *mlx, int x, int y);
+int					free_mlx(t_mlx *mlx);
+int					key_hook(int key, t_mlx *mlx);
+void				fdf_color(t_mlx *mlx, float z1, float z2);
+void				drow_menu(t_mlx *mlx);
 
 #endif
