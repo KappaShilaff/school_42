@@ -65,7 +65,7 @@ t_mlx	*map_parsing(char **av)
 		return (fdf_error(mlx, "Found wrong line length. Exiting.\n"));
 	close(mlx->fd);
 	mlx->pxl = fdf_split(mlx, av);
-	if (!(mlx->pxl[0][0]))
+	if (!(mlx->pxl[1][1]))
 		return (fdf_error(mlx, "No data found.\n"));
 	return (mlx);
 }
