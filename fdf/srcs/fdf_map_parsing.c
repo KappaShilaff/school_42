@@ -46,10 +46,11 @@ t_mlx	*map_parsing(char **av)
 
 	if (!(mlx = malloc(sizeof(t_mlx))))
 	{
-		return (0);
+		return (NULL);
 	}
 	mlx->fd = open(av[1], O_RDONLY);
-	if (fdf_valid_malloc(mlx) == 0)
+	if (fdf_valid_malloc(mlx) == 0 || mlx->fd < 0 ||
+	read(mlx->fd, 0, 0) < 0)
 	{
 		close(mlx->fd);
 		free(mlx);
