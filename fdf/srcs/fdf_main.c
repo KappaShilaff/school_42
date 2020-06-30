@@ -36,6 +36,7 @@ int		main(int ac, char **argv)
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	mlx->shift_x = 100;
 	mlx->shift_y = 100;
+	mlx->key_iso = 1;
 	mlx->zoom_z = (float)0.2;
 	mlx->x = 0.8;
 	mlx->zoom = 10;

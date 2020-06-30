@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 15:36:38 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:37:23 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define KEY_A 			0
 # define KEY_D 			2
 # define KEY_F 			3
+# define KEY_G 			4
 
 # include "../srcs/libft/includes/libft.h"
 # include "mlx.h"
@@ -55,6 +56,7 @@ typedef struct		s_mlx
 	double 			x;
 	float 			zoom_z;
 	int 			clr_switch;
+	int 			key_iso;
 }					t_mlx;
 
 t_mlx 	*map_parsing(char **av);

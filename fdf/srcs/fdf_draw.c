@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:22:50 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 15:21:54 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:26:32 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void		mlx_fill(t_mlx *mlx, float *z1, float *z2)
 	mlx->y2 *= (float)mlx->zoom;
 	*z1 *= mlx->zoom_z * mlx->zoom;
 	*z2 *= mlx->zoom_z * mlx->zoom;
-	isometric(mlx, *z1, *z2);
+	if (mlx->key_iso == 1)
+		isometric(mlx, *z1, *z2);
 	mlx->x1 += (float)mlx->shift_x;
 	mlx->x2 += (float)mlx->shift_x;
 	mlx->y1 += (float)mlx->shift_y;

@@ -42,6 +42,8 @@ void	key_iso(int key, t_mlx *mlx)
 		mlx->x += 0.1;
 	if (key == KEY_E && mlx->x >= -0.9)
 		mlx->x -= 0.1;
+	if (key == KEY_G)
+		mlx->key_iso = (mlx->key_iso + 1) % 2;
 }
 
 int		key_hook(int key, t_mlx *mlx)
