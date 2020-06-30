@@ -6,7 +6,7 @@
 #    By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/22 23:24:36 by lcassaun          #+#    #+#              #
-#    Updated: 2020/06/28 01:09:04 by lcassaun         ###   ########.fr        #
+#    Updated: 2020/06/30 15:10:53 by lcassaun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,11 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 SOURCES_DIRECTORY = ./srcs/
 SOURCES_LIST = fdf_main.c\
 	fdf_valid_malloc.c\
-	map_parsing.c\
+	fdf_map_parsing.c\
 	fdf_draw.c\
 	fdf_key_hook.c\
-	fdf_color.c
+	fdf_color.c\
+	fdf_draw_menu.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = obj/

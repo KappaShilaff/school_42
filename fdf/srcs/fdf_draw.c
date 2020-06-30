@@ -107,5 +107,6 @@ int			draw(t_mlx *mlx, int x, int y)
 		}
 		y++;
 	}
+	drow_menu(t_mlx *mlx);
 	return (0);
 }

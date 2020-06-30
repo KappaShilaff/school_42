@@ -63,5 +63,6 @@ int 	draw(t_mlx *mlx, int x, int y);
 int 	free_mlx(t_mlx *mlx);
 int 	key_hook(int key, t_mlx *mlx);
 void 	fdf_color(t_mlx *mlx, float z1, float z2);
+void	drow_menu(t_mlx *mlx);
 
 #endif
