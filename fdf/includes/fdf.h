@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:37:26 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 15:37:23 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:42:42 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define KEY_A 			0
 # define KEY_D 			2
 # define KEY_F 			3
-# define KEY_G 			4
+# define KEY_H 			4
 
 # include "../srcs/libft/includes/libft.h"
 # include "mlx.h"

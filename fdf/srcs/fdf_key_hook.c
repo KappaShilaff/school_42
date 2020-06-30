@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 00:33:01 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 15:44:27 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:47:28 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	key_iso(int key, t_mlx *mlx)
 		mlx->x += 0.1;
 	if (key == KEY_E && mlx->x >= -0.9)
 		mlx->x -= 0.1;
-	if (key == KEY_G)
+	if (key == KEY_H)
 		mlx->key_iso = (mlx->key_iso + 1) % 2;
 }
 

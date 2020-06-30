@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 15:11:17 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 15:35:28 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:51:18 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void	drow_menu(t_mlx *mlx)
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr,
 		WIDTH - 330, 150, 0xffffff, "key_change_color - f");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr,
-		WIDTH - 330, 180, 0xffffff, "key_exit         - esc");
+		WIDTH - 330, 180, 0xffffff, "key_projection   - h");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr,
+		WIDTH - 330, 210, 0xffffff, "key_exit         - esc");
 }
