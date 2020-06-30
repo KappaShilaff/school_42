@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:23:10 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/28 01:22:23 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 16:39:07 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,20 @@ t_mlx	*map_parsing(char **av)
 
 	if (!(mlx = malloc(sizeof(t_mlx))))
 	{
+		ft_putstr_fd("Mlx malloc ERROR.\n", 2);
 		return (NULL);
 	}
 	mlx->fd = open(av[1], O_RDONLY);
-	if (fdf_valid_malloc(mlx) == 0 || mlx->fd < 0 ||
-	read(mlx->fd, 0, 0) < 0)
+	if (mlx->fd < 0 || read(mlx->fd, 0, 0) < 0)
 	{
+		ft_putstr_fd("Usage : ./fdf <filename> [ case_size z_size ]\n", 2);
+		close(mlx->fd);
+		free(mlx);
+		return (NULL);
+	}
+	if (fdf_valid_malloc(mlx) == 0)
+	{
+		ft_putstr_fd("Found wrong line length. Exiting.\n", 2);
 		close(mlx->fd);
 		free(mlx);
 		return (NULL);

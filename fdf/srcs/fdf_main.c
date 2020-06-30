@@ -6,11 +6,12 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:36:37 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 16:39:07 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 16:54:45 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include <errno.h>
 
 int		free_mlx(t_mlx *mlx)
 {
@@ -27,11 +28,13 @@ int		main(int ac, char **argv)
 	t_mlx	*mlx;
 
 	mlx = map_parsing(argv);
-	if (mlx == NULL || ac != 2)
+	if (ac != 2)
 	{
-		ft_putstr("invalid otstrelen\n");
+		ft_putstr_fd("Usage : ./fdf <filename> [ case_size z_size ]\n", 2);
 		return (0);
 	}
+	if (mlx == NULL)
+		return (0);
 	mlx->mlx_ptr = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	mlx->shift_x = 100;
