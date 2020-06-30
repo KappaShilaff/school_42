@@ -15,13 +15,13 @@
 void	fdf_color_switch(t_mlx *mlx, int *clr)
 {
 	if (mlx->clr_switch == 0)
-		*clr = WHITE;
+		*clr = BLUE;
 	if (mlx->clr_switch == 1)
 		*clr = RED_FDF;
 	if (mlx->clr_switch == 2)
 		*clr = YELLOW;
 	if (mlx->clr_switch == 3)
-		*clr = BLUE;
+		*clr = WHITE;
 	if (mlx->clr_switch == 4)
 		*clr = GREEN;
 }
