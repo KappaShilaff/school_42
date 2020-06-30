@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:23:10 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 17:39:38 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:45:48 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,12 @@ t_mlx	*map_parsing(char **av)
 	}
 	mlx->fd = open(av[1], O_RDONLY);
 	if (mlx->fd < 0 || read(mlx->fd, 0, 0) < 0)
-		return (fdf_error(mlx, "Usage : ./fdf <filename> [ case_size z_size ]\n"));
+		return (fdf_error(mlx, "Usage : "
+		"./fdf <filename> [ case_size z_size ]\n"));
 	if (fdf_valid_malloc(mlx) == 0)
-	{
-		ft_putstr_fd("Found wrong line length. Exiting.\n", 2);
-		close(mlx->fd);
-		free(mlx);
-		return (NULL);
-	}
+		return (fdf_error(mlx, "Found wrong line length. Exiting.\n"));
 	if (!(mlx->pxl))
-	{
-		ft_putstr_fd("No data found.\n", 2);
-		close(mlx->fd);
-		free(mlx);
-		return (NULL);
-	}
+		return (fdf_error(mlx, "No data found.\n"));
 	close(mlx->fd);
 	mlx->pxl = fdf_split(mlx, av);
 	return (mlx);
