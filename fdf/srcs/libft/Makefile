@@ -119,6 +119,12 @@ OBJ_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
 
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_LIST))
 
+# COLORS
+
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
 .PHONY: all clean fclean re
 
 all:  $(NAME)
@@ -132,6 +138,7 @@ $(OBJ_DIR):
 
 $(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HEADERS)
 	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	@echo "$(GREEN).$(RESET)\c"
 
 clean:
 	@rm -rf $(OBJ_DIR)
