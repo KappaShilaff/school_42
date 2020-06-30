@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:23:10 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 17:35:58 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:39:38 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ float	**fdf_split(t_mlx *mlx, char **av)
 	return (temp);
 }
 
-char	*fdf_error(t_mlx *mlx, char *str)
+t_mlx	*fdf_error(t_mlx *mlx, char *str)
 {
 	ft_putstr_fd(str, 2);
 	close(mlx->fd);
