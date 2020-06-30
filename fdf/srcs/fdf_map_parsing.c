@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:23:10 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 20:25:38 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 20:26:46 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_mlx	*map_parsing(char **av)
 		return (fdf_error(mlx, "Found wrong line length. Exiting.\n"));
 	close(mlx->fd);
 	mlx->pxl = fdf_split(mlx, av);
-	if (!(mlx->pxl[1][1]))
+	if (mlx->x_max == 0)
 		return (fdf_error(mlx, "No data found.\n"));
 	return (mlx);
 }
