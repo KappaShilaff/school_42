@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:23:10 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/06/30 17:22:15 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:33:25 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_mlx	*map_parsing(char **av)
 		free(mlx);
 		return (NULL);
 	}
-	if (!(mlx->pxl[0][0]))
+	if (!(mlx->pxl[0]))
 	{
 		ft_putstr_fd("No data found.\n", 2);
 		close(mlx->fd);
