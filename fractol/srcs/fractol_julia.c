@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:51:54 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/04 19:00:58 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:33:45 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 void	fr_julia(t_fr *fr)
 {
 	fr_create_mlx(fr);
+	mlx_put_image_to_window(fr->mlx, fr->win, fr->img, 0, 0);
 	mlx_loop(fr->mlx);
 }

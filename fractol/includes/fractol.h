@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/04 19:02:16 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:09:14 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include "../srcs/libft/includes/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
-# define WIDTH	1600
-# define HEIGHT 900
+# define WIDTH			1600
+# define HEIGHT 		900
+# define KEY_ESC		53
 
 typedef struct		s_fr
 {
