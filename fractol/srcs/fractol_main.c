@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/04 18:51:48 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/04 18:57:44 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int 	fr_valid_argv(t_fr *fr)
 		fr_julia(fr);
 	else
 		return (0);
+	return (0);
 }
 
 int		main(int argc, char **argv)
