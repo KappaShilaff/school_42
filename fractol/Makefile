@@ -6,7 +6,7 @@
 #    By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/22 23:24:36 by lcassaun          #+#    #+#              #
-#    Updated: 2020/07/04 19:19:58 by lcassaun         ###   ########.fr        #
+#    Updated: 2020/07/04 19:20:03 by lcassaun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
 MINILIBX_DIRECTORY = ./minilibx_macos/
 MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
-HEADERS_LIST = fdf.h\
+HEADERS_LIST = *.h\
 
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
