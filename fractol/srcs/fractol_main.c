@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/04 19:32:21 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:33:45 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int 	fr_valid_argv(t_fr *fr)
 {
 	if (ft_strcmp(fr->argv, "Julia") == 0)
 		fr_julia(fr);
+	else if (ft_strcmp(fr->argv, "Mandelbrot") == 0)
+		fr_mandelbrot(fd);
 	else
 		return (0);
 	return (1);

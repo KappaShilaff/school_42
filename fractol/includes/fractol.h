@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/04 19:09:14 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:52:23 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,30 @@ typedef struct		s_fr
 	int				endian;
 	int				strlen;
 	int				bpp;
+	int 			fr_switch;
+	int				x;
+	int				y;
+	int				i;
+	int				color;
+	int				s_l;
+	double			z_r;
+	double			z_i;
+	double			tmp;
+	double			x1;
+	double			y1;
+	double			x2;
+	double			y2;
+	double			c_r;
+	double			c_i;
+	int				itmax;
+	double			zoom;
+	double			pr;
+	double			pi;
 }					t_fr;
 
 void	fr_julia(t_fr *fr);
 void	fr_create_mlx(t_fr *fr);
+void	fr_mandelbrot(t_fr *fr);
+void	bfr_pix(t_fr *fr);
 
 #endif

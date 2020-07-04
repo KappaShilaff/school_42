@@ -6,7 +6,7 @@
 #    By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/22 23:24:36 by lcassaun          #+#    #+#              #
-#    Updated: 2020/07/04 19:29:24 by lcassaun         ###   ########.fr        #
+#    Updated: 2020/07/04 19:52:23 by lcassaun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 SOURCES_DIRECTORY = ./srcs/
 SOURCES_LIST = fractol_julia.c\
 			fractol_main.c\
-			fractol_create_mlx.c
+			fractol_create_mlx.c\
+			fractol_mandelbrot.c\
+			fractol_draw.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
