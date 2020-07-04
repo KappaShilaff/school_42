@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/04 20:25:03 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/04 20:29:05 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void			bfr_pix(t_fr *fr)
 	else
 	{
 		if (fr->fr_switch == 4)
-			pix_to_img(fr, (fr->i * 900000));
+			pix_to_img(fr, (fr->i * 90000));
 		else
 			pix_to_img(fr, (fr->i * 1100000));
 	}
