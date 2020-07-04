@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/04 19:52:23 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/04 20:14:20 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_mandel(t_fr *fr)
 	fr->fr_switch = 2;
 }
 
-void	exten_mandel(t_fr *fr)
+static void	exten_mandel(t_fr *fr)
 {
 	while (fr->z_r * fr->z_r + fr->z_i * fr->z_i < 4 && fr->i < fr->itmax)
 	{
