@@ -6,11 +6,11 @@
 #    By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/22 23:24:36 by lcassaun          #+#    #+#              #
-#    Updated: 2020/06/30 20:25:53 by lcassaun         ###   ########.fr        #
+#    Updated: 2020/07/04 19:19:58 by lcassaun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+NAME = fractol
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
@@ -31,13 +31,8 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./srcs/
-SOURCES_LIST = fdf_main.c\
-	fdf_valid_malloc.c\
-	fdf_map_parsing.c\
-	fdf_draw.c\
-	fdf_key_hook.c\
-	fdf_color.c\
-	fdf_draw_menu.c
+SOURCES_LIST = *.c
+
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = obj/
