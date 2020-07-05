@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 16:36:27 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:41:11 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int		fr_mouse(int code, int x, int y, t_fr *fr)
 
 int		fr_key(int code, t_fr *fr)
 {
-	if (code == 53)
+	if (code == KEY_ESC)
 	{
 		free(fr);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	return (0);
 }
