@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 16:11:48 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:25:43 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,7 @@ void			fr_bfr_pix(t_fr *fr)
 	if (fr->i == fr->itmax)
 		fr_pix_to_img(fr, 0);
 	else
-	{
-		if (fr->fr_switch == 4)
-			fr_pix_to_img(fr, (fr->i * 900000));
-		else
 			fr_pix_to_img(fr, (fr->i * 1100000));
-	}
 }
 
 void	fr_draw(t_fr *fr)
