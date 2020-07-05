@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/05 16:30:06 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:39:29 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define WIDTH			1600
 # define HEIGHT 		900
 # define KEY_ESC		53
+# define KEY_W 			13
+# define KEY_S 			1
+# define KEY_A 			0
+# define KEY_D 			2
 
 typedef struct		s_fr
 {
@@ -52,6 +56,8 @@ typedef struct		s_fr
 	double			zoom;
 	double			pr;
 	double			pi;
+	double 			shift_x;
+	double 			shift_y;
 }					t_fr;
 
 void	fr_julia(t_fr *fr);

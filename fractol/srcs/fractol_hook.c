@@ -6,11 +6,23 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 16:41:11 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:41:56 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+static void	fr_key_shift(int key, t_fr *fr)
+{
+	if (key == KEY_W)
+		fr->shift_y -= fr->zoom;
+	if (key == KEY_S)
+		fr->shift_y += fr->zoom;
+	if (key == KEY_A)
+		fr->shift_x -= fr->zoom;
+	if (key == KEY_D)
+		fr->shift_x += fr->zoom;
+}
 
 int		fr_mouse(int code, int x, int y, t_fr *fr)
 {
@@ -27,12 +39,17 @@ int		fr_mouse(int code, int x, int y, t_fr *fr)
 	return (0);
 }
 
-int		fr_key(int code, t_fr *fr)
+int		fr_key(int key, t_fr *fr)
 {
-	if (code == KEY_ESC)
+	if (key == KEY_ESC)
 	{
 		free(fr);
 		exit(EXIT_SUCCESS);
+	}
+	if ((key >= 0 && key <= 2) || key == 13)
+	{
+		fr_key_shift(key, fr);
+		fr_draw(fr);
 	}
 	return (0);
 }

@@ -6,11 +6,19 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 16:17:26 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:47:29 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+void 	fr_shift(t_fr *fr)
+{
+	fr->x1 += fr->shift_x * fr->zoom;
+	fr->x2 += fr->shift_x * fr->zoom;
+	fr->y1 += fr->shift_y * fr->zoom;
+	fr->y2 += fr->shift_y * fr->zoom;
+}
 
 static void	fr_fill_mandel(t_fr *fr)
 {
@@ -37,7 +45,7 @@ static void	fr_calc_mandel(t_fr *fr)
 	}
 }
 
-void 	fr_mandelbrot_draw(t_fr *fr)
+void		fr_mandelbrot_draw(t_fr *fr)
 {
 	while (fr->y < HEIGHT)
 	{
@@ -48,6 +56,7 @@ void 	fr_mandelbrot_draw(t_fr *fr)
 			fr->z_r = 0;
 			fr->z_i = 0;
 			fr_calc_mandel(fr);
+			fr_shift(fr);
 			fr_bfr_pix(fr);
 			fr->i = 0;
 			fr->x++;
@@ -61,7 +70,7 @@ void 	fr_mandelbrot_draw(t_fr *fr)
 	mlx_loop(fr->mlx);
 }
 
-void	fr_mandelbrot(t_fr *fr)
+void		fr_mandelbrot(t_fr *fr)
 {
 	fr_create_mlx(fr);
 	fr_fill_mandel(fr);
