@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 17:03:39 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:08:28 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	fr_calc_mandel(t_fr *fr)
 
 void		fr_mandelbrot_draw(t_fr *fr)
 {
+	fr_shift(fr);
 	while (fr->y < HEIGHT)
 	{
 		while (fr->x < WIDTH)
@@ -56,7 +57,6 @@ void		fr_mandelbrot_draw(t_fr *fr)
 			fr->z_r = 0;
 			fr->z_i = 0;
 			fr_calc_mandel(fr);
-			fr_shift(fr);
 			fr_bfr_pix(fr);
 			fr->i = 0;
 			fr->x++;
