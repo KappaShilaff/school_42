@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/04 19:52:23 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:25:43 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ typedef struct		s_fr
 void	fr_julia(t_fr *fr);
 void	fr_create_mlx(t_fr *fr);
 void	fr_mandelbrot(t_fr *fr);
-void	bfr_pix(t_fr *fr);
+void	fr_bfr_pix(t_fr *fr);
+void 	fr_mandelbrot_draw(t_fr *fr);
+void	fr_draw(t_fr *fr);
+void	fr_zoom(t_fr *fr, int x, int y);
+void	fr_dezoom(t_fr *fr, int x, int y);
+int		fr_mouse(int code, int x, int y, t_fr *fr);
 
 #endif
