@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 17:11:06 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:15:10 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 void 	fr_shift(t_fr *fr)
 {
-	fr->x1 += (int)fr->shift_x;
-	fr->x2 += (int)fr->shift_x;
-	fr->y1 += (int)fr->shift_y;
-	fr->y2 += (int)fr->shift_y;
+//	fr->x1 += (int)fr->shift_x;
+//	fr->x2 += (int)fr->shift_x;
+//	fr->y1 += (int)fr->shift_y;
+//	fr->y2 += (int)fr->shift_y;
+	double x_n;
+	double y_n;
+
+		x_n = (fr->shift_x / fr->zoom) + fr->x1;
+		y_n = (fr->shift_y / fr->zoom) + fr->y1;
+		fr->x1 = x_n - ( fr->shift_x/ fr->zoom);
+		fr->y1 = y_n - (fr->shift_y / fr->zoom);
+		fr_draw(fr);
 }
 
 static void	fr_fill_mandel(t_fr *fr)
