@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:57:48 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 16:39:29 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:05:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ void	fr_create_mlx(t_fr *fr)
 	mlx_key_hook(fr->win, fr_key, fr);
 	fr->shift_y = 0;
 	fr->shift_x = 0;
+	fr->shift_x_sum = 0;
+	fr->shift_y_sum = 0;
 }

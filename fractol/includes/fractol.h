@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/05 16:39:29 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:51:33 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct		s_fr
 	double			pi;
 	double 			shift_x;
 	double 			shift_y;
+	double 			shift_x_sum;
+	double 			shift_y_sum;
 }					t_fr;
 
 void	fr_julia(t_fr *fr);
