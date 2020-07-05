@@ -26,7 +26,7 @@ static void	fr_fill_mandel(t_fr *fr)
 	fr->y = 0;
 	fr->i = 0;
 	fr->x1 = -5.5;
-	fr->x2 = 2.5;
+	fr->y1 = -3.25;
 	fr->itmax = 40;
 	fr->zoom = 150;
 	fr->fr_switch = 2;
