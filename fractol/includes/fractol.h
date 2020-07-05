@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/05 16:25:43 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:30:06 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void	fr_draw(t_fr *fr);
 void	fr_zoom(t_fr *fr, int x, int y);
 void	fr_dezoom(t_fr *fr, int x, int y);
 int		fr_mouse(int code, int x, int y, t_fr *fr);
+int		fr_key(int code, t_fr *fr);
 
 #endif
