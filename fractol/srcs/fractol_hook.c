@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 16:41:56 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 16:55:49 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	fr_key_shift(int key, t_fr *fr)
 {
 	if (key == KEY_W)
-		fr->shift_y -= fr->zoom;
+		fr->shift_y -= fr->zoom / 150;
 	if (key == KEY_S)
-		fr->shift_y += fr->zoom;
+		fr->shift_y += fr->zoom / 150;
 	if (key == KEY_A)
-		fr->shift_x -= fr->zoom;
+		fr->shift_x -= fr->zoom / 150;
 	if (key == KEY_D)
-		fr->shift_x += fr->zoom;
+		fr->shift_x += fr->zoom / 150;
 }
 
 int		fr_mouse(int code, int x, int y, t_fr *fr)
