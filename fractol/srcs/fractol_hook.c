@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 17:18:29 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:19:44 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ static void	fr_key_shift(int key, t_fr *fr)
 {
 	if (key == KEY_W)
 	{
-		fr->shift_y = fr->zoom / 150;
+		fr->shift_y = fr->zoom;
 		fr->shift_x = 0;
 	}
 	if (key == KEY_S)
 	{
-		fr->shift_y = -fr->zoom / 150;
+		fr->shift_y = -fr->zoom;
 		fr->shift_x = 0;
 	}
 	if (key == KEY_A)
 	{
-		fr->shift_x = -fr->zoom / 150;
+		fr->shift_x = fr->zoom;
 		fr->shift_y = 0;
 	}
 	if (key == KEY_D)
 	{
-		fr->shift_x = fr->zoom / 150;
+		fr->shift_x = -fr->zoom;
 		fr->shift_y = 0;
 	}
 }
