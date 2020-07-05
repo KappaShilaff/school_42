@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 17:20:30 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 18:00:18 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	fr_key_shift(int key, t_fr *fr)
 		fr->shift_x = fr->zoom;
 		fr->shift_y = 0;
 	}
+	fr_shift(fr);
 }
 
 int		fr_mouse(int code, int x, int y, t_fr *fr)
