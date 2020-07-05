@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/05 18:00:18 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/05 18:01:59 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,12 @@ void	fr_zoom(t_fr *fr, int x, int y)
 
 	x -= (int)fr->shift_x_sum;
 	y -= (int)fr->shift_y_sum;
-	if (y > 0 && x > 0)
-	{
 		x_n = (x / fr->zoom) + fr->x1;
 		y_n = (y / fr->zoom) + fr->y1;
 		fr->zoom *= 1.35;
 		fr->x1 = x_n - (x / fr->zoom);
 		fr->y1 = y_n - (y / fr->zoom);
 		fr_draw(fr);
-	}
 }
 
 void	fr_dezoom(t_fr *fr, int x, int y)
