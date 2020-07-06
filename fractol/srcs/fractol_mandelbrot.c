@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:43:31 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:45:24 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,24 @@ void		fr_mandelbrot_draw(t_fr **fr)
 	mlx_loop(fr[0]->mlx);
 }
 
-void 		fr_fill_another(t_fr **fr)
+void 		fr_fill_another(t_fr *fr)
 {
 	printf("1\n");
-	fr[1]->img_str = fr[0]->img_str;
+	fr[1].img_str = fr[0].img_str;
 	printf("2\n");
-	fr[1]->win = fr[0]->win;
+	fr[1].win = fr[0].win;
 	printf("3\n");
-	fr[1]->img = fr[0]->img;
+	fr[1].img = fr[0].img;
 	printf("4\n");
-	fr[1]->mlx = fr[0]->mlx;
+	fr[1].mlx = fr[0].mlx;
 	printf("5\n");
-	fr[2]->mlx = fr[0]->mlx;
+	fr[2].mlx = fr[0].mlx;
 	printf("6\n");
-	fr[2]->win = fr[0]->win;
+	fr[2].win = fr[0].win;
 	printf("7\n");
-	fr[2]->img = fr[0]->img;
+	fr[2].img = fr[0].img;
 	printf("8\n");
-	fr[2]->img_str = fr[0]->img_str;
+	fr[2].img_str = fr[0].img_str;
 	printf("9\n");
 }
 

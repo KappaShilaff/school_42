@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/06 19:28:58 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:34:16 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define KEY_S 			1
 # define KEY_A 			0
 # define KEY_D 			2
+
+
 
 typedef struct		s_fr
 {
