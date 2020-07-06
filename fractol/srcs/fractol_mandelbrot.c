@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:52:19 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:55:08 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ void 	fr_shift(t_fr *fr)
 	fr->shift_y_sum += fr->shift_y;
 }
 
-static void	fr_fill_mandel(t_fr fr, int i)
+static void	fr_fill_mandel(t_fr *fr, int i)
 {
-	fr.x = 0;
-	fr.y = 0;
-	fr.i = 0;
-	fr.x1 = -5.5;
-	fr.y1 = -3.25;
-	fr.itmax = 40;
-	fr.zoom = 150;
-	fr.fr_switch = 2;
-	fr.thread = i;
+	fr->x = 0;
+	fr->y = 0;
+	fr->i = 0;
+	fr->x1 = -5.5;
+	fr->y1 = -3.25;
+	fr->itmax = 40;
+	fr->zoom = 150;
+	fr->fr_switch = 2;
+	fr->thread = i;
 }
 
 static void	fr_calc_mandel(t_fr *fr)
@@ -95,9 +95,9 @@ void		fr_mandelbrot(t_fr **fr)
 {
 	fr_create_mlx(fr);
 	fr_fill_another(*fr);
-	fr_fill_mandel(*fr[0], 0);
-	fr_fill_mandel(*fr[1], 1);
-	fr_fill_mandel(*fr[2], 2);
+	fr_fill_mandel(fr[0], 0);
+	fr_fill_mandel(fr[1], 1);
+	fr_fill_mandel(fr[2], 2);
 	printf("kek\n");
 	fr_mandelbrot_draw(fr);
 }
