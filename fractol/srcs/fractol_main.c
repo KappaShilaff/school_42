@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:29:55 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 22:02:25 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int		main(int argc, char **argv)
 	fr[1] = (t_fr *)malloc(sizeof(t_fr));
 	fr[2] = (t_fr *)malloc(sizeof(t_fr));
 	fr[0]->argv = argv[1];
-	printf("1111\n");
 	fr[0]->thread_id = thread_id;
 	if (fr_valid_argv(fr) == 0)
 		return (fr_error("Invalid argument\n", 2));

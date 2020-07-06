@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 22:07:06 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 22:14:05 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,12 @@ void 		fr_mandelbrot_draw_thread(t_fr *fr)
 
 void		fr_mandelbrot_draw(t_fr **fr)
 {
-	fr[0]->thread = 0;
-	pthread_create(&(fr[0]->thread_id[0]), NULL, (void *)fr_mandelbrot_draw_thread, fr);
-	pthread_create(&(fr[0]->thread_id[1]), NULL, (void *)fr_mandelbrot_draw_thread, fr);
-	pthread_create(&(fr[0]->thread_id[2]), NULL, (void *)fr_mandelbrot_draw_thread, fr);
+	pthread_create(&(fr[0]->thread_id[0]), NULL, (void *)fr_mandelbrot_draw_thread, fr[0]);
+	pthread_create(&(fr[0]->thread_id[1]), NULL, (void *)fr_mandelbrot_draw_thread, fr[1]);
+	pthread_create(&(fr[0]->thread_id[2]), NULL, (void *)fr_mandelbrot_draw_thread, fr[2]);
 	pthread_join(fr[0]->thread_id[0], NULL);
 	pthread_join(fr[0]->thread_id[1], NULL);
 	pthread_join(fr[0]->thread_id[2], NULL);
-	printf("KEK\n");
 	mlx_put_image_to_window(fr[0]->mlx, fr[0]->win, fr[0]->img, 0, 0);
 	mlx_loop(fr[0]->mlx);
 }
