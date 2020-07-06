@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:45:24 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:51:51 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void 		fr_fill_another(t_fr *fr)
 void		fr_mandelbrot(t_fr **fr)
 {
 	fr_create_mlx(fr);
-	fr_fill_another(fr);
+	fr_fill_another(*fr);
 	fr_fill_mandel(fr[0], 0);
 	fr_fill_mandel(fr[1], 1);
 	fr_fill_mandel(fr[2], 2);
