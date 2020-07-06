@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:55:08 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:55:56 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void 	fr_shift(t_fr *fr)
 	fr->shift_y_sum += fr->shift_y;
 }
 
-static void	fr_fill_mandel(t_fr *fr, int i)
+static void	fr_fill_mandel(t_fr fr[0], int i)
 {
 	fr->x = 0;
 	fr->y = 0;
