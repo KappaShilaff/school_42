@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 18:46:51 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:01:34 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,5 @@ void		fr_mandelbrot(t_fr **fr)
 	fr_fill_mandel(fr[0], 0);
 	fr_fill_mandel(fr[1], 1);
 	fr_fill_mandel(fr[2], 2);
-	fr_fill_mandel(fr[3], 3);
 	fr_mandelbrot_draw(fr);
 }
