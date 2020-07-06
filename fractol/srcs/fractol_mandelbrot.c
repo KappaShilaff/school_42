@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:06:19 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:08:40 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void 		fr_mandelbrot_draw_thread(t_fr *fr)
 			fr->i = 0;
 			fr->x++;
 		}
-		fr->y += 4;
+		fr->y += 3;
 		fr->x = 0;
 	}
 	fr->x = 0;
@@ -72,11 +72,9 @@ void		fr_mandelbrot_draw(t_fr **fr)
 	pthread_create(&(fr[0]->thread_id[0]), NULL, (void *)fr_mandelbrot_draw_thread, fr[0]);
 	pthread_create(&(fr[0]->thread_id[1]), NULL, (void *)fr_mandelbrot_draw_thread, fr[1]);
 	pthread_create(&(fr[0]->thread_id[2]), NULL, (void *)fr_mandelbrot_draw_thread, fr[2]);
-	pthread_create(&(fr[0]->thread_id[3]), NULL, (void *)fr_mandelbrot_draw_thread, fr[3]);
 	pthread_join(fr[0]->thread_id[0], NULL);
 	pthread_join(fr[0]->thread_id[1], NULL);
 	pthread_join(fr[0]->thread_id[2], NULL);
-	pthread_join(fr[0]->thread_id[3], NULL);
 	mlx_put_image_to_window(fr[0]->mlx, fr[0]->win, fr[0]->img, 0, 0);
 	mlx_loop(fr[0]->mlx);
 }
@@ -91,10 +89,6 @@ void 		fr_fill_another(t_fr **fr)
 	fr[2]->win = fr[0]->win;
 	fr[2]->img = fr[0]->img;
 	fr[2]->img_str = fr[0]->img_str;
-	fr[3]->mlx = fr[0]->mlx;
-	fr[3]->win = fr[0]->win;
-	fr[3]->img = fr[0]->img;
-	fr[3]->img_str = fr[0]->img_str;
 }
 
 void		fr_mandelbrot(t_fr **fr)
@@ -104,6 +98,5 @@ void		fr_mandelbrot(t_fr **fr)
 	fr_fill_mandel(fr[0], 0);
 	fr_fill_mandel(fr[1], 1);
 	fr_fill_mandel(fr[2], 2);
-	fr_fill_mandel(fr[3], 3);
 	fr_mandelbrot_draw(fr);
 }
