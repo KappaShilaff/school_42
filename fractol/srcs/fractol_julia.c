@@ -14,7 +14,7 @@
 
 void	fr_julia(t_fr *fr)
 {
-	fr_create_mlx(fr);
+	fr_create_mlx(&fr);
 	mlx_put_image_to_window(fr->mlx, fr->win, fr->img, 0, 0);
 	mlx_loop(fr->mlx);
 }
