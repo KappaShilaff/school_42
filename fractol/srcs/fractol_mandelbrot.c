@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:38:10 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:41:29 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ void		fr_mandelbrot_draw(t_fr **fr)
 void 		fr_fill_another(t_fr **fr)
 {
 	printf("1\n");
-	fr[1]->mlx = malloc(sizeof(void *));
-	fr[1]->mlx = fr[0]->mlx;
+	fr[1]->mlx = (void *)fr[0]->mlx;
 	printf("2\n");
 	fr[1]->win = fr[0]->win;
 	printf("3\n");
