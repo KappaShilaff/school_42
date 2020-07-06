@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 17:12:09 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 18:41:59 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int 	fr_error(char *str, int i_switch)
 
 static int 	fr_valid_argv(t_fr *fr)
 {
-	if (ft_strcmp(fr->argv, "Julia") == 0)
+	if (ft_strcmp(fr[0].argv, "Julia") == 0)
 		fr_julia(fr);
-	else if (ft_strcmp(fr->argv, "Mandelbrot") == 0)
+	else if (ft_strcmp(fr[0].argv, "Mandelbrot") == 0)
 		fr_mandelbrot(fr);
 	else
 		return (0);
@@ -35,13 +35,13 @@ static int 	fr_valid_argv(t_fr *fr)
 
 int		main(int argc, char **argv)
 {
-	t_fr	*fr;
+	t_fr				fr[4];
+	pthread_t 		thread_id[4];
 
 	if (argc != 2)
 		return (fr_error("Invalid number of arguments\n", 1));
-	if (!(fr = malloc(sizeof(t_fr))))
-		return (fr_error("Struct malloc error\n", 3));
-	fr->argv = argv[1];
+	fr[0].argv = argv[1];
+	fr[0].thread_id = thread_id;
 	if (fr_valid_argv(fr) == 0)
 		return (fr_error("Invalid argument\n", 2));
 	return (0);
