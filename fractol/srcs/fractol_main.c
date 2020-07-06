@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:24:44 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:26:00 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		main(int argc, char **argv)
 	t_fr					*fr[3];
 	pthread_t 				*thread_id;
 
+	printf("1111\n");
 	thread_id = (pthread_t *)malloc(3 * sizeof(pthread_t));
 	if (argc != 2)
 		return (fr_error("Invalid number of arguments\n", 1));
