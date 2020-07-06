@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:15:02 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:23:06 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int 	fr_error(char *str, int i_switch)
 	return (0);
 }
 
-static int 	fr_valid_argv(t_fr **fr)
+static int 	fr_valid_argv(t_fr *fr[3])
 {
 	if (ft_strcmp(fr[0]->argv, "Julia") == 0)
 		fr_julia(*fr);
@@ -35,16 +35,16 @@ static int 	fr_valid_argv(t_fr **fr)
 
 int		main(int argc, char **argv)
 {
-	t_fr					fr[3];
+	t_fr					*fr[3];
 	pthread_t 				*thread_id;
 
 	thread_id = (pthread_t *)malloc(3 * sizeof(pthread_t));
 	if (argc != 2)
 		return (fr_error("Invalid number of arguments\n", 1));
 //	fr = (t_fr *)malloc(sizeof(t_fr) * 3);
-	fr[0].argv = argv[1];
-	fr[0].thread_id = thread_id;
-	if (fr_valid_argv(&fr) == 0)
+	fr[0]->argv = argv[1];
+	fr[0]->thread_id = thread_id;
+	if (fr_valid_argv(fr) == 0)
 		return (fr_error("Invalid argument\n", 2));
 	return (0);
 }
