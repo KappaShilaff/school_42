@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 18:00:55 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 18:41:59 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void			fr_bfr_pix(t_fr *fr)
 		fr_pix_to_img(fr, (fr->i * 1100000));
 }
 
-void	fr_draw(t_fr *fr)
+void	fr_draw(t_fr **fr)
 {
-	if (fr->fr_switch == 2)
-		fr_mandelbrot_draw(&fr);
+	if (fr[0]->fr_switch == 2)
+		fr_mandelbrot_draw(fr);
 }
 
 void	fr_zoom(t_fr *fr, int x, int y)

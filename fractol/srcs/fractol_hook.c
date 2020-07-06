@@ -37,31 +37,44 @@ static void	fr_key_shift(int key, t_fr *fr)
 	fr_shift(fr);
 }
 
-int		fr_mouse(int code, int x, int y, t_fr *fr)
+int		fr_mouse(int code, int x, int y, t_fr **fr)
 {
 	if (code == 4 || code == 1)
 	{
-		fr_zoom(fr, x, y);
+		fr_zoom(fr[0], x, y);
+		fr_zoom(fr[1], x, y);
+		fr_zoom(fr[2], x, y);
+		fr_zoom(fr[3], x, y);
 		fr_draw(fr);
 	}
 	else if (code == 5 || code == 2)
 	{
-		fr_dezoom(fr, x, y);
+		fr_dezoom(fr[0], x, y);
+		fr_dezoom(fr[1], x, y);
+		fr_dezoom(fr[2], x, y);
+		fr_dezoom(fr[3], x, y);
 		fr_draw(fr);
 	}
 	return (0);
 }
 
-int		fr_key(int key, t_fr *fr)
+int		fr_key(int key, t_fr **fr)
 {
 	if (key == KEY_ESC)
 	{
+		free(fr[0]);
+		free(fr[1]);
+		free(fr[2]);
+		free(fr[3]);
 		free(fr);
 		exit(EXIT_SUCCESS);
 	}
 	if ((key >= 0 && key <= 2) || key == 13)
 	{
-		fr_key_shift(key, fr);
+		fr_key_shift(key, fr[0]);
+		fr_key_shift(key, fr[1]);
+		fr_key_shift(key, fr[2]);
+		fr_key_shift(key, fr[3]);
 		fr_draw(fr);
 	}
 	return (0);
