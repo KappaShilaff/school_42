@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:27:08 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:28:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		main(int argc, char **argv)
 	{
 		return (fr_error("Invalid number of arguments\n", 1));
 	}
+	fr = (t_fr **)malloc(sizeof(t_fr *) * 1);
 	*fr = (t_fr *)malloc(sizeof(t_fr) * 3);
 	fr[0]->argv = argv[1];
 	printf("1111\n");
