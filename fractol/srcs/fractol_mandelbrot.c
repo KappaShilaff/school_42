@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/06 19:41:29 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:43:31 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ void		fr_mandelbrot_draw(t_fr **fr)
 void 		fr_fill_another(t_fr **fr)
 {
 	printf("1\n");
-	fr[1]->mlx = (void *)fr[0]->mlx;
+	fr[1]->img_str = fr[0]->img_str;
 	printf("2\n");
 	fr[1]->win = fr[0]->win;
 	printf("3\n");
 	fr[1]->img = fr[0]->img;
 	printf("4\n");
-	fr[1]->img_str = fr[0]->img_str;
+	fr[1]->mlx = fr[0]->mlx;
 	printf("5\n");
 	fr[2]->mlx = fr[0]->mlx;
 	printf("6\n");
