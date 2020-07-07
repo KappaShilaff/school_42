@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/07 15:39:19 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:02:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct		s_fr
 	int 			thread;
 }					t_fr;
 
-void	fr_julia(t_fr *fr);
 void	fr_create_mlx(t_fr **fr);
 void	fr_mandelbrot(t_fr **fr);
 void	fr_bfr_pix(t_fr *fr);
@@ -81,5 +80,7 @@ void	fr_chameleon(t_fr **fr);
 void	fr_chameleon_draw(t_fr **fr);
 void	fr_ship(t_fr **fr);
 void	fr_ship_draw(t_fr **fr);
+void	fr_julia(t_fr **fr);
+void	fr_julia_draw(t_fr **fr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 15:24:11 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:02:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static int 	fr_error(char *str, int i_switch)
 	if (i_switch == 1)
 		ft_putstr_fd("Valid number of arguments : 1\n", 2);
 	if (i_switch == 2)
-		ft_putstr_fd("Valid argument : Mandelbrot, Chameleon, Burningship\n", 2);
+		ft_putstr_fd("Valid argument : Julia, Mandelbrot, Chameleon, Burningship\n", 2);
 	return (0);
 }
 
 static int 	fr_valid_argv(t_fr **fr)
 {
 	if (ft_strcmp(fr[0]->argv, "Julia") == 0)
-		fr_julia(*fr);
+		fr_julia(fr);
 	else if (ft_strcmp(fr[0]->argv, "Mandelbrot") == 0)
 		fr_mandelbrot(fr);
 	else if (ft_strcmp(fr[0]->argv, "Chameleon") == 0)

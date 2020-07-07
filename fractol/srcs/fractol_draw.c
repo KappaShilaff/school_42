@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 15:39:19 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:02:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void			fr_bfr_pix(t_fr *fr)
 
 void	fr_draw(t_fr **fr)
 {
+	if (fr[0]->fr_switch == 1)
+		fr_julia_draw(fr);
 	if (fr[0]->fr_switch == 2)
 		fr_mandelbrot_draw(fr);
 	if (fr[0]->fr_switch == 3)
