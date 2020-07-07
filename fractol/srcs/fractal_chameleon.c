@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:15:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 15:24:11 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:40:57 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	fr_fill_chameleon(t_fr *fr, int i)
 	fr->y = 0;
 	fr->i = 0;
 	fr->x1 = -4;
-	fr->x2 = 2.5;
+	fr->y1 = -2.5;
 	fr->c_r = 0.29;
 	fr->c_i = 0.02;
 	fr->itmax = 140;
@@ -64,6 +64,7 @@ void 		fr_chameleon_draw_thread(t_fr *fr)
 
 void		fr_chameleon_draw(t_fr **fr)
 {
+	printf("float %d dbl %d long dbl %d\n", (int)sizeof(float), (int)sizeof(double), (int)sizeof(long double));
 	pthread_create(&(fr[0]->thread_id[0]), NULL, (void *)fr_chameleon_draw_thread, fr[0]);
 	pthread_create(&(fr[0]->thread_id[1]), NULL, (void *)fr_chameleon_draw_thread, fr[1]);
 	pthread_create(&(fr[0]->thread_id[2]), NULL, (void *)fr_chameleon_draw_thread, fr[2]);
