@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:55:46 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 00:31:35 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:32:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void		fr_ship_draw(t_fr **fr)
 	pthread_join(fr[0]->thread_id[2], NULL);
 	pthread_join(fr[0]->thread_id[3], NULL);
 	mlx_put_image_to_window(fr[0]->mlx, fr[0]->win, fr[0]->img, 0, 0);
-	fr_draw_menu(fr);
 	mlx_loop(fr[0]->mlx);
 }
 
