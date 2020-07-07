@@ -43,7 +43,7 @@ void 		fr_julia_draw_thread(t_fr *fr)
 	fr->y += fr->thread;
 	while (fr->y < HEIGHT)
 	{
-		while (fr->x < WIDTH)
+		while (fr->x < WIDTH - fr->menu)
 		{
 			fr->z_r = fr->x / fr->zoom + fr->x1;
 			fr->z_i = fr->y / fr->zoom + fr->y1;

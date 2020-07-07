@@ -41,7 +41,7 @@ void 		fr_ship_draw_thread(t_fr *fr)
 	fr->y += fr->thread;
 	while (fr->y < HEIGHT)
 	{
-		while (fr->x < WIDTH)
+		while (fr->x < WIDTH - fr->menu)
 		{
 			fr->c_r = fr->x / fr->zoom + fr->x1;
 			fr->c_i = fr->y / fr->zoom + fr->y1;

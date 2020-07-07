@@ -43,7 +43,7 @@ void 		fr_chameleon_draw_thread(t_fr *fr)
 	fr->y += fr->thread;
 	while (fr->y < HEIGHT)
 	{
-		while (fr->x < WIDTH)
+		while (fr->x < WIDTH - fr->menu)
 		{
 			fr->c_r = fr->c_r;
 			fr->c_i = fr->c_i;
