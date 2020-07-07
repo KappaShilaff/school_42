@@ -32,6 +32,8 @@ void	fr_draw(t_fr **fr)
 {
 	if (fr[0]->fr_switch == 2)
 		fr_mandelbrot_draw(fr);
+	if (fr[0]->fr_switch == 3)
+		fr_chameleon_draw(fr);
 }
 
 void	fr_zoom(t_fr *fr, int x, int y)
