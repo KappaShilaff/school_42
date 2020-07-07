@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/07 16:02:36 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:04:09 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define KEY_S 			1
 # define KEY_A 			0
 # define KEY_D 			2
+# define KEY_F 			3
 
 
 
@@ -63,6 +64,7 @@ typedef struct		s_fr
 	double 			shift_y;
 	pthread_t 		*thread_id;
 	int 			thread;
+	int 			menu;
 }					t_fr;
 
 void	fr_create_mlx(t_fr **fr);
