@@ -15,7 +15,7 @@
 void	fr_create_mlx(t_fr **fr)
 {
 	fr[0]->mlx = mlx_init();
-	fr[0]->win = mlx_new_window(fr[0]->mlx, WIDTH, HEIGHT, "Fractol");
+	fr[0]->win = mlx_new_window(fr[0]->mlx, WIDTH + 340, HEIGHT, "Fractol");
 	fr[0]->img = mlx_new_image(fr[0]->mlx, WIDTH, HEIGHT);
 	fr[0]->img_str = mlx_get_data_addr(fr[0]->img, &fr[0]->bpp, &fr[0]->strlen, &fr[0]->endian);
 	mlx_mouse_hook(fr[0]->win, fr_mouse, fr);
