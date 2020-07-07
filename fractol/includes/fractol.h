@@ -82,5 +82,6 @@ void	fr_ship(t_fr **fr);
 void	fr_ship_draw(t_fr **fr);
 void	fr_julia(t_fr **fr);
 void	fr_julia_draw(t_fr **fr);
+void	fr_draw_menu(t_fr **fr);
 
 #endif

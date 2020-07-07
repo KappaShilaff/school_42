@@ -105,4 +105,5 @@ void		fr_mandelbrot(t_fr **fr)
 	fr_fill_mandel(fr[2], 2);
 	fr_fill_mandel(fr[3], 3);
 	fr_mandelbrot_draw(fr);
+	fr_draw_menu(fr);
 }
