@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:15:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 15:15:19 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:24:11 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	fr_fill_chameleon(t_fr *fr, int i)
 	fr->i = 0;
 	fr->x1 = -4;
 	fr->x2 = 2.5;
-	fr->y1 = -2.5;
-	fr->y2 = 3;
 	fr->c_r = 0.29;
 	fr->c_i = 0.02;
 	fr->itmax = 140;

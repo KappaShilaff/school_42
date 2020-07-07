@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/07 15:29:50 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:30:43 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ typedef struct		s_fr
 	int				i;
 	int				color;
 	int				s_l;
-	double			z_r;
-	double			z_i;
-	double			tmp;
-	double			x1;
-	double			y1;
-	double			x2;
-	double			y2;
-	double			c_r;
-	double			c_i;
+	long double			z_r;
+	long double			z_i;
+	long double			tmp;
+	long double			x1;
+	long double			y1;
+	long double			x2;
+	long double			y2;
+	long double			c_r;
+	long double			c_i;
 	int				itmax;
-	double			zoom;
-	double			pr;
-	double			pi;
-	double 			shift_x;
-	double 			shift_y;
+	long double			zoom;
+	long double			pr;
+	long double			pi;
+	long double 			shift_x;
+	long double 			shift_y;
 	pthread_t 		*thread_id;
 	int 			thread;
 }					t_fr;
