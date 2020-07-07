@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 00:36:32 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:44:57 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,49 +37,50 @@ static void	fr_key_shift(int key, t_fr *fr)
 	fr_shift(fr);
 }
 
-static void		fr_julia_mouse(int x, int y, t_fr **fr)
+void		fr_julia_mouse(int x, int y, t_fr **fr)
 {
-	if (fr[0]->julia == 1)
+	if (fr[0]->fr_switch == 1)
 	{
-		if (x < WIDTH && y < HEIGHT)
+		if (fr[0]->julia == 1)
 		{
-			if (x < WIDTH / 2 && y < WIDTH / 2)
+			if (x < WIDTH && y < HEIGHT)
 			{
-				fr[0]->c_r += 0.004;
-				fr[1]->c_r += 0.004;
-				fr[2]->c_r += 0.004;
-				fr[3]->c_r += 0.004;
+				if (x < WIDTH / 2 && y < WIDTH / 2)
+				{
+					fr[0]->c_r += 0.004;
+					fr[1]->c_r += 0.004;
+					fr[2]->c_r += 0.004;
+					fr[3]->c_r += 0.004;
+				}
+				if (x > WIDTH / 2 && y < WIDTH / 2)
+				{
+					fr[0]->c_r -= 0.004;
+					fr[1]->c_r -= 0.004;
+					fr[2]->c_r -= 0.004;
+					fr[3]->c_r -= 0.004;
+				}
+				if (x < WIDTH / 2 && y > WIDTH / 2)
+				{
+					fr[0]->c_i += 0.004;
+					fr[1]->c_i += 0.004;
+					fr[2]->c_i += 0.004;
+					fr[3]->c_i += 0.004;
+				}
+				if (x > WIDTH / 2 && y > WIDTH / 2)
+				{
+					fr[0]->c_i -= 0.004;
+					fr[1]->c_i -= 0.004;
+					fr[2]->c_i -= 0.004;
+					fr[3]->c_i -= 0.004;
+				}
 			}
-			if (x > WIDTH / 2 && y < WIDTH / 2)
-			{
-				fr[0]->c_r -= 0.004;
-				fr[1]->c_r -= 0.004;
-				fr[2]->c_r -= 0.004;
-				fr[3]->c_r -= 0.004;
-			}
-			if (x < WIDTH / 2 && y > WIDTH / 2)
-			{
-				fr[0]->c_i += 0.004;
-				fr[1]->c_i += 0.004;
-				fr[2]->c_i += 0.004;
-				fr[3]->c_i += 0.004;
-			}
-			if (x > WIDTH / 2 && y > WIDTH / 2)
-			{
-				fr[0]->c_i -= 0.004;
-				fr[1]->c_i -= 0.004;
-				fr[2]->c_i -= 0.004;
-				fr[3]->c_i -= 0.004;
-			}
+			fr_draw(fr);
 		}
-		fr_draw(fr);
 	}
 }
 
 int		fr_mouse(int code, int x, int y, t_fr **fr)
 {
-	if (fr[0]->fr_switch == 1)
-		fr_julia_mouse(x, y, fr);
 	if (code == 4 || code == 1)
 	{
 		fr_zoom(fr[0], x, y);

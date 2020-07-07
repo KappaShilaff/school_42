@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/08 00:33:49 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:44:57 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ void	fr_ship_draw(t_fr **fr);
 void	fr_julia(t_fr **fr);
 void	fr_julia_draw(t_fr **fr);
 void	fr_draw_menu(t_fr **fr);
+void	fr_julia_mouse(int x, int y, t_fr **fr);
 
 #endif
