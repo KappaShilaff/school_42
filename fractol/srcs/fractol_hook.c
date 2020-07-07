@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 00:44:57 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:54:07 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	fr_key_shift(int key, t_fr *fr)
 	fr_shift(fr);
 }
 
-void		fr_julia_mouse(int x, int y, t_fr **fr)
+int		fr_julia_mouse(int x, int y, t_fr **fr)
 {
 	if (fr[0]->fr_switch == 1)
 	{
@@ -77,6 +77,7 @@ void		fr_julia_mouse(int x, int y, t_fr **fr)
 			fr_draw(fr);
 		}
 	}
+	return (0);
 }
 
 int		fr_mouse(int code, int x, int y, t_fr **fr)
