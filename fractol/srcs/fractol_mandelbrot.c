@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 16:14:22 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 23:28:00 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		fr_mandelbrot_draw(t_fr **fr)
 	pthread_join(fr[0]->thread_id[2], NULL);
 	pthread_join(fr[0]->thread_id[3], NULL);
 	mlx_put_image_to_window(fr[0]->mlx, fr[0]->win, fr[0]->img, 0, 0);
+	fr_draw_menu(fr);
 	mlx_loop(fr[0]->mlx);
 }
 
@@ -105,5 +106,4 @@ void		fr_mandelbrot(t_fr **fr)
 	fr_fill_mandel(fr[2], 2);
 	fr_fill_mandel(fr[3], 3);
 	fr_mandelbrot_draw(fr);
-	fr_draw_menu(fr);
 }
