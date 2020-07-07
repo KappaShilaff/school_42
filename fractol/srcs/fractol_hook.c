@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 00:54:07 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:57:41 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ static void	fr_hidemenu(int key, t_fr **fr)
 		}
 		mlx_destroy_image(fr[0]->mlx, fr[0]->img);
 		mlx_clear_window(fr[0]->mlx, fr[0]->win);
+		fr_draw_menu(fr);
 		fr[0]->img = mlx_new_image(fr[0]->mlx, WIDTH - fr[0]->menu, HEIGHT);
 		fr[0]->img_str = mlx_get_data_addr(fr[0]->img, &fr[0]->bpp, &fr[0]->strlen, &fr[0]->endian);
 		fr[1]->img_str = fr[0]->img_str;

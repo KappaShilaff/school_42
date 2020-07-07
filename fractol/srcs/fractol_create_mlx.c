@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:57:48 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 00:16:20 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:54:07 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	fr_create_mlx(t_fr **fr)
 	mlx_mouse_hook(fr[0]->win, fr_mouse, fr);
 	mlx_key_hook(fr[0]->win, fr_key, fr);
 	mlx_hook(fr[0]->win, 6, 0, fr_julia_mouse, fr);
+	fr_draw_menu(fr);
 	fr[0]->shift_y = 0;
 	fr[0]->shift_x = 0;
 }
