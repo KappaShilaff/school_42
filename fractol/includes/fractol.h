@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/08 00:04:09 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:16:20 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <pthread.h>
-# define WIDTH			1600
+# define WIDTH			1920
 # define HEIGHT 		900
 # define KEY_ESC		53
 # define KEY_W 			13
