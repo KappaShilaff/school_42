@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:55:46 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 15:55:46 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:02:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ static void	fr_fill_ship(t_fr *fr, int i)
 	fr->i = 0;
 	fr->x1 = -5;
 	fr->y1 = -3.25;
-//	fr->c_r = 0.29;
-//	fr->c_i = 0.02;
-	fr->itmax = 19;
+	fr->itmax = 40;
 	fr->zoom = 150;
 	fr->fr_switch = 4;
 	fr->thread = i;
