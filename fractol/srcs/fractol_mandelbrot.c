@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 23:33:44 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:16:20 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void 		fr_mandelbrot_draw_thread(t_fr *fr)
 	fr->y += fr->thread;
 	while (fr->y < HEIGHT)
 	{
-		while (fr->x < WIDTH)
+		while (fr->x < WIDTH - fr->menu)
 		{
 			fr->c_r = fr->x / fr->zoom + fr->x1;
 			fr->c_i = fr->y / fr->zoom + fr->y1;
