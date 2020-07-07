@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 23:24:29 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 00:26:13 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 00:27:50 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	fr_draw_menu(t_fr **fr)
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
 					   WIDTH - 330, 60, 0xffffff, "Zoom      - mouse scroll");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
-					   WIDTH - 330, 90, 0xffffff, "Hide menu - mouse scroll");
+					   WIDTH - 330, 90, 0xffffff, "Hide menu - f");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
-					   WIDTH - 330, 210, 0xffffff, "Exit      - esc");
+					   WIDTH - 330, 120, 0xffffff, "Exit      - esc");
 	}
 }
