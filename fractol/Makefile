@@ -36,7 +36,8 @@ SOURCES_LIST = fractol_julia.c\
 			fractol_create_mlx.c\
 			fractol_mandelbrot.c\
 			fractol_draw.c\
-			fractol_hook.c
+			fractol_hook.c\
+			fractal_chameleon.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

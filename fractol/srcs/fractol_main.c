@@ -18,7 +18,7 @@ static int 	fr_error(char *str, int i_switch)
 	if (i_switch == 1)
 		ft_putstr_fd("Valid number of arguments : 1\n", 2);
 	if (i_switch == 2)
-		ft_putstr_fd("Valid argument : Julia\n", 2);
+		ft_putstr_fd("Valid argument : Mandelbrot, Chameleon\n", 2);
 	return (0);
 }
 
@@ -28,6 +28,8 @@ static int 	fr_valid_argv(t_fr **fr)
 		fr_julia(*fr);
 	else if (ft_strcmp(fr[0]->argv, "Mandelbrot") == 0)
 		fr_mandelbrot(fr);
+	else if (ft_strcmp(fr[0]->argv, "Chameleon") == 0)
+		fr_chameleon(fr);
 	else
 		return (0);
 	return (1);

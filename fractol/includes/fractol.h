@@ -76,5 +76,7 @@ void	fr_dezoom(t_fr *fr, int x, int y);
 int		fr_mouse(int code, int x, int y, t_fr **fr);
 int		fr_key(int code, t_fr **fr);
 void	fr_shift(t_fr *fr);
+void	fr_fill_another(t_fr **fr);
+void	fr_chameleon(t_fr **fr);
 
 #endif
