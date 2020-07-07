@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/07 15:37:30 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:39:19 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ void	fr_shift(t_fr *fr);
 void	fr_fill_another(t_fr **fr);
 void	fr_chameleon(t_fr **fr);
 void	fr_chameleon_draw(t_fr **fr);
+void	fr_ship(t_fr **fr);
+void	fr_ship_draw(t_fr **fr);
 
 #endif

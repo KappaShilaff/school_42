@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 15:37:30 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:39:19 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	fr_draw(t_fr **fr)
 		fr_mandelbrot_draw(fr);
 	if (fr[0]->fr_switch == 3)
 		fr_chameleon_draw(fr);
+	if (fr[0]->fr_switch == 4)
+		fr_ship_draw(fr);
 }
 
 void	fr_zoom(t_fr *fr, int x, int y)
