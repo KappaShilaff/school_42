@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/08 16:20:33 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:25:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct		s_fr
 	int 			rgb1;
 	int 			rgb2;
 	int 			color_temp;
+	int 			color_temp1;
 }					t_fr;
 
 void	fr_create_mlx(t_fr **fr);

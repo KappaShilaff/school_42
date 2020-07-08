@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:05:36 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:26:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ static void		fr_pix_to_img(t_fr *fr, int color)
 
 void 	fr_color(t_fr *fr)
 {
-	int 	temp;
-	temp = fr->rgb1 + fr->i / fr->itmax;
-	fr->color_temp = temp * fr->rgb2;
-	fr->color_temp *= fr->color_temp * fr->color_temp;
+	fr->color_temp = fr->i / fr->itmax * fr->rgb2;
+	fr->color_temp1 = fr->rgb1 * fr->rgb1 * fr->rgb1;
+	fr->color_temp = fr->color_temp * fr->color_temp * fr->color_temp + fr->color_temp1;
 }
 
 void			fr_bfr_pix(t_fr *fr)
