@@ -6,15 +6,15 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:26:58 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:30:54 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static void		fr_pix_to_img(t_fr *fr, int color)
+static void		fr_pix_to_img(t_fr *fr)
 {
-	fr->color = (int)mlx_get_color_value(fr->mlx, color);
+	fr->color = (int)mlx_get_color_value(fr->mlx, fr->color_temp);
 	if (fr->y > 0 && fr->y < HEIGHT && fr->x < WIDTH - fr->menu && fr->x > 0)
 	ft_memmove(fr->img_str + (4 * ((WIDTH - fr->menu) * fr->y))
 			   + (fr->x * 4), &fr->color, sizeof(int));
@@ -25,12 +25,16 @@ void 	fr_color(t_fr *fr)
 	fr->color_temp = fr->i / fr->itmax * fr->rgb2;
 	fr->color_temp1 = fr->rgb1 * fr->rgb1 * fr->rgb1;
 	fr->color_temp = fr->color_temp * fr->color_temp * fr->color_temp + fr->color_temp1;
+//	fr->i * fr->rgb / fr->itmax * fr->i * fr->rgb / fr->itmax * fr->i * fr->rgb / fr->itmax
 }
 
 void			fr_bfr_pix(t_fr *fr)
 {
 	if (fr->i == fr->itmax)
-		fr_pix_to_img(fr, 0);
+	{
+		fr->color_temp = 0;
+		fr_pix_to_img(fr);
+	}
 	else
 	{
 		fr_color(fr);
