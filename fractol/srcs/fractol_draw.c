@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 16:02:36 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:57:18 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			fr_bfr_pix(t_fr *fr)
 	if (fr->i == fr->itmax)
 		fr_pix_to_img(fr, 0);
 	else
-		fr_pix_to_img(fr, (fr->i * 1100000));
+		fr_pix_to_img(fr, (fr->i * fr->rgb / fr->itmax * fr->i * fr->rgb / fr->itmax * fr->i * fr->rgb / fr->itmax));
 }
 
 void	fr_draw(t_fr **fr)
