@@ -39,7 +39,7 @@ static void	fr_key_shift(int key, t_fr *fr)
 
 int		fr_julia_mouse(int x, int y, t_fr **fr)
 {
-	if (fr[0]->fr_switch == 1)
+	if (fr[0]->fr_switch == 1 || fr[0]->fr_switch == 3)
 	{
 		if (fr[0]->julia == 1)
 		{
