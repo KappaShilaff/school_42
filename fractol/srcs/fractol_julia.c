@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:51:54 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:00:15 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:05:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	fr_fill_julia(t_fr *fr, int i)
 	fr->zoom = 200;
 	fr->fr_switch = 1;
 	fr->thread = i;
-	fr->rgb = 0;
+	fr->rgb = 100;
 }
 
 static void	fr_calc_julia(t_fr *fr)
@@ -58,7 +58,6 @@ void 		fr_julia_draw_thread(t_fr *fr)
 	}
 	fr->x = 0;
 	fr->y = 0;
-	fr->rgb = 0;
 	pthread_exit(0);
 }
 
