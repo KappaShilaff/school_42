@@ -76,8 +76,6 @@ void		fr_ship_draw(t_fr **fr)
 
 void		fr_ship(t_fr **fr)
 {
-	fr_create_mlx(fr);
-	fr_fill_another(fr);
 	fr_fill_ship(fr[0], 0);
 	fr_fill_ship(fr[1], 1);
 	fr_fill_ship(fr[2], 2);

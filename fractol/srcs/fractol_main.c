@@ -55,6 +55,7 @@ int		main(int argc, char **argv)
 	fr[0]->argv = argv[1];
 	fr[0]->menu = 340;
 	fr[0]->thread_id = thread_id;
+	fr_create_mlx(fr);
 	if (fr_valid_argv(fr) == 0)
 		return (fr_error("Invalid argument\n", 2));
 	return (0);

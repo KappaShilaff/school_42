@@ -12,6 +12,25 @@
 
 #include "../includes/fractol.h"
 
+void 		fr_fill_another(t_fr **fr)
+{
+	fr[1]->win = fr[0]->win;
+	fr[1]->img = fr[0]->img;
+	fr[1]->mlx = fr[0]->mlx;
+	fr[1]->img_str = fr[0]->img_str;
+	fr[1]->menu = fr[0]->menu;
+	fr[2]->mlx = fr[0]->mlx;
+	fr[2]->win = fr[0]->win;
+	fr[2]->img = fr[0]->img;
+	fr[2]->img_str = fr[0]->img_str;
+	fr[2]->menu = fr[0]->menu;
+	fr[3]->mlx = fr[0]->mlx;
+	fr[3]->win = fr[0]->win;
+	fr[3]->img = fr[0]->img;
+	fr[3]->img_str = fr[0]->img_str;
+	fr[3]->menu = fr[0]->menu;
+}
+
 void	fr_create_mlx(t_fr **fr)
 {
 	fr[0]->mlx = mlx_init();
@@ -24,4 +43,5 @@ void	fr_create_mlx(t_fr **fr)
 	fr_draw_menu(fr);
 	fr[0]->shift_y = 0;
 	fr[0]->shift_x = 0;
+	fr_fill_another(fr);
 }
