@@ -45,8 +45,6 @@ void 		fr_chameleon_draw_thread(t_fr *fr)
 	{
 		while (fr->x < WIDTH - fr->menu)
 		{
-			fr->c_r = fr->c_r;
-			fr->c_i = fr->c_i;
 			fr->z_r = fr->x / fr->zoom + fr->x1;
 			fr->z_i = fr->y / fr->zoom + fr->y1;
 			fr_calc_chameleon(fr);
