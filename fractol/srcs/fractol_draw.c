@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 17:19:19 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 17:19:40 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void 	fr_color(t_fr *fr)
 //	fr->color_temp = 0x0000ff;
 //	fr->rgb1 = 0x010000;
 //	fr->rgb2 = 0x000100;
-	fr->color_temp = 0x115f11 - 0x010000 * (17 * fr->i / fr->itmax) - 0x000001 * (17 * fr->i / fr->itmax);
+	fr->color_temp = 0x5f5f5f - 0x010000 * (0x5f * fr->i / fr->itmax) - 0x000001 * (0x5f * fr->i / fr->itmax);
 }
 
 void			fr_bfr_pix(t_fr *fr)
