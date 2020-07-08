@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 17:24:50 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 17:28:28 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,26 @@ static void		fr_pix_to_img(t_fr *fr)
 			   + (fr->x * 4), &fr->color_temp, sizeof(int));
 }
 
-//void 	fr_color(t_fr *fr)
-//{
-//	fr->color_temp = (float)fr->i / (float)fr->itmax * fr->rgb2;
-//	fr->color_temp1 = fr->rgb1 * fr->rgb1 * fr->rgb1;
-//	fr->color_temp = fr->color_temp * fr->color_temp * fr->color_temp + fr->color_temp1;
-//}
 void 	fr_color(t_fr *fr)
 {
-//	fr->color_temp = 0x0000ff;
-//	fr->rgb1 = 0x010000;
-//	fr->rgb2 = 0x000100;
-	fr->color_temp = 0xbfffff - 0x000100 * (0xff * fr->i / fr->itmax) - 0x000001 * (0xff * fr->i / fr->itmax);
+	if (fr->color_index == 0)
+	{
+		fr->color_temp = fr->i * 1100000;
+	}
+	if (fr->color_index == 1)
+	{
+		fr->rgb1 = 0;
+		fr->rgb2 = 30;
+		fr->color_temp = (int)((float)fr->i / (float)fr->itmax * fr->rgb2);
+		fr->color_temp1 = fr->rgb1 * fr->rgb1 * fr->rgb1;
+		fr->color_temp = fr->color_temp * fr->color_temp * fr->color_temp + (int)fr->color_temp1;
+	}
+	if (fr->color_index == 2)
+		fr->color_temp = 0xbfffff - 0x000100 * (0xff * fr->i / fr->itmax) - 0x000001 * (0xff * fr->i / fr->itmax);
+	if (fr->color_index == 3)
+		fr->color_temp = 0xffbfff - 0x010000 * (0xff * fr->i / fr->itmax) - 0x000001 * (0xff * fr->i / fr->itmax);
+	if (fr->color_index == 4)
+		fr->color_temp = 0xffffbf - 0x000100 * (0xff * fr->i / fr->itmax) - 0x010000 * (0xff * fr->i / fr->itmax);
 }
 
 void			fr_bfr_pix(t_fr *fr)

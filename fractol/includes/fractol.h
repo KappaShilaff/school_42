@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/08 16:57:58 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:58:10 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define KEY_2 			19
 # define KEY_3 			20
 # define KEY_4 			21
+# define KEY_Q 			12
 
 
 typedef struct		s_fr
@@ -71,8 +72,8 @@ typedef struct		s_fr
 	int 			menu;
 	int 			julia;
 	int 			color_index;
-	int 			rgb1;
-	int				rgb2;
+	float 			rgb1;
+	float			rgb2;
 	int 			color_temp;
 	float 			color_temp1;
 }					t_fr;

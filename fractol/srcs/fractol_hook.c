@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:47:40 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:49:42 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,14 @@ void	fr_key_switch(int key, t_fr **fr)
 int		fr_key(int key, t_fr **fr)
 {
 	fr_key_switch(key, fr);
+	if (key == KEY_Q)
+	{
+		fr[0]->color_index = (fr[0]->color_index + 1) % 5;
+		fr[1]->color_index = (fr[1]->color_index + 1) % 5;
+		fr[2]->color_index = (fr[2]->color_index + 1) % 5;
+		fr[3]->color_index = (fr[3]->color_index + 1) % 5;
+		fr_draw(fr);
+	}
 	if (key == KEY_ESC)
 	{
 		free(fr[0]);

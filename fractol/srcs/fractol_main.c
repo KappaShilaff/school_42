@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/07 16:02:36 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:46:54 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ int		main(int argc, char **argv)
 	fr[0]->argv = argv[1];
 	fr[0]->menu = 340;
 	fr[0]->thread_id = thread_id;
+	fr[0]->color_index = 0;
+	fr[1]->color_index = 0;
+	fr[2]->color_index = 0;
+	fr[3]->color_index = 0;
 	fr_create_mlx(fr);
 	if (fr_valid_argv(fr) == 0)
 		return (fr_error("Invalid argument\n", 2));
