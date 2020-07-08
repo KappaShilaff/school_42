@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:34:01 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:35:53 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ static void	fr_hidemenu(int key, t_fr **fr)
 
 int		fr_key(int key, t_fr **fr)
 {
+	printf("%d\n", key);
 	if (key == KEY_ESC)
 	{
 		free(fr[0]);
