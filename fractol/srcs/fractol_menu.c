@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 23:24:29 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:31:57 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:52:27 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ void	fr_draw_menu(t_fr **fr)
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
 					   WIDTH - 330, 120, 0xffffff, "Mandelbrot   - 4");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
-					   WIDTH - 330, 150, 0xffffff, "Shift        - w a s d");
+					   WIDTH - 330, 150, 0xffffff, "Move         - w a s d");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
 					   WIDTH - 330, 180, 0xffffff, "Zoom         - mouse scroll");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
 					   WIDTH - 330, 210, 0xffffff, "       or left/right button");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
-					   WIDTH - 330, 240, 0xffffff, "Hide menu    - f");
+					   WIDTH - 330, 240, 0xffffff, "Color change - q");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
-					   WIDTH - 330, 270, 0xffffff, "Exit         - esc");
+					   WIDTH - 330, 270, 0xffffff, "Hide menu    - f");
+		mlx_string_put(fr[0]->mlx, fr[0]->win,
+					   WIDTH - 330, 300, 0xffffff, "Exit         - esc");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
 					   WIDTH - 330, 390, 0xffffff,
 					   "Julia/Chameleon mouse hook - e");
