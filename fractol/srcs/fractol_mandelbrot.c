@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:38:32 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:39:00 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	fr_fill_mandel(t_fr *fr, int i)
 	fr->zoom = 150;
 	fr->fr_switch = 2;
 	fr->thread = i;
-	fr->rgb1 = 31;
+	fr->rgb1 = 60;
 	fr->rgb2 = 30;
 }
 
