@@ -12,7 +12,7 @@
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -m64 -Ofast -flto -march=native -funroll-loops	
 
 NAME = libft.a
 
