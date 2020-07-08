@@ -34,11 +34,11 @@ void	fr_draw_menu(t_fr **fr)
 					   WIDTH - 330, 240, 0xffffff, "Hide menu    - f");
 		mlx_string_put(fr[0]->mlx, fr[0]->win,
 					   WIDTH - 330, 270, 0xffffff, "Exit         - esc");
-		if(fr[0]->fr_switch == 1)
+		if(fr[0]->fr_switch == 1 || fr[0]->fr_switch == 3)
 		{
 			mlx_string_put(fr[0]->mlx, fr[0]->win,
-						   WIDTH - 330, 300, 0xffffff,
-						   "Julia hook   - e");
+						   WIDTH - 330, 390, 0xffffff,
+						   "Julia/Chameleon mouse hook - e");
 		}
 	}
 }

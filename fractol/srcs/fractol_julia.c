@@ -79,8 +79,8 @@ void		fr_julia(t_fr **fr)
 	fr_create_mlx(fr);
 	fr_fill_another(fr);
 	mlx_string_put(fr[0]->mlx, fr[0]->win,
-			WIDTH - 330, 300, 0xffffff,
-			"Julia hook   - e");
+				   WIDTH - 330, 390, 0xffffff,
+				   "Julia/Chameleon mouse hook - e");
 	fr_fill_julia(fr[0], 0);
 	fr_fill_julia(fr[1], 1);
 	fr_fill_julia(fr[2], 2);

@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:15:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:26:46 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:28:28 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ void		fr_chameleon(t_fr **fr)
 {
 	fr_create_mlx(fr);
 	fr_fill_another(fr);
+	mlx_string_put(fr[0]->mlx, fr[0]->win,
+				   WIDTH - 330, 390, 0xffffff,
+				   "Julia/Chameleon mouse hook - e");
 	fr_fill_chameleon(fr[0], 0);
 	fr_fill_chameleon(fr[1], 1);
 	fr_fill_chameleon(fr[2], 2);
