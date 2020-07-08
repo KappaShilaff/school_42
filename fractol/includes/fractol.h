@@ -6,7 +6,7 @@
 /*   By: bzmuda <bzmuda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 11:09:39 by bzmuda            #+#    #+#             */
-/*   Updated: 2020/07/08 16:30:54 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:57:58 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ typedef struct		s_fr
 	int 			menu;
 	int 			julia;
 	int 			color_index;
-	float 			rgb1;
-	float 			rgb2;
-	float 			color_temp;
+	int 			rgb1;
+	int				rgb2;
+	int 			color_temp;
 	float 			color_temp1;
 }					t_fr;
 
