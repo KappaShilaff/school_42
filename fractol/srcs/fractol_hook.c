@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:35:53 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:37:22 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static void	fr_key_shift(int key, t_fr *fr)
 		fr->shift_x = fr->zoom / 10;
 		fr->shift_y = 0;
 	}
-	fr_shift(fr);
+	fr->x1 += (fr->shift_x / fr->zoom) / 20;
+	fr->y1 += (fr->shift_y / fr->zoom) / 20;
 }
 
 int		fr_julia_mouse(int x, int y, t_fr **fr)
@@ -136,7 +137,6 @@ static void	fr_hidemenu(int key, t_fr **fr)
 
 int		fr_key(int key, t_fr **fr)
 {
-	printf("%d\n", key);
 	if (key == KEY_ESC)
 	{
 		free(fr[0]);

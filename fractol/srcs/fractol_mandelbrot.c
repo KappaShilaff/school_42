@@ -12,12 +12,6 @@
 
 #include "../includes/fractol.h"
 
-void 	fr_shift(t_fr *fr)
-{
-	fr->x1 += (fr->shift_x / fr->zoom) / 10;
-	fr->y1 += (fr->shift_y / fr->zoom) / 10;
-}
-
 static void	fr_fill_mandel(t_fr *fr, int i)
 {
 	fr->x = 0;
