@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:15:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:05:36 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:15:21 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	fr_fill_chameleon(t_fr *fr, int i)
 	fr->zoom = 200;
 	fr->fr_switch = 3;
 	fr->thread = i;
-	fr->rgb = 100;
 }
 
 static void	fr_calc_chameleon(t_fr *fr)
