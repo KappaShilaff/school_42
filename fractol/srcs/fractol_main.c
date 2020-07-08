@@ -6,23 +6,24 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:24:09 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:46:54 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:11:48 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static int 	fr_error(char *str, int i_switch)
+static int	fr_error(char *str, int i_switch)
 {
 	ft_putstr_fd(str, 2);
 	if (i_switch == 1)
 		ft_putstr_fd("Valid number of arguments : 1\n", 2);
 	if (i_switch == 2)
-		ft_putstr_fd("Valid argument : Julia, Mandelbrot, Chameleon, Burningship\n", 2);
+		ft_putstr_fd("Valid argument : Julia, "
+			"Mandelbrot, Chameleon, Burningship\n", 2);
 	return (0);
 }
 
-static int 	fr_valid_argv(t_fr **fr)
+static int	fr_valid_argv(t_fr **fr)
 {
 	if (ft_strcmp(fr[0]->argv, "Julia") == 0)
 		fr_julia(fr);
@@ -37,10 +38,10 @@ static int 	fr_valid_argv(t_fr **fr)
 	return (1);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_fr					**fr;
-	pthread_t 				*thread_id;
+	pthread_t				*thread_id;
 
 	thread_id = (pthread_t *)malloc(4 * sizeof(pthread_t));
 	if (argc != 2)

@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 15:55:46 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:25:36 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 17:56:53 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	fr_calc_ship(t_fr *fr)
 	}
 }
 
-void 		fr_ship_draw_thread(t_fr *fr)
+void		fr_ship_draw_thread(t_fr *fr)
 {
 	fr->y += fr->thread;
 	while (fr->y < HEIGHT)
@@ -62,10 +62,14 @@ void 		fr_ship_draw_thread(t_fr *fr)
 
 void		fr_ship_draw(t_fr **fr)
 {
-	pthread_create(&(fr[0]->thread_id[0]), NULL, (void *)fr_ship_draw_thread, fr[0]);
-	pthread_create(&(fr[0]->thread_id[1]), NULL, (void *)fr_ship_draw_thread, fr[1]);
-	pthread_create(&(fr[0]->thread_id[2]), NULL, (void *)fr_ship_draw_thread, fr[2]);
-	pthread_create(&(fr[0]->thread_id[3]), NULL, (void *)fr_ship_draw_thread, fr[3]);
+	pthread_create(&(fr[0]->thread_id[0]), NULL,
+			(void *)fr_ship_draw_thread, fr[0]);
+	pthread_create(&(fr[0]->thread_id[1]), NULL,
+			(void *)fr_ship_draw_thread, fr[1]);
+	pthread_create(&(fr[0]->thread_id[2]), NULL,
+			(void *)fr_ship_draw_thread, fr[2]);
+	pthread_create(&(fr[0]->thread_id[3]), NULL,
+			(void *)fr_ship_draw_thread, fr[3]);
 	pthread_join(fr[0]->thread_id[0], NULL);
 	pthread_join(fr[0]->thread_id[1], NULL);
 	pthread_join(fr[0]->thread_id[2], NULL);

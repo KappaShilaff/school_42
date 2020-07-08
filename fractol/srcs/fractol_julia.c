@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:51:54 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 17:21:29 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:12:25 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	fr_calc_julia(t_fr *fr)
 	}
 }
 
-void 		fr_julia_draw_thread(t_fr *fr)
+void		fr_julia_draw_thread(t_fr *fr)
 {
 	fr->y += fr->thread;
 	while (fr->y < HEIGHT)
@@ -62,10 +62,14 @@ void 		fr_julia_draw_thread(t_fr *fr)
 
 void		fr_julia_draw(t_fr **fr)
 {
-	pthread_create(&(fr[0]->thread_id[0]), NULL, (void *)fr_julia_draw_thread, fr[0]);
-	pthread_create(&(fr[0]->thread_id[1]), NULL, (void *)fr_julia_draw_thread, fr[1]);
-	pthread_create(&(fr[0]->thread_id[2]), NULL, (void *)fr_julia_draw_thread, fr[2]);
-	pthread_create(&(fr[0]->thread_id[3]), NULL, (void *)fr_julia_draw_thread, fr[3]);
+	pthread_create(&(fr[0]->thread_id[0]), NULL,
+			(void *)fr_julia_draw_thread, fr[0]);
+	pthread_create(&(fr[0]->thread_id[1]), NULL,
+			(void *)fr_julia_draw_thread, fr[1]);
+	pthread_create(&(fr[0]->thread_id[2]), NULL,
+			(void *)fr_julia_draw_thread, fr[2]);
+	pthread_create(&(fr[0]->thread_id[3]), NULL,
+			(void *)fr_julia_draw_thread, fr[3]);
 	pthread_join(fr[0]->thread_id[0], NULL);
 	pthread_join(fr[0]->thread_id[1], NULL);
 	pthread_join(fr[0]->thread_id[2], NULL);

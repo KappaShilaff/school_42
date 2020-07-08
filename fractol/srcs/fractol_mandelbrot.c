@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 19:50:19 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:39:48 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:40:15 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	fr_calc_mandel(t_fr *fr)
 	}
 }
 
-void 		fr_mandelbrot_draw_thread(t_fr *fr)
+void		fr_mandelbrot_draw_thread(t_fr *fr)
 {
 	fr->y += fr->thread;
 	while (fr->y < HEIGHT)
@@ -64,10 +64,14 @@ void 		fr_mandelbrot_draw_thread(t_fr *fr)
 
 void		fr_mandelbrot_draw(t_fr **fr)
 {
-	pthread_create(&(fr[0]->thread_id[0]), NULL, (void *)fr_mandelbrot_draw_thread, fr[0]);
-	pthread_create(&(fr[0]->thread_id[1]), NULL, (void *)fr_mandelbrot_draw_thread, fr[1]);
-	pthread_create(&(fr[0]->thread_id[2]), NULL, (void *)fr_mandelbrot_draw_thread, fr[2]);
-	pthread_create(&(fr[0]->thread_id[3]), NULL, (void *)fr_mandelbrot_draw_thread, fr[3]);
+	pthread_create(&(fr[0]->thread_id[0]), NULL,
+			(void *)fr_mandelbrot_draw_thread, fr[0]);
+	pthread_create(&(fr[0]->thread_id[1]), NULL,
+			(void *)fr_mandelbrot_draw_thread, fr[1]);
+	pthread_create(&(fr[0]->thread_id[2]), NULL,
+			(void *)fr_mandelbrot_draw_thread, fr[2]);
+	pthread_create(&(fr[0]->thread_id[3]), NULL,
+			(void *)fr_mandelbrot_draw_thread, fr[3]);
 	pthread_join(fr[0]->thread_id[0], NULL);
 	pthread_join(fr[0]->thread_id[1], NULL);
 	pthread_join(fr[0]->thread_id[2], NULL);

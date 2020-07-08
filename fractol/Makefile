@@ -6,7 +6,7 @@
 #    By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/22 23:24:36 by lcassaun          #+#    #+#              #
-#    Updated: 2020/07/07 15:14:31 by lcassaun         ###   ########.fr        #
+#    Updated: 2020/07/08 17:56:25 by lcassaun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ SOURCES_LIST = fractol_julia.c\
 			fractol_hook.c\
 			fractol_chameleon.c\
 			fractol_burningshipship.c\
-			fractol_menu.c
+			fractol_menu.c\
+			fractol_color.c\
+			fractol_hookmove.c
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
