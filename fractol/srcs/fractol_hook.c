@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:41:12 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:46:54 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,25 +135,25 @@ static void	fr_hidemenu(int key, t_fr **fr)
 	}
 }
 
-void	fr_key_switch(int key, t_fr *fr)
-{
-	if (key == KEY_1)
-	{
-
-	}
-	if (key == KEY_2)
-	{
-
-	}
-	if (key == KEY_3)
-	{
-
-	}
-	if (key == KEY_4)
-	{
-
-	}
-}
+//void	fr_key_switch(int key, t_fr *fr)
+//{
+//	if (key == KEY_1)
+//	{
+//
+//	}
+//	if (key == KEY_2)
+//	{
+//
+//	}
+//	if (key == KEY_3)
+//	{
+//
+//	}
+//	if (key == KEY_4)
+//	{
+//
+//	}
+//}
 
 int		fr_key(int key, t_fr **fr)
 {
