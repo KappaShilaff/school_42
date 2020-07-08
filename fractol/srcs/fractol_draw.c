@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 17:05:01 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 17:06:35 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		fr_pix_to_img(t_fr *fr)
 	fr->color = (int)mlx_get_color_value(fr->mlx, (int)fr->color_temp);
 	if (fr->y > 0 && fr->y < HEIGHT && fr->x < WIDTH - fr->menu && fr->x > 0)
 	ft_memmove(fr->img_str + (4 * ((WIDTH - fr->menu) * fr->y))
-			   + (fr->x * 4), &fr->color, sizeof(int));
+			   + (fr->x * 4), &fr->color_temp, sizeof(int));
 }
 
 //void 	fr_color(t_fr *fr)
