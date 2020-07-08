@@ -31,7 +31,7 @@ void 	fr_color(t_fr *fr)
 	fr->color_temp = 0x00ff00;
 	fr->rgb1 = 0x010000;
 	fr->rgb2 = 0x000001;
-	fr->color_temp = fr->color_temp + fr->rgb1 * fr->i + fr->rgb2 * fr->i;
+	fr->color_temp = fr->color_temp + fr->rgb1 * fr->i * 0x0000ff / fr->itmax + fr->rgb2 * fr->i * 0x0000ff / fr->itmax;
 }
 
 void			fr_bfr_pix(t_fr *fr)
