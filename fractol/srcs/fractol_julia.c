@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 18:51:54 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:20:33 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:25:36 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	fr_fill_julia(t_fr *fr, int i)
 	fr->y1 = -2.5;
 	fr->c_r = -0.63;
 	fr->c_i = -0.54;
-	fr->itmax = 140;
+	fr->itmax = 40;
 	fr->zoom = 200;
 	fr->fr_switch = 1;
 	fr->thread = i;
