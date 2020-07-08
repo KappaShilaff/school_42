@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 18:34:38 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 20:40:46 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int				fr_key(int key, t_fr **fr)
 	fr_color_switch(key, fr);
 	if (key == KEY_ESC)
 	{
+		free(fr[0]->thread_id);
 		free(fr[0]);
 		free(fr[1]);
 		free(fr[2]);
