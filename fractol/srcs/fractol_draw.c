@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 20:01:52 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 16:30:54 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:34:48 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			fr_bfr_pix(t_fr *fr)
 	else
 	{
 		fr_color(fr);
-		fr_pix_to_img(fr, fr->color_temp);
+		fr_pix_to_img(fr);
 	}
 }
 
