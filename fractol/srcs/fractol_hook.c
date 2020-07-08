@@ -6,7 +6,7 @@
 /*   By: lcassaun <lcassaun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:25:47 by lcassaun          #+#    #+#             */
-/*   Updated: 2020/07/08 15:28:28 by lcassaun         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:34:01 by lcassaun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	fr_key_shift(int key, t_fr *fr)
 
 int		fr_julia_mouse(int x, int y, t_fr **fr)
 {
-	if (fr[0]->fr_switch == 1 || fr[0]->fr_switch == 3 || fr[0]->fr_switch == 2 || fr[0]->fr_switch == 4)
+	if (fr[0]->fr_switch == 1 || fr[0]->fr_switch == 3)
 	{
 		if (fr[0]->julia == 1)
 		{
@@ -47,31 +47,31 @@ int		fr_julia_mouse(int x, int y, t_fr **fr)
 			{
 				if (x < WIDTH / 2 && y < WIDTH / 2)
 				{
-					fr[0]->c_r += 0.008;
-					fr[1]->c_r += 0.008;
-					fr[2]->c_r += 0.008;
-					fr[3]->c_r += 0.008;
+					fr[0]->c_r += 0.005;
+					fr[1]->c_r += 0.005;
+					fr[2]->c_r += 0.005;
+					fr[3]->c_r += 0.005;
 				}
 				if (x > WIDTH / 2 && y < WIDTH / 2)
 				{
-					fr[0]->c_r -= 0.008;
-					fr[1]->c_r -= 0.008;
-					fr[2]->c_r -= 0.008;
-					fr[3]->c_r -= 0.008;
+					fr[0]->c_r -= 0.005;
+					fr[1]->c_r -= 0.005;
+					fr[2]->c_r -= 0.005;
+					fr[3]->c_r -= 0.005;
 				}
 				if (x < WIDTH / 2 && y > WIDTH / 2)
 				{
-					fr[0]->c_i += 0.008;
-					fr[1]->c_i += 0.008;
-					fr[2]->c_i += 0.008;
-					fr[3]->c_i += 0.008;
+					fr[0]->c_i += 0.005;
+					fr[1]->c_i += 0.005;
+					fr[2]->c_i += 0.005;
+					fr[3]->c_i += 0.005;
 				}
 				if (x > WIDTH / 2 && y > WIDTH / 2)
 				{
-					fr[0]->c_i -= 0.008;
-					fr[1]->c_i -= 0.008;
-					fr[2]->c_i -= 0.008;
-					fr[3]->c_i -= 0.008;
+					fr[0]->c_i -= 0.005;
+					fr[1]->c_i -= 0.005;
+					fr[2]->c_i -= 0.005;
+					fr[3]->c_i -= 0.005;
 				}
 			}
 			fr_draw(fr);
